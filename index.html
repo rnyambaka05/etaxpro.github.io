@@ -11,7 +11,7 @@
     <!-- Social Preview -->
     <meta property="og:title" content="E Tax Pro Solutions | Baton Rouge Tax Preparation" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Trusted tax preparation in Baton Rouge, LA for individuals and businesses. Bookkeeping, payroll, tax planning, and IRS support. 10+ years serving the local community." />
+    <meta property="og:description" content="Trusted tax preparation in Baton Rouge, LA for individuals and businesses. Bookkeeping, payroll, tax planning, training, and IRS support. 10+ years serving the local community." />
 
     <!-- Favicons (optional files if you have them) -->
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
@@ -41,93 +41,134 @@
       body { color: var(--ink); }
 
       /* =========================
-         TOP BAR (HEADER) — UPDATED
+         TOP BAR (HEADER) — REWORKED
+         #1 PRIORITY: LOGO BIG + READABLE
          ========================= */
 
       .top-bar, .top-bar ul { background: rgba(11,16,32,.96); }
       .top-bar a { color: #fff; font-weight: 900; } /* uniform bold */
       .top-bar a:hover { color: var(--gold); }
 
-      /* Make the header taller/premium */
+      /* Taller, premium header */
       .top-bar{
-        padding: .85rem .55rem; /* taller */
+        padding: .9rem .6rem;
         align-items: center;
       }
 
-      /* Bigger nav links */
-      .top-bar .menu > li > a{
-        padding: 1.05rem .9rem;
-        font-size: 1.08rem;
-        font-weight: 900; /* uniform */
-        letter-spacing: -0.2px;
+      /* Flex layout: logo gets room, nav shifts right */
+      .top-bar-left,
+      .top-bar-right{
+        display:flex;
+        align-items:center;
       }
 
-      /* BRAND: logo only (no text in header) */
-      .menu .menu-text { padding: .25rem .55rem; }
+      .top-bar-left .menu{
+        display:flex;
+        align-items:center;
+        gap:.25rem;
+        flex-wrap: nowrap;
+      }
+
+      /* Logo is first thing noticed */
+      .menu .menu-text { padding: 0; }
 
       .brand{
         display:flex;
         align-items:center;
-        gap:.85rem;
         text-decoration:none;
         line-height:1;
+        margin-right: 1.15rem; /* space before nav links start */
       }
 
-      /* Dominant logo in header */
+      /* Dramatically larger logo, blended into header */
       .brand img{
-        height: 104px;           /* BIG */
+        height: 140px;          /* BIG AS HECK */
         width: auto;
-        max-height: 120px;
-        padding: 10px;
-        border-radius: 18px;
-        background: rgba(255,255,255,0.10);
-        border: 1px solid rgba(242,193,78,0.35);
+        max-height: 160px;
+        display:block;
 
-        /* subtle premium glow */
-        box-shadow:
-          0 14px 36px rgba(0,0,0,0.30),
-          0 0 26px rgba(242,193,78,0.18),
-          inset 0 0 0 1px rgba(255,255,255,0.08);
+        /* Blend into header (no box/background) */
+        padding: 0;
+        background: transparent;
+        border: 0;
+        border-radius: 0;
 
-        transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+        /* crisp + subtle premium presence without a box */
+        filter: drop-shadow(0 18px 34px rgba(0,0,0,0.42))
+                drop-shadow(0 0 16px rgba(242,193,78,0.10));
+        transition: transform .18s ease, filter .18s ease;
       }
 
       @media (hover:hover){
         .brand:hover img{
           transform: translateY(-1px) scale(1.01);
-          box-shadow:
-            0 18px 44px rgba(0,0,0,0.34),
-            0 0 32px rgba(242,193,78,0.22),
-            inset 0 0 0 1px rgba(255,255,255,0.10);
+          filter: drop-shadow(0 22px 44px rgba(0,0,0,0.48))
+                  drop-shadow(0 0 20px rgba(242,193,78,0.14));
         }
+      }
+
+      /* Bigger nav links; push them right */
+      .top-bar-left .menu > li:not(.menu-text){
+        margin-left: .15rem;
+      }
+
+      .top-bar .menu > li > a{
+        padding: 1.1rem .9rem;
+        font-size: 1.08rem;
+        font-weight: 900;
+        letter-spacing: -0.2px;
+        white-space: nowrap;
       }
 
       /* Right-side phone + button spacing */
+      .top-bar-right .menu{
+        display:flex;
+        align-items:center;
+        gap: .4rem;
+        flex-wrap: nowrap;
+      }
+
       .top-bar-right .menu > li > a{
         font-size: 1.08rem;
         font-weight: 900;
+        white-space: nowrap;
       }
 
-      /* Mobile: keep big but not breaking */
-      @media (max-width: 640px){
-        .top-bar .menu { flex-wrap: wrap; }
+      /* Keep header clean on smaller widths */
+      @media (max-width: 900px){
         .brand img{
-          height: 78px;
-          max-height: 90px;
-          padding: 8px;
-          border-radius: 16px;
-        }
-        .top-bar{
-          padding: .65rem .45rem;
+          height: 118px;
+          max-height: 135px;
         }
         .top-bar .menu > li > a{
-          padding: .75rem .65rem;
+          padding: .95rem .72rem;
+          font-size: 1.02rem;
+        }
+      }
+
+      /* Mobile: stack gracefully */
+      @media (max-width: 640px){
+        .top-bar .menu { flex-wrap: wrap; }
+        .brand{
+          width: 100%;
+          margin-right: 0;
+          margin-bottom: .35rem;
+        }
+        .brand img{
+          height: 96px;
+          max-height: 110px;
+        }
+        .top-bar{
+          padding: .7rem .5rem;
+        }
+        .top-bar .menu > li > a{
+          padding: .78rem .65rem;
           font-size: 1.02rem;
         }
       }
 
       /* =========================
-         HERO (UNCHANGED layout - NO LOGO)
+         HERO (layout unchanged)
          ========================= */
 
       .hero{
@@ -192,6 +233,14 @@
       .hero-card b { color:#fff; font-weight: 950; }
       .hero-card .small { color: rgba(255,255,255,.88); font-weight: 650; }
 
+      /* HERO CARD TITLE accent only (not bullets) */
+      .hero-card .hero-card-title{
+        display:inline-block;
+        padding-bottom: .25rem;
+        border-bottom: 2px solid rgba(242,193,78,.55);
+        text-shadow: 0 0 14px rgba(242,193,78,.24);
+      }
+
       .checks{
         list-style:none;
         margin:0;
@@ -220,7 +269,7 @@
       }
 
       /* =========================
-         BUTTONS — ADD SOFT GOLD GLOW
+         BUTTONS — CONSISTENT SOFT GOLD GLOW (sitewide)
          ========================= */
 
       .button.primary{
@@ -229,12 +278,26 @@
         font-weight: 950;
         border: 0;
 
-        /* subtle premium glow */
+        /* subtle outer glow (not neon) */
         box-shadow:
           0 14px 34px rgba(242,193,78,.22),
-          0 0 22px rgba(242,193,78,.18);
+          0 0 18px rgba(242,193,78,.16);
+        transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
       }
-      .button.primary:hover{ filter: brightness(.96); }
+      .button.primary:hover{
+        filter: brightness(1.02);
+        box-shadow:
+          0 18px 44px rgba(242,193,78,.26),
+          0 0 26px rgba(242,193,78,.20);
+        transform: translateY(-1px);
+      }
+      .button.primary:active{
+        transform: translateY(0);
+        filter: brightness(.98);
+        box-shadow:
+          0 12px 30px rgba(242,193,78,.20),
+          0 0 16px rgba(242,193,78,.14);
+      }
 
       .button.hollow.light{
         border-color: rgba(255,255,255,.75);
@@ -283,7 +346,14 @@
         margin-bottom: .65rem;
       }
 
-      /* Image tiles */
+      /* Services: uniform grid + equal height tiles */
+      .services-grid{
+        display:flex;
+        flex-wrap: wrap;
+      }
+      .services-grid .column{
+        display:flex;
+      }
       .tile{
         border-radius: 18px;
         overflow: hidden;
@@ -291,6 +361,9 @@
         box-shadow: 0 12px 28px rgba(0,0,0,.06);
         background: #fff;
         height: 100%;
+        width: 100%;
+        display:flex;
+        flex-direction: column;
       }
       .tile img{
         width:100%;
@@ -298,13 +371,53 @@
         object-fit: cover;
         display:block;
       }
-      .tile .pad{ padding: 1rem 1.15rem 1.2rem; }
-      .tile h5{ font-weight: 950 !important; letter-spacing: -0.3px; }
+      .tile .pad{
+        padding: 1rem 1.15rem 1.2rem;
+        display:flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+      }
+
+      /* Force ALL service titles to match Education/IRS/Representation style */
+      .service-title{
+        font-weight: 950 !important;
+        letter-spacing: -0.3px;
+        font-size: 1.2rem; /* matches typical h4/h5 sizing used in cards */
+        line-height: 1.2;
+        margin-bottom: .45rem;
+      }
+
+      /* Make the second row service cards match tile heights too */
+      .services-cards .column{
+        display:flex;
+      }
+      .services-cards .card{
+        width: 100%;
+        display:flex;
+        flex-direction: column;
+      }
+
+      /* Pricing equal height */
+      .pricing-grid .column{
+        display:flex;
+      }
+      .pricing-grid .card{
+        width:100%;
+        display:flex;
+        flex-direction: column;
+      }
+      .pricing-grid .card .button{
+        margin-top:auto; /* buttons align to bottom */
+      }
 
       /* Reviews */
       .review{ border-left: 5px solid var(--gold); }
 
       /* Team photos */
+      .photo-card{
+        display:flex;
+        flex-direction: column;
+      }
       .photo-card img{
         width:100%;
         height: 220px;
@@ -336,6 +449,100 @@
       .spacer{ height: 1rem; }
       .tight { margin-top: .4rem; }
       .centered { max-width: 70ch; margin-left:auto; margin-right:auto; }
+
+      /* =========================
+         Rotating Google Reviews Orb (auto-loop)
+         ========================= */
+      .orb-wrap{
+        position: relative;
+        max-width: 880px;
+        margin: 1.25rem auto 0;
+      }
+
+      .orb{
+        position: relative;
+        border-radius: 22px;
+        padding: 1.35rem 1.35rem 1.15rem;
+        background:
+          radial-gradient(620px 280px at 20% 25%, rgba(242,193,78,.18), transparent 60%),
+          radial-gradient(520px 260px at 85% 35%, rgba(207,214,228,.22), transparent 62%),
+          linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));
+        border: 1px solid rgba(0,0,0,.08);
+        box-shadow:
+          0 20px 60px rgba(0,0,0,.10),
+          0 0 32px rgba(242,193,78,.10);
+        overflow:hidden;
+        animation: orbFloat 7s ease-in-out infinite;
+      }
+
+      .orb::before{
+        content:"";
+        position:absolute;
+        inset:-2px;
+        border-radius: 24px;
+        pointer-events:none;
+        background: radial-gradient(520px 200px at 30% 20%, rgba(255,255,255,.65), transparent 55%);
+        opacity:.55;
+      }
+
+      @keyframes orbFloat{
+        0%,100%{ transform: translateY(0); }
+        50%{ transform: translateY(-6px); }
+      }
+
+      .orb-top{
+        display:flex;
+        align-items:center;
+        justify-content: space-between;
+        gap: .75rem;
+        margin-bottom: .6rem;
+        position:relative;
+        z-index:1;
+      }
+
+      .orb-name{
+        font-weight: 950;
+        letter-spacing: -0.3px;
+        color: rgba(11,16,32,.92);
+        font-size: 1.08rem;
+      }
+
+      .orb-stars{
+        display:flex;
+        align-items:center;
+        gap: .35rem;
+        font-weight: 950;
+        color: rgba(11,16,32,.86);
+      }
+
+      .star{
+        width: 12px;
+        height: 12px;
+        border-radius: 4px;
+        background: linear-gradient(180deg, var(--gold), var(--gold2));
+        box-shadow: 0 0 14px rgba(242,193,78,.20);
+      }
+
+      .orb-quote{
+        position:relative;
+        z-index:1;
+        font-size: 1.05rem;
+        color: rgba(0,0,0,.72);
+        line-height: 1.55;
+        margin: .25rem 0 0;
+      }
+
+      .orb-meta{
+        position:relative;
+        z-index:1;
+        margin-top: .75rem;
+        font-size: .92rem;
+        color: rgba(0,0,0,.55);
+        font-weight: 750;
+      }
+
+      .orb-fade-out{ opacity: 0; transform: translateY(6px); transition: opacity .35s ease, transform .35s ease; }
+      .orb-fade-in{ opacity: 1; transform: translateY(0); transition: opacity .35s ease, transform .35s ease; }
     </style>
   </head>
 
@@ -396,7 +603,7 @@
 
         <div class="medium-5 columns">
           <div class="hero-card">
-            <b>Common reasons people reach out</b>
+            <b class="hero-card-title">Common reasons people reach out</b>
             <div class="spacer"></div>
             <ul class="checks">
               <li><span class="dot"></span><span class="small">Multiple W-2s, 1099s, or self-employed income</span></li>
@@ -414,9 +621,7 @@
     <!-- Services -->
     <section id="services" class="section">
       <div class="row column text-center">
-        <h2 class="section-title">Services</h2>
-
-        <!-- Local SEO signal -->
+        <!-- Removed redundant “Services” heading; keep ONLY this as main title -->
         <h2 class="section-title">Tax Preparation Services in Baton Rouge, Louisiana</h2>
 
         <p class="muted centered">
@@ -424,13 +629,13 @@
         </p>
       </div>
 
-      <div class="row small-up-1 medium-up-3">
+      <div class="row small-up-1 medium-up-3 services-grid">
         <div class="column">
           <div class="tile">
             <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=1600&q=70" alt="Tax preparation documents">
             <div class="pad">
               <div class="tag">Individuals</div>
-              <h5><strong>Tax Return Preparation</strong></h5>
+              <div class="service-title">Tax Return Preparation</div>
               <p class="muted">W-2, 1099, self-employed, credits/deductions — filed clean and explained clearly.</p>
             </div>
           </div>
@@ -441,7 +646,7 @@
             <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=70" alt="Small business meeting">
             <div class="pad">
               <div class="tag">Businesses</div>
-              <h5><strong>Business Services</strong></h5>
+              <div class="service-title">Business Services</div>
               <p class="muted">Bookkeeping, payroll, and business tax returns with a calm, organized process.</p>
             </div>
           </div>
@@ -452,14 +657,14 @@
             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=70" alt="Planning and analytics">
             <div class="pad">
               <div class="tag">Planning</div>
-              <h5><strong>Advisory &amp; Strategy</strong></h5>
+              <div class="service-title">Advisory &amp; Strategy</div>
               <p class="muted">Tax planning, estimates, and guidance so you can make decisions with confidence.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="row small-up-1 medium-up-3" style="margin-top:1rem;">
+      <div class="row small-up-1 medium-up-3 services-cards" style="margin-top:1rem;">
         <div class="column">
           <div class="card">
             <div class="tag">Training</div>
@@ -555,7 +760,7 @@
         </p>
       </div>
 
-      <div class="row small-up-1 medium-up-3">
+      <div class="row small-up-1 medium-up-3 pricing-grid">
         <div class="column">
           <div class="card">
             <div class="tag">Individuals</div>
@@ -582,7 +787,8 @@
               <li>Owner-friendly reporting (so you know what’s happening)</li>
             </ul>
             <p class="muted tight"><strong>Monthly Retainers:</strong> Custom (based on volume + needs)</p>
-            <a href="tel:+1-225-247-9803" class="button hollow expanded">Call for Monthly Options</a>
+            <!-- Updated to gold primary styling + glow -->
+            <a href="tel:+1-225-247-9803" class="button primary expanded">Call for Monthly Options</a>
           </div>
         </div>
 
@@ -642,7 +848,8 @@
 
         <div class="column">
           <div class="card photo-card">
-            <img src="https://images.unsplash.com/photo-1556761177-4b46a572b786?auto=format&fit=crop&w=1600&q=70" alt="Team meeting">
+            <!-- Replaced broken/missing middle image with a valid one -->
+            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=70" alt="Tax preparation work">
             <h4><strong>Tax Prep</strong></h4>
             <p class="muted">Accuracy first — and we explain what we file, not just “submit it.”</p>
           </div>
@@ -693,31 +900,21 @@
     <section id="reviews" class="section">
       <div class="row column text-center">
         <h2 class="section-title">Reviews</h2>
-        <p class="muted centered">A few examples of what clients typically say after working with us.</p>
-      </div>
+        <p class="muted centered">Real Google reviews from clients who’ve worked with us.</p>
 
-      <div class="row small-up-1 medium-up-3">
-        <div class="column">
-          <div class="card review">
-            <h5><strong>“Fast, clear, and professional.”</strong></h5>
-            <p class="muted">They broke everything down and helped me understand what was being filed.</p>
-            <p style="margin:0; font-weight:900;">— Local Baton Rouge Client</p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="card review">
-            <h5><strong>“Saved me a ton of stress.”</strong></h5>
-            <p class="muted">I had multiple forms and wasn’t sure what to do. They handled it calmly.</p>
-            <p style="margin:0; font-weight:900;">— Self-Employed Client</p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="card review">
-            <h5><strong>“Bookkeeping finally makes sense.”</strong></h5>
-            <p class="muted">Monthly reports + payroll support helped my business stay on track.</p>
-            <p style="margin:0; font-weight:900;">— Small Business Owner</p>
+        <!-- Auto-rotating orb review (no manual interaction) -->
+        <div class="orb-wrap">
+          <div id="reviewOrb" class="orb orb-fade-in" aria-live="polite">
+            <div class="orb-top">
+              <div class="orb-name" id="orbName">Moses Ihachi</div>
+              <div class="orb-stars" aria-label="5 star review">
+                <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
+              </div>
+            </div>
+            <p class="orb-quote" id="orbText">
+              He’s been handling my taxes for a while now and I’ve never had a single issue. Everything is clear, easy, and done right the first time.
+            </p>
+            <div class="orb-meta" id="orbMeta">★★★★★ • Google Review</div>
           </div>
         </div>
       </div>
@@ -844,6 +1041,52 @@
     <script>
       $(document).foundation();
       document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Rotating Google Reviews (auto loop, no manual interaction)
+      const googleReviews = [
+        { name: "Moses Ihachi", text: "He’s been handling my taxes for a while now and I’ve never had a single issue. Everything is clear, easy, and done right the first time." },
+        { name: "Pita Kabs", text: "I’m a repeat customer and I don’t see that changing. I recommend him to all my family and friends." },
+        { name: "Eldridge Opwondo", text: "I always leave confident in the work he's done. Thats why we will always keep coming back and recommend him to everyone." },
+        { name: "Bellah maria", text: "My returner always feel correctly and on time that’s why I keep coming back" },
+        { name: "Lucas ondobo", text: "I’ve been going here for a couple years. He’s very nice and explains everything well and makes it easy to understand." },
+        { name: "César FERNANDES", text: "I’ve been filing here for years and I wouldn’t think of going anywhere else. He’s earned my trust." },
+        { name: "Trophine Reounodji", text: "Great service! If you are looking for where to get your tax return filed, don't look further. E Tax Pro Solutions LLC is the solution. Highly recommended." },
+        { name: "Enoch Reounodji", text: "Very professional. Highly recommended!" },
+        { name: "herbert twase", text: "Go to him!! He helped me find deductions I didn't even know I qualified for." },
+        { name: "Jackline Mukenya", text: "Mr. E made the tax process very easy. He is trustworthy and easy to work with. I definitely recommend them for tax services." },
+        { name: "Helien Kabati", text: "They're are very professional and actually explained everything clearly." }
+      ];
+
+      const orb = document.getElementById("reviewOrb");
+      const orbName = document.getElementById("orbName");
+      const orbText = document.getElementById("orbText");
+      const orbMeta = document.getElementById("orbMeta");
+
+      let reviewIndex = 0;
+
+      function showReview(i){
+        const r = googleReviews[i];
+        // fade out
+        orb.classList.remove("orb-fade-in");
+        orb.classList.add("orb-fade-out");
+
+        setTimeout(() => {
+          orbName.textContent = r.name;
+          orbText.textContent = r.text;
+          orbMeta.textContent = "★★★★★ • Google Review";
+          // fade in
+          orb.classList.remove("orb-fade-out");
+          orb.classList.add("orb-fade-in");
+        }, 360);
+      }
+
+      // start on first, then rotate
+      showReview(reviewIndex);
+
+      setInterval(() => {
+        reviewIndex = (reviewIndex + 1) % googleReviews.length;
+        showReview(reviewIndex);
+      }, 5200);
     </script>
 
     <!-- Calendly -->
