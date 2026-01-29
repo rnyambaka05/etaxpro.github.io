@@ -45,8 +45,8 @@
 
     /* =========================
        TOP BAR (HEADER) — UNIFIED SINGLE NAVY
+       + PREMIUM CONTAINED GOLD GLOW (CLIPPED TO HEADER ONLY)
        ========================= */
-    /* Force one flat color everywhere in the header area (no overlays, no panels, no seams) */
     .top-bar{
       background: var(--navy-header) !important;
       padding: .55rem .6rem; /* reduced vertical padding because logo drives height */
@@ -54,6 +54,45 @@
       box-shadow: none;
       border: 0;
       width: 100%;
+
+      /* contained glow controls */
+      position: relative;
+      overflow: hidden; /* CLIPS glow strictly to header bounds */
+      isolation: isolate; /* keeps blend/overlays contained */
+    }
+
+    /* Premium, clearly visible (but not neon) header glow overlay — DOES NOT AFFECT LAYOUT */
+    .top-bar::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+
+      /* tasteful gold illumination + subtle depth */
+      background:
+        radial-gradient(900px 220px at 20% 0%, rgba(242,193,78,.28), transparent 60%),
+        radial-gradient(760px 220px at 80% 0%, rgba(242,193,78,.20), transparent 62%),
+        radial-gradient(900px 260px at 50% 110%, rgba(207,214,228,.10), transparent 58%),
+        linear-gradient(180deg, rgba(255,255,255,.04), transparent 42%);
+      opacity: 1;
+      mix-blend-mode: screen;
+    }
+
+    /* Subtle inner “edge glow” that stays inside the header only */
+    .top-bar::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+
+      /* inner ring + soft vignette to feel premium */
+      box-shadow:
+        inset 0 0 0 1px rgba(242,193,78,.10),
+        inset 0 18px 40px rgba(242,193,78,.10),
+        inset 0 -18px 44px rgba(0,0,0,.22);
+      opacity: .95;
     }
 
     /* Make every internal top-bar region inherit the SAME background (no extra tones) */
@@ -67,6 +106,8 @@
     .top-bar ul,
     .top-bar .menu{
       background: var(--navy-header) !important;
+      position: relative; /* ensure content sits above overlays */
+      z-index: 1;
     }
 
     /* Remove any Foundation “pill”/panel effect on right side */
@@ -162,6 +203,43 @@
       font-size: 1.06rem;
       font-weight: 900;
       white-space: nowrap;
+    }
+
+    /* (2) HEADER CTA: Restore strong gold + glowing style, matching site primary buttons
+       - does NOT change spacing or layout, only styling
+    */
+    .top-bar-right .button.primary{
+      background: linear-gradient(180deg, var(--gold), var(--gold2)) !important;
+      color: #1b1205 !important;
+      font-weight: 950 !important;
+      border: 0 !important;
+
+      /* clear soft gold glow */
+      box-shadow:
+        0 14px 34px rgba(242,193,78,.30),
+        0 0 24px rgba(242,193,78,.22),
+        inset 0 1px 0 rgba(255,255,255,.28) !important;
+
+      filter: saturate(1.08);
+      transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
+    }
+    .top-bar-right .button.primary:hover,
+    .top-bar-right .button.primary:focus{
+      filter: brightness(1.03) saturate(1.12);
+      box-shadow:
+        0 18px 48px rgba(242,193,78,.36),
+        0 0 34px rgba(242,193,78,.28),
+        inset 0 1px 0 rgba(255,255,255,.32) !important;
+      transform: translateY(-1px);
+      outline: none;
+    }
+    .top-bar-right .button.primary:active{
+      transform: translateY(0);
+      filter: brightness(.99) saturate(1.06);
+      box-shadow:
+        0 12px 30px rgba(242,193,78,.26),
+        0 0 18px rgba(242,193,78,.18),
+        inset 0 1px 0 rgba(255,255,255,.24) !important;
     }
 
     /* Keep header clean on smaller widths */
@@ -424,9 +502,52 @@
     .centered { max-width: 70ch; margin-left:auto; margin-right:auto; }
 
     /* ========================= REVIEWS ORB — AUTO + MANUAL CONTROLS
-       Keep layout as-is, add subtle premium gold accents.
+       Keep layout as-is, add subtle premium gold accents (NO layout changes)
        ========================= */
-    .orb-wrap{ position: relative; max-width: 900px; margin: 1.25rem auto 0; }
+    .orb-wrap{
+      position: relative;
+      max-width: 900px;
+      margin: 1.25rem auto 0;
+
+      /* keep accents contained to the reviews container */
+      overflow: hidden;
+      border-radius: 26px; /* does not affect layout; just clips decorations */
+    }
+
+    /* (3) Decorative, minimal sparkles + soft shimmer behind card — contained */
+    .orb-wrap::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+
+      /* tiny gold sparkle dots + faint shimmer band */
+      background:
+        radial-gradient(2px 2px at 10% 18%, rgba(242,193,78,.85), transparent 65%),
+        radial-gradient(2px 2px at 18% 78%, rgba(242,193,78,.70), transparent 65%),
+        radial-gradient(2px 2px at 90% 26%, rgba(242,193,78,.80), transparent 65%),
+        radial-gradient(2px 2px at 84% 82%, rgba(242,193,78,.65), transparent 65%),
+        radial-gradient(1.6px 1.6px at 28% 10%, rgba(242,193,78,.55), transparent 65%),
+        radial-gradient(1.6px 1.6px at 72% 92%, rgba(242,193,78,.55), transparent 65%),
+        linear-gradient(110deg, transparent 40%, rgba(242,193,78,.10) 50%, transparent 60%);
+      opacity: .26;
+      mix-blend-mode: multiply;
+      filter: blur(.15px);
+    }
+
+    /* thin decorative flourish near corners (no movement, no layout) */
+    .orb-wrap::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      background:
+        radial-gradient(220px 120px at 0% 0%, rgba(242,193,78,.14), transparent 70%),
+        radial-gradient(220px 120px at 100% 0%, rgba(242,193,78,.10), transparent 72%);
+      opacity: .9;
+    }
 
     .orb{
       position: relative;
@@ -443,6 +564,9 @@
 
       overflow:hidden;
       animation: orbFloat 7s ease-in-out infinite;
+
+      /* keep it above the wrap decorations */
+      z-index: 1;
     }
 
     /* faint shimmer highlight (already classy) */
@@ -519,7 +643,7 @@
       color: rgba(0,0,0,.55);
       font-weight: 750;
     }
-    .orb-controls{ display:flex; justify-content:center; gap:.6rem; margin-top: .9rem; }
+    .orb-controls{ display:flex; justify-content:center; gap:.6rem; margin-top: .9rem; position:relative; z-index:1; }
     .orb-controls .button{ margin: 0; }
     .orb-controls .button.hollow{
       border-color: rgba(11,16,32,.25);
@@ -1097,3 +1221,4 @@
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
+
