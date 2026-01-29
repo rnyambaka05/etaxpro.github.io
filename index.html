@@ -1,1095 +1,1099 @@
 <!doctype html>
 <html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tax Preparation in Baton Rouge, LA | E Tax Pro Solutions</title>
 
-    <title>Tax Preparation in Baton Rouge, LA | E Tax Pro Solutions</title>
-    <meta name="description" content="E Tax Pro Solutions in Baton Rouge, LA — tax preparation for individuals and businesses. Bookkeeping, payroll, tax planning, training, and IRS notice support." />
-    <meta name="theme-color" content="#0b1020" />
+  <meta name="description" content="E Tax Pro Solutions in Baton Rouge, LA — tax preparation for individuals and businesses. Bookkeeping, payroll, tax planning, training, and IRS notice support." />
+  <meta name="theme-color" content="#0b1020" />
 
-    <!-- Social Preview -->
-    <meta property="og:title" content="E Tax Pro Solutions | Baton Rouge Tax Preparation" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" content="Trusted tax preparation in Baton Rouge, LA for individuals and businesses. Bookkeeping, payroll, tax planning, training, and IRS support. 10+ years serving the local community." />
+  <!-- Social Preview -->
+  <meta property="og:title" content="E Tax Pro Solutions | Baton Rouge Tax Preparation" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Trusted tax preparation in Baton Rouge, LA for individuals and businesses. Bookkeeping, payroll, tax planning, training, and IRS notice support. 10+ years serving the local community." />
 
-    <!-- Favicons (optional files if you have them) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-    <link rel="manifest" href="site.webmanifest" />
-    <link rel="icon" href="favicon.ico" />
+  <!-- Favicons (optional files if you have them) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="icon" href="favicon.ico" />
 
-    <!-- Foundation CSS -->
-    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css" />
+  <!-- Foundation CSS -->
+  <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css" />
 
-    <!-- Calendly Embed Styles -->
-    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+  <!-- Calendly Embed Styles -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
 
-    <style>
-      :root{
-        --navy:#0b1020;
-        --navy2:#111a33;
-        --gold:#f2c14e;
-        --gold2:#d9a92c;
-        --silver:#cfd6e4;
-        --paper:#f6f7fb;
-        --ink:#0e1222;
+  <style>
+    :root{
+      --navy:#0b1020;
+      --navy2:#111a33;
+      --gold:#f2c14e;
+      --gold2:#d9a92c;
+      --silver:#cfd6e4;
+      --paper:#f6f7fb;
+      --ink:#0e1222;
+
+      /* ONE source of truth for the header background */
+      --navy-header: #0b1020;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { color: var(--ink); }
+
+    /* =========================
+       TOP BAR (HEADER) — UNIFIED SINGLE NAVY
+       ========================= */
+    /* Force one flat color everywhere in the header area (no overlays, no panels, no seams) */
+    .top-bar{
+      background: var(--navy-header) !important;
+      padding: .55rem .6rem; /* reduced vertical padding because logo drives height */
+      align-items: center;
+      box-shadow: none;
+      border: 0;
+      width: 100%;
+    }
+
+    /* Make every internal top-bar region inherit the SAME background (no extra tones) */
+    .top-bar,
+    .top-bar *{
+      background-color: transparent;
+    }
+
+    .top-bar-left,
+    .top-bar-right,
+    .top-bar ul,
+    .top-bar .menu{
+      background: var(--navy-header) !important;
+    }
+
+    /* Remove any Foundation “pill”/panel effect on right side */
+    .top-bar-right .menu,
+    .top-bar-right .menu > li,
+    .top-bar-right .menu > li > a{
+      background: var(--navy-header) !important;
+      border: 0 !important;
+      box-shadow: none !important;
+    }
+
+    .top-bar a { color: #fff; font-weight: 900; } /* uniform bold */
+    .top-bar a:hover { color: var(--gold); }
+
+    /* Flex layout */
+    .top-bar-left, .top-bar-right{ display:flex; align-items:center; }
+    .top-bar-left{ flex: 1 1 auto; min-width: 0; }
+    .top-bar-right{ flex: 0 0 auto; }
+
+    .top-bar-left .menu{
+      display:flex;
+      align-items:center;
+      gap:.2rem;
+      flex-wrap: nowrap;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .menu .menu-text { padding: 0; }
+
+    /* Give logo maximum room + push nav further right */
+    .brand{
+      display:flex;
+      align-items:center;
+      text-decoration:none;
+      line-height:1;
+      margin-right: 1.65rem; /* more breathing room before nav starts */
+      flex: 0 0 auto;
+      position: relative;
+    }
+
+    /* LOGO: max size that still stays clean */
+    .brand img{
+      height: 172px; /* BIG */
+      width: auto;
+      max-height: 190px;
+      display:block;
+
+      /* Blend into header — no box */
+      padding: 0;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+
+      /* Premium soft gold glow + embedded feel */
+      filter: drop-shadow(0 22px 52px rgba(0,0,0,0.50))
+              drop-shadow(0 0 22px rgba(242,193,78,0.18));
+
+      /* Subtle “tone blend” so logo blues feel embedded in navy header */
+      mix-blend-mode: screen;
+      opacity: 0.98;
+      transition: transform .18s ease, filter .18s ease, opacity .18s ease;
+    }
+
+    /* Hover glow slightly stronger */
+    @media (hover:hover){
+      .brand:hover img{
+        transform: translateY(-1px) scale(1.01);
+        filter: drop-shadow(0 26px 60px rgba(0,0,0,0.55))
+                drop-shadow(0 0 30px rgba(242,193,78,0.24));
+        opacity: 1;
       }
+    }
 
-      html { scroll-behavior: smooth; }
-      body { color: var(--ink); }
+    /* Nav links */
+    .top-bar-left .menu > li:not(.menu-text){ margin-left: .25rem; }
+    .top-bar .menu > li > a{
+      padding: 1.05rem .9rem;
+      font-size: 1.06rem;
+      font-weight: 900;
+      letter-spacing: -0.2px;
+      white-space: nowrap;
+    }
 
-      /* =========================
-         TOP BAR (HEADER) — REWORKED
-         #1 PRIORITY: LOGO BIG + READABLE
-         ========================= */
+    /* Right-side phone + button spacing */
+    .top-bar-right .menu{
+      display:flex;
+      align-items:center;
+      gap: .4rem;
+      flex-wrap: nowrap;
+    }
+    .top-bar-right .menu > li > a{
+      font-size: 1.06rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
 
-      .top-bar, .top-bar ul { background: rgba(11,16,32,.96); }
-      .top-bar a { color: #fff; font-weight: 900; } /* uniform bold */
-      .top-bar a:hover { color: var(--gold); }
+    /* Keep header clean on smaller widths */
+    @media (max-width: 980px){
+      .brand img{ height: 150px; max-height: 165px; }
+      .top-bar .menu > li > a{ padding: .95rem .72rem; font-size: 1.02rem; }
+    }
 
-      /* Taller, premium header */
-      .top-bar{
-        padding: .9rem .6rem;
-        align-items: center;
-      }
-
-      /* Flex layout: logo gets room, nav shifts right */
-      .top-bar-left,
-      .top-bar-right{
-        display:flex;
-        align-items:center;
-      }
-
-      .top-bar-left .menu{
-        display:flex;
-        align-items:center;
-        gap:.25rem;
-        flex-wrap: nowrap;
-      }
-
-      /* Logo is first thing noticed */
-      .menu .menu-text { padding: 0; }
-
-      .brand{
-        display:flex;
-        align-items:center;
-        text-decoration:none;
-        line-height:1;
-        margin-right: 1.15rem; /* space before nav links start */
-      }
-
-      /* Dramatically larger logo, blended into header */
+    /* Mobile: stack gracefully */
+    @media (max-width: 640px){
+      .top-bar .menu { flex-wrap: wrap; }
+      .brand{ width: 100%; margin-right: 0; margin-bottom: .35rem; }
       .brand img{
-        height: 140px;          /* BIG AS HECK */
-        width: auto;
-        max-height: 160px;
-        display:block;
+        height: 118px;
+        max-height: 130px;
+        mix-blend-mode: normal; /* avoid weird blending on mobile browsers */
+        opacity: 1;
+      }
+      .top-bar{ padding: .65rem .5rem; }
+      .top-bar .menu > li > a{ padding: .78rem .65rem; font-size: 1.02rem; }
+    }
 
-        /* Blend into header (no box/background) */
-        padding: 0;
-        background: transparent;
-        border: 0;
-        border-radius: 0;
+    /* ========================= HERO (layout unchanged) ========================= */
+    .hero{
+      padding: 5.2rem 0 4.4rem;
+      color:#fff;
+      position: relative;
+      background:
+        radial-gradient(900px 450px at 10% 15%, rgba(242,193,78,.24), transparent 60%),
+        radial-gradient(900px 450px at 90% 25%, rgba(207,214,228,.16), transparent 60%),
+        linear-gradient(135deg, rgba(11,16,32,.72), rgba(11,16,32,.50)),
+        url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=2400&q=80");
+      background-size: cover;
+      background-position: center;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(900px 500px at 60% 35%, rgba(255,255,255,.10), transparent 55%);
+      pointer-events:none;
+    }
+    .hero > .row{ position:relative; z-index:1; }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+      padding:.60rem 1.05rem;
+      border-radius: 999px;
+      background: rgba(242,193,78,.16);
+      border: 1px solid rgba(242,193,78,.40);
+      color: rgba(255,255,255,.96);
+      font-weight: 900;
+      font-size: .98rem;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(10px);
+    }
+    .hero h1{
+      font-weight: 950;
+      letter-spacing: -1.1px;
+      margin-bottom:.65rem;
+      font-size: clamp(2.25rem, 4.2vw, 3.35rem);
+      line-height: 1.05;
+    }
+    .hero .lead{
+      color: rgba(255,255,255,.92);
+      max-width: 66ch;
+      margin: .9rem auto 1.55rem;
+      font-size: 1.18rem;
+    }
+    .hero-card{
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 18px;
+      padding: 1.15rem 1.25rem;
+      backdrop-filter: blur(10px);
+      text-align:left;
+      box-shadow: 0 18px 55px rgba(0,0,0,.28);
+    }
+    .hero-card b { color:#fff; font-weight: 950; }
+    .hero-card .small { color: rgba(255,255,255,.88); font-weight: 650; }
+    /* HERO CARD TITLE accent only (not bullets) */
+    .hero-card .hero-card-title{
+      display:inline-block;
+      padding-bottom: .25rem;
+      border-bottom: 2px solid rgba(242,193,78,.55);
+      text-shadow: 0 0 14px rgba(242,193,78,.24);
+    }
+    .checks{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      gap:.7rem;
+    }
+    .checks li{
+      display:flex;
+      gap:.65rem;
+      align-items:flex-start;
+      color: rgba(255,255,255,.93);
+    }
+    .dot{
+      width:10px;
+      height:10px;
+      border-radius: 999px;
+      background: var(--gold);
+      margin-top:.38rem;
+      flex: 0 0 auto;
+      box-shadow: 0 0 0 4px rgba(242,193,78,.16);
+    }
+    @media (max-width: 640px){
+      .hero{ padding: 4.1rem 0 3.6rem; }
+    }
 
-        /* crisp + subtle premium presence without a box */
-        filter: drop-shadow(0 18px 34px rgba(0,0,0,0.42))
-                drop-shadow(0 0 16px rgba(242,193,78,0.10));
-        transition: transform .18s ease, filter .18s ease;
-      }
+    /* ========================= BUTTONS — CONSISTENT SOFT GOLD GLOW (sitewide) ========================= */
+    .button.primary{
+      background: linear-gradient(180deg, var(--gold), var(--gold2));
+      color: #1b1205;
+      font-weight: 950;
+      border: 0;
+      /* subtle outer glow (not neon) */
+      box-shadow: 0 14px 34px rgba(242,193,78,.22), 0 0 20px rgba(242,193,78,.16);
+      transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
+    }
+    .button.primary:hover{
+      filter: brightness(1.03);
+      box-shadow: 0 18px 48px rgba(242,193,78,.28), 0 0 30px rgba(242,193,78,.22);
+      transform: translateY(-1px);
+    }
+    .button.primary:active{
+      transform: translateY(0);
+      filter: brightness(.98);
+      box-shadow: 0 12px 30px rgba(242,193,78,.20), 0 0 16px rgba(242,193,78,.14);
+    }
+    .button.hollow.light{ border-color: rgba(255,255,255,.75); color:#fff; font-weight: 950; }
+    .button.hollow.light:hover{ border-color: var(--gold); color: var(--gold); }
 
-      @media (hover:hover){
-        .brand:hover img{
-          transform: translateY(-1px) scale(1.01);
-          filter: drop-shadow(0 22px 44px rgba(0,0,0,0.48))
-                  drop-shadow(0 0 20px rgba(242,193,78,0.14));
-        }
-      }
+    /* Sections */
+    .section { padding: 3.8rem 0; }
+    .section.alt { background: var(--paper); }
+    .section-title{
+      font-weight: 950;
+      letter-spacing: -0.7px;
+      margin-bottom: .75rem;
+      font-size: clamp(2rem, 2.4vw, 2.5rem);
+      line-height: 1.08;
+    }
+    .muted { color: rgba(0,0,0,.62); }
 
-      /* Bigger nav links; push them right */
-      .top-bar-left .menu > li:not(.menu-text){
-        margin-left: .15rem;
-      }
+    /* Cards */
+    .card{
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 18px;
+      padding: 1.2rem;
+      box-shadow: 0 12px 28px rgba(0,0,0,.06);
+      height: 100%;
+      background: #fff;
+    }
+    .card h4, .card h5 { font-weight: 950 !important; letter-spacing: -0.3px; }
 
-      .top-bar .menu > li > a{
-        padding: 1.1rem .9rem;
-        font-size: 1.08rem;
-        font-weight: 900;
-        letter-spacing: -0.2px;
-        white-space: nowrap;
-      }
+    /* REVERT TAG/BUBBLE to small category bubble only */
+    .tag{
+      display:inline-block;
+      font-weight: 950;
+      font-size: .82rem;
+      color: rgba(11,16,32,.88);
+      background: rgba(242,193,78,.18);
+      border: 1px solid rgba(242,193,78,.30);
+      padding: .28rem .6rem;
+      border-radius: 999px;
+      margin-bottom: .65rem;
+    }
 
-      /* Right-side phone + button spacing */
-      .top-bar-right .menu{
-        display:flex;
-        align-items:center;
-        gap: .4rem;
-        flex-wrap: nowrap;
-      }
+    /* ========================= SERVICES — PERFECT UNIFORM GRID (same W/H) ========================= */
+    .services-grid, .services-cards{ display:flex; flex-wrap: wrap; }
+    .services-grid .column, .services-cards .column{ display:flex; }
 
-      .top-bar-right .menu > li > a{
-        font-size: 1.08rem;
-        font-weight: 900;
-        white-space: nowrap;
-      }
+    .tile{
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 12px 28px rgba(0,0,0,.06);
+      background: #fff;
+      width: 100%;
+      display:flex;
+      flex-direction: column;
+    }
+    .tile img{
+      width:100%;
+      height: 190px;
+      object-fit: cover;
+      display:block;
+      flex: 0 0 auto;
+    }
+    .tile .pad{
+      padding: 1rem 1.15rem 1.2rem;
+      display:flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+    }
 
-      /* Keep header clean on smaller widths */
-      @media (max-width: 900px){
-        .brand img{
-          height: 118px;
-          max-height: 135px;
-        }
-        .top-bar .menu > li > a{
-          padding: .95rem .72rem;
-          font-size: 1.02rem;
-        }
-      }
+    .service-title, .services-cards .card h4{
+      font-family: inherit;
+      font-weight: 950 !important;
+      letter-spacing: -0.3px;
+      font-size: 1.25rem;
+      line-height: 1.2;
+    }
+    .service-title{ margin: 0 0 .45rem; }
 
-      /* Mobile: stack gracefully */
-      @media (max-width: 640px){
-        .top-bar .menu { flex-wrap: wrap; }
-        .brand{
-          width: 100%;
-          margin-right: 0;
-          margin-bottom: .35rem;
-        }
-        .brand img{
-          height: 96px;
-          max-height: 110px;
-        }
-        .top-bar{
-          padding: .7rem .5rem;
-        }
-        .top-bar .menu > li > a{
-          padding: .78rem .65rem;
-          font-size: 1.02rem;
-        }
-      }
+    .services-grid .tile{ height: 420px; } /* fixed height for top 3 */
+    .services-cards .card{
+      height: 260px;
+      width:100%;
+      display:flex;
+      flex-direction: column;
+    }
 
-      /* =========================
-         HERO (layout unchanged)
-         ========================= */
+    /* ========================= PRICING — PERFECTLY EVEN CARDS ========================= */
+    .pricing-grid{ display:flex; flex-wrap: wrap; }
+    .pricing-grid .column{ display:flex; }
+    .pricing-grid .card{
+      width:100%;
+      height: 520px; /* fixed height so all align */
+      display:flex;
+      flex-direction: column;
+    }
+    .pricing-grid .card .button{ margin-top:auto; }
 
-      .hero{
-        padding: 5.2rem 0 4.4rem;
-        color:#fff;
-        position: relative;
-        background:
-          radial-gradient(900px 450px at 10% 15%, rgba(242,193,78,.24), transparent 60%),
-          radial-gradient(900px 450px at 90% 25%, rgba(207,214,228,.16), transparent 60%),
-          linear-gradient(135deg, rgba(11,16,32,.72), rgba(11,16,32,.50)),
-          url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=2400&q=80");
-        background-size: cover;
-        background-position: center;
-      }
-      .hero::before{
-        content:"";
-        position:absolute;
-        inset:0;
-        background: radial-gradient(900px 500px at 60% 35%, rgba(255,255,255,.10), transparent 55%);
-        pointer-events:none;
-      }
-      .hero > .row{ position:relative; z-index:1; }
+    /* Reviews */
+    .review{ border-left: 5px solid var(--gold); }
 
-      .pill{
-        display:inline-flex;
-        align-items:center;
-        gap:.55rem;
-        padding:.60rem 1.05rem;
-        border-radius: 999px;
-        background: rgba(242,193,78,.16);
-        border: 1px solid rgba(242,193,78,.40);
-        color: rgba(255,255,255,.96);
-        font-weight: 900;
-        font-size: .98rem;
-        margin-bottom: 1rem;
-        backdrop-filter: blur(10px);
-      }
+    /* Team photos */
+    .photo-card{ display:flex; flex-direction: column; }
+    .photo-card img{
+      width:100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,.08);
+      display:block;
+      margin-bottom: .85rem;
+    }
 
-      .hero h1{
-        font-weight: 950;
-        letter-spacing: -1.1px;
-        margin-bottom:.65rem;
-        font-size: clamp(2.25rem, 4.2vw, 3.35rem);
-        line-height: 1.05;
-      }
-      .hero .lead{
-        color: rgba(255,255,255,.92);
-        max-width: 66ch;
-        margin: .9rem auto 1.55rem;
-        font-size: 1.18rem;
-      }
+    /* Calendly */
+    .cal-wrap{
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0,0,0,.06);
+      background:#fff;
+    }
 
-      .hero-card{
-        background: rgba(255,255,255,.08);
-        border: 1px solid rgba(255,255,255,.18);
-        border-radius: 18px;
-        padding: 1.15rem 1.25rem;
-        backdrop-filter: blur(10px);
-        text-align:left;
-        box-shadow: 0 18px 55px rgba(0,0,0,.28);
-      }
-      .hero-card b { color:#fff; font-weight: 950; }
-      .hero-card .small { color: rgba(255,255,255,.88); font-weight: 650; }
+    /* Footer */
+    .footer{ background: rgba(11,16,32,.98); color:#fff; padding: 2.2rem 0; }
+    .footer a{ color:#fff; font-weight:800; }
+    .footer a:hover{ color: var(--gold); }
+    .spacer{ height: 1rem; }
+    .tight { margin-top: .4rem; }
+    .centered { max-width: 70ch; margin-left:auto; margin-right:auto; }
 
-      /* HERO CARD TITLE accent only (not bullets) */
-      .hero-card .hero-card-title{
-        display:inline-block;
-        padding-bottom: .25rem;
-        border-bottom: 2px solid rgba(242,193,78,.55);
-        text-shadow: 0 0 14px rgba(242,193,78,.24);
-      }
+    /* ========================= REVIEWS ORB — AUTO + MANUAL CONTROLS
+       Keep layout as-is, add subtle premium gold accents.
+       ========================= */
+    .orb-wrap{ position: relative; max-width: 900px; margin: 1.25rem auto 0; }
 
-      .checks{
-        list-style:none;
-        margin:0;
-        padding:0;
-        display:grid;
-        gap:.7rem;
-      }
-      .checks li{
-        display:flex;
-        gap:.65rem;
-        align-items:flex-start;
-        color: rgba(255,255,255,.93);
-      }
-      .dot{
-        width:10px;
-        height:10px;
-        border-radius: 999px;
-        background: var(--gold);
-        margin-top:.38rem;
-        flex: 0 0 auto;
-        box-shadow: 0 0 0 4px rgba(242,193,78,.16);
-      }
+    .orb{
+      position: relative;
+      border-radius: 22px;
+      padding: 1.35rem 1.35rem 1.15rem;
+      background:
+        radial-gradient(620px 280px at 20% 25%, rgba(242,193,78,.18), transparent 60%),
+        radial-gradient(520px 260px at 85% 35%, rgba(207,214,228,.22), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.94));
+      border: 1px solid rgba(0,0,0,.08);
 
-      @media (max-width: 640px){
-        .hero{ padding: 4.1rem 0 3.6rem; }
-      }
+      /* Increased premium glow */
+      box-shadow: 0 22px 70px rgba(0,0,0,.11), 0 0 46px rgba(242,193,78,.14);
 
-      /* =========================
-         BUTTONS — CONSISTENT SOFT GOLD GLOW (sitewide)
-         ========================= */
+      overflow:hidden;
+      animation: orbFloat 7s ease-in-out infinite;
+    }
 
-      .button.primary{
-        background: linear-gradient(180deg, var(--gold), var(--gold2));
-        color: #1b1205;
-        font-weight: 950;
-        border: 0;
+    /* faint shimmer highlight (already classy) */
+    .orb::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius: 24px;
+      pointer-events:none;
+      background: radial-gradient(520px 200px at 30% 20%, rgba(255,255,255,.65), transparent 55%);
+      opacity:.55;
+    }
 
-        /* subtle outer glow (not neon) */
-        box-shadow:
-          0 14px 34px rgba(242,193,78,.22),
-          0 0 18px rgba(242,193,78,.16);
-        transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
-      }
-      .button.primary:hover{
-        filter: brightness(1.02);
-        box-shadow:
-          0 18px 44px rgba(242,193,78,.26),
-          0 0 26px rgba(242,193,78,.20);
-        transform: translateY(-1px);
-      }
-      .button.primary:active{
-        transform: translateY(0);
-        filter: brightness(.98);
-        box-shadow:
-          0 12px 30px rgba(242,193,78,.20),
-          0 0 16px rgba(242,193,78,.14);
-      }
+    /* subtle premium gold “sprinkles” (tiny dots) near edges — not busy */
+    .orb::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity: .22;
+      background:
+        radial-gradient(2px 2px at 8% 18%, rgba(242,193,78,.9), transparent 60%),
+        radial-gradient(2px 2px at 14% 82%, rgba(242,193,78,.75), transparent 60%),
+        radial-gradient(2px 2px at 92% 26%, rgba(242,193,78,.85), transparent 60%),
+        radial-gradient(2px 2px at 86% 78%, rgba(242,193,78,.7), transparent 60%),
+        radial-gradient(1.6px 1.6px at 28% 10%, rgba(242,193,78,.55), transparent 60%),
+        radial-gradient(1.6px 1.6px at 72% 92%, rgba(242,193,78,.55), transparent 60%),
+        linear-gradient(90deg, transparent, rgba(242,193,78,.10), transparent);
+      mix-blend-mode: multiply;
+      filter: blur(.15px);
+    }
 
-      .button.hollow.light{
-        border-color: rgba(255,255,255,.75);
-        color:#fff;
-        font-weight: 950;
-      }
-      .button.hollow.light:hover{
-        border-color: var(--gold);
-        color: var(--gold);
-      }
+    @keyframes orbFloat{
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-6px); }
+    }
 
-      /* Sections */
-      .section { padding: 3.8rem 0; }
-      .section.alt { background: var(--paper); }
+    .orb-top{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: .75rem;
+      margin-bottom: .55rem;
+      position:relative;
+      z-index:1;
+    }
+    .orb-name{
+      font-weight: 950;
+      letter-spacing: -0.3px;
+      color: rgba(11,16,32,.92);
+      font-size: 1.08rem;
+    }
+    .orb-stars-text{
+      font-weight: 950;
+      letter-spacing: 1px;
+      color: var(--gold2);
+      text-shadow: 0 0 18px rgba(242,193,78,.22);
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+    .orb-quote{
+      position:relative;
+      z-index:1;
+      font-size: 1.05rem;
+      color: rgba(0,0,0,.72);
+      line-height: 1.55;
+      margin: .25rem 0 0;
+    }
+    .orb-meta{
+      position:relative;
+      z-index:1;
+      margin-top: .75rem;
+      font-size: .92rem;
+      color: rgba(0,0,0,.55);
+      font-weight: 750;
+    }
+    .orb-controls{ display:flex; justify-content:center; gap:.6rem; margin-top: .9rem; }
+    .orb-controls .button{ margin: 0; }
+    .orb-controls .button.hollow{
+      border-color: rgba(11,16,32,.25);
+      color: rgba(11,16,32,.86);
+      font-weight: 900;
+    }
+    .orb-controls .button.hollow:hover{
+      border-color: rgba(242,193,78,.55);
+      color: rgba(11,16,32,.92);
+    }
+    .orb-fade-out{ opacity: 0; transform: translateY(6px); transition: opacity .35s ease, transform .35s ease; }
+    .orb-fade-in{ opacity: 1; transform: translateY(0); transition: opacity .35s ease, transform .35s ease; }
+  </style>
+</head>
 
-      .section-title{
-        font-weight: 950;
-        letter-spacing: -0.7px;
-        margin-bottom: .75rem;
-        font-size: clamp(2rem, 2.4vw, 2.5rem);
-        line-height: 1.08;
-      }
+<body>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="menu">
+        <li class="menu-text">
+          <a href="#top" class="brand" aria-label="E Tax Pro Solutions Home">
+            <!-- IMPORTANT: ensure your logo is at assets/logo.png -->
+            <img src="assets/logo.png" alt="E Tax Pro Solutions logo">
+          </a>
+        </li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#book">Book</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
 
-      .muted { color: rgba(0,0,0,.62); }
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><a href="tel:+1-225-247-9803">(225) 247-9803</a></li>
+        <li><a class="button small primary" href="#book" style="margin:0;">Book Appointment</a></li>
+      </ul>
+    </div>
+  </div>
 
-      /* Cards */
-      .card{
-        border: 1px solid rgba(0,0,0,.08);
-        border-radius: 18px;
-        padding: 1.2rem;
-        box-shadow: 0 12px 28px rgba(0,0,0,.06);
-        height: 100%;
-        background: #fff;
-      }
-      .card h4, .card h5 { font-weight: 950 !important; letter-spacing: -0.3px; }
-
-      .tag{
-        display:inline-block;
-        font-weight: 950;
-        font-size: .82rem;
-        color: rgba(11,16,32,.88);
-        background: rgba(242,193,78,.18);
-        border: 1px solid rgba(242,193,78,.30);
-        padding: .28rem .6rem;
-        border-radius: 999px;
-        margin-bottom: .65rem;
-      }
-
-      /* Services: uniform grid + equal height tiles */
-      .services-grid{
-        display:flex;
-        flex-wrap: wrap;
-      }
-      .services-grid .column{
-        display:flex;
-      }
-      .tile{
-        border-radius: 18px;
-        overflow: hidden;
-        border: 1px solid rgba(0,0,0,.08);
-        box-shadow: 0 12px 28px rgba(0,0,0,.06);
-        background: #fff;
-        height: 100%;
-        width: 100%;
-        display:flex;
-        flex-direction: column;
-      }
-      .tile img{
-        width:100%;
-        height: 190px;
-        object-fit: cover;
-        display:block;
-      }
-      .tile .pad{
-        padding: 1rem 1.15rem 1.2rem;
-        display:flex;
-        flex-direction: column;
-        flex: 1 1 auto;
-      }
-
-      /* Force ALL service titles to match Education/IRS/Representation style */
-      .service-title{
-        font-weight: 950 !important;
-        letter-spacing: -0.3px;
-        font-size: 1.2rem; /* matches typical h4/h5 sizing used in cards */
-        line-height: 1.2;
-        margin-bottom: .45rem;
-      }
-
-      /* Make the second row service cards match tile heights too */
-      .services-cards .column{
-        display:flex;
-      }
-      .services-cards .card{
-        width: 100%;
-        display:flex;
-        flex-direction: column;
-      }
-
-      /* Pricing equal height */
-      .pricing-grid .column{
-        display:flex;
-      }
-      .pricing-grid .card{
-        width:100%;
-        display:flex;
-        flex-direction: column;
-      }
-      .pricing-grid .card .button{
-        margin-top:auto; /* buttons align to bottom */
-      }
-
-      /* Reviews */
-      .review{ border-left: 5px solid var(--gold); }
-
-      /* Team photos */
-      .photo-card{
-        display:flex;
-        flex-direction: column;
-      }
-      .photo-card img{
-        width:100%;
-        height: 220px;
-        object-fit: cover;
-        border-radius: 14px;
-        border: 1px solid rgba(0,0,0,.08);
-        display:block;
-        margin-bottom: .85rem;
-      }
-
-      /* Calendly */
-      .cal-wrap{
-        border: 1px solid rgba(0,0,0,.08);
-        border-radius: 18px;
-        overflow: hidden;
-        box-shadow: 0 12px 28px rgba(0,0,0,.06);
-        background:#fff;
-      }
-
-      /* Footer */
-      .footer{
-        background: rgba(11,16,32,.98);
-        color:#fff;
-        padding: 2.2rem 0;
-      }
-      .footer a{ color:#fff; font-weight:800; }
-      .footer a:hover{ color: var(--gold); }
-
-      .spacer{ height: 1rem; }
-      .tight { margin-top: .4rem; }
-      .centered { max-width: 70ch; margin-left:auto; margin-right:auto; }
-
-      /* =========================
-         Rotating Google Reviews Orb (auto-loop)
-         ========================= */
-      .orb-wrap{
-        position: relative;
-        max-width: 880px;
-        margin: 1.25rem auto 0;
-      }
-
-      .orb{
-        position: relative;
-        border-radius: 22px;
-        padding: 1.35rem 1.35rem 1.15rem;
-        background:
-          radial-gradient(620px 280px at 20% 25%, rgba(242,193,78,.18), transparent 60%),
-          radial-gradient(520px 260px at 85% 35%, rgba(207,214,228,.22), transparent 62%),
-          linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.92));
-        border: 1px solid rgba(0,0,0,.08);
-        box-shadow:
-          0 20px 60px rgba(0,0,0,.10),
-          0 0 32px rgba(242,193,78,.10);
-        overflow:hidden;
-        animation: orbFloat 7s ease-in-out infinite;
-      }
-
-      .orb::before{
-        content:"";
-        position:absolute;
-        inset:-2px;
-        border-radius: 24px;
-        pointer-events:none;
-        background: radial-gradient(520px 200px at 30% 20%, rgba(255,255,255,.65), transparent 55%);
-        opacity:.55;
-      }
-
-      @keyframes orbFloat{
-        0%,100%{ transform: translateY(0); }
-        50%{ transform: translateY(-6px); }
-      }
-
-      .orb-top{
-        display:flex;
-        align-items:center;
-        justify-content: space-between;
-        gap: .75rem;
-        margin-bottom: .6rem;
-        position:relative;
-        z-index:1;
-      }
-
-      .orb-name{
-        font-weight: 950;
-        letter-spacing: -0.3px;
-        color: rgba(11,16,32,.92);
-        font-size: 1.08rem;
-      }
-
-      .orb-stars{
-        display:flex;
-        align-items:center;
-        gap: .35rem;
-        font-weight: 950;
-        color: rgba(11,16,32,.86);
-      }
-
-      .star{
-        width: 12px;
-        height: 12px;
-        border-radius: 4px;
-        background: linear-gradient(180deg, var(--gold), var(--gold2));
-        box-shadow: 0 0 14px rgba(242,193,78,.20);
-      }
-
-      .orb-quote{
-        position:relative;
-        z-index:1;
-        font-size: 1.05rem;
-        color: rgba(0,0,0,.72);
-        line-height: 1.55;
-        margin: .25rem 0 0;
-      }
-
-      .orb-meta{
-        position:relative;
-        z-index:1;
-        margin-top: .75rem;
-        font-size: .92rem;
-        color: rgba(0,0,0,.55);
-        font-weight: 750;
-      }
-
-      .orb-fade-out{ opacity: 0; transform: translateY(6px); transition: opacity .35s ease, transform .35s ease; }
-      .orb-fade-in{ opacity: 1; transform: translateY(0); transition: opacity .35s ease, transform .35s ease; }
-    </style>
-  </head>
-
-  <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-      <div class="top-bar-left">
-        <ul class="menu">
-          <li class="menu-text">
-            <a href="#top" class="brand" aria-label="E Tax Pro Solutions Home">
-              <!-- IMPORTANT: ensure your logo is at assets/logo.png -->
-              <img src="assets/logo.png" alt="E Tax Pro Solutions logo">
-            </a>
-          </li>
-
-          <li><a href="#services">Services</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#why">Why Us</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#book">Book</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+  <!-- Hero -->
+  <section id="top" class="hero">
+    <div class="row">
+      <div class="medium-7 columns text-center medium-text-left">
+        <div class="pill">10+ Years • Baton Rouge • Individuals + Businesses</div>
+        <h1>Taxes, bookkeeping, and payroll — handled with clarity.</h1>
+        <p class="lead">
+          We help you stay organized, file correctly, and feel confident moving forward.
+          In-person in Baton Rouge or remote support when you need it.
+        </p>
+        <div>
+          <a href="#book" class="button large primary">Book a 30-Min Appointment</a>
+          <a href="tel:+1-225-247-9803" class="button large hollow light">Call Now</a>
+        </div>
+        <div class="spacer"></div>
+        <p style="margin:0; color: rgba(255,255,255,.88); font-size: 1rem; font-weight: 700;">
+          Prefer a call/text back? Use the quick form below the Services section.
+        </p>
       </div>
 
-      <div class="top-bar-right">
-        <ul class="menu">
-          <li><a href="tel:+1-225-247-9803">(225) 247-9803</a></li>
-          <li><a class="button small primary" href="#book" style="margin:0;">Book Appointment</a></li>
-        </ul>
+      <div class="medium-5 columns">
+        <div class="hero-card">
+          <b class="hero-card-title">Common reasons people reach out</b>
+          <div class="spacer"></div>
+          <ul class="checks">
+            <li><span class="dot"></span><span class="small">Multiple W-2s, 1099s, or self-employed income</span></li>
+            <li><span class="dot"></span><span class="small">Starting a business and want things set up right</span></li>
+            <li><span class="dot"></span><span class="small">Bookkeeping cleanup or payroll help</span></li>
+            <li><span class="dot"></span><span class="small">IRS letters and “what do I do now?” moments</span></li>
+          </ul>
+          <div class="spacer"></div>
+          <span class="small">We’ll keep it simple and walk you through the next step.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <div class="row column text-center">
+      <h2 class="section-title">Tax Preparation Services in Baton Rouge, Louisiana</h2>
+      <p class="muted centered"> Professional help for tax season — and support that goes beyond filing. </p>
+    </div>
+
+    <div class="row small-up-1 medium-up-3 services-grid">
+      <div class="column">
+        <div class="tile">
+          <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=1600&q=70" alt="Tax preparation documents">
+          <div class="pad">
+            <div class="tag">Individuals</div>
+            <div class="service-title">Tax Return Preparation</div>
+            <p class="muted">W-2, 1099, self-employed, credits/deductions — filed clean and explained clearly.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="tile">
+          <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=70" alt="Small business meeting">
+          <div class="pad">
+            <div class="tag">Businesses</div>
+            <div class="service-title">Business Services</div>
+            <p class="muted">Bookkeeping, payroll, and business tax returns with a calm, organized process.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="tile">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=70" alt="Planning and analytics">
+          <div class="pad">
+            <div class="tag">Planning</div>
+            <div class="service-title">Advisory &amp; Strategy</div>
+            <p class="muted">Tax planning, estimates, and guidance so you can make decisions with confidence.</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Hero -->
-    <section id="top" class="hero">
-      <div class="row">
-        <div class="medium-7 columns text-center medium-text-left">
-          <div class="pill">10+ Years • Baton Rouge • Individuals + Businesses</div>
-
-          <h1>Taxes, bookkeeping, and payroll — handled with clarity.</h1>
-
-          <p class="lead">
-            We help you stay organized, file correctly, and feel confident moving forward.
-            In-person in Baton Rouge or remote support when you need it.
-          </p>
-
-          <div>
-            <a href="#book" class="button large primary">Book a 30-Min Appointment</a>
-            <a href="tel:+1-225-247-9803" class="button large hollow light">Call Now</a>
-          </div>
-
-          <div class="spacer"></div>
-
-          <p style="margin:0; color: rgba(255,255,255,.88); font-size: 1rem; font-weight: 700;">
-            Prefer a call/text back? Use the quick form below the Services section.
-          </p>
-        </div>
-
-        <div class="medium-5 columns">
-          <div class="hero-card">
-            <b class="hero-card-title">Common reasons people reach out</b>
-            <div class="spacer"></div>
-            <ul class="checks">
-              <li><span class="dot"></span><span class="small">Multiple W-2s, 1099s, or self-employed income</span></li>
-              <li><span class="dot"></span><span class="small">Starting a business and want things set up right</span></li>
-              <li><span class="dot"></span><span class="small">Bookkeeping cleanup or payroll help</span></li>
-              <li><span class="dot"></span><span class="small">IRS letters and “what do I do now?” moments</span></li>
-            </ul>
-            <div class="spacer"></div>
-            <span class="small">We’ll keep it simple and walk you through the next step.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services -->
-    <section id="services" class="section">
-      <div class="row column text-center">
-        <!-- Removed redundant “Services” heading; keep ONLY this as main title -->
-        <h2 class="section-title">Tax Preparation Services in Baton Rouge, Louisiana</h2>
-
-        <p class="muted centered">
-          Professional help for tax season — and support that goes beyond filing.
-        </p>
-      </div>
-
-      <div class="row small-up-1 medium-up-3 services-grid">
-        <div class="column">
-          <div class="tile">
-            <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=1600&q=70" alt="Tax preparation documents">
-            <div class="pad">
-              <div class="tag">Individuals</div>
-              <div class="service-title">Tax Return Preparation</div>
-              <p class="muted">W-2, 1099, self-employed, credits/deductions — filed clean and explained clearly.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="tile">
-            <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=70" alt="Small business meeting">
-            <div class="pad">
-              <div class="tag">Businesses</div>
-              <div class="service-title">Business Services</div>
-              <p class="muted">Bookkeeping, payroll, and business tax returns with a calm, organized process.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="tile">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=70" alt="Planning and analytics">
-            <div class="pad">
-              <div class="tag">Planning</div>
-              <div class="service-title">Advisory &amp; Strategy</div>
-              <p class="muted">Tax planning, estimates, and guidance so you can make decisions with confidence.</p>
-            </div>
-          </div>
+    <div class="row small-up-1 medium-up-3 services-cards" style="margin-top:1rem;">
+      <div class="column">
+        <div class="card">
+          <div class="tag">Training</div>
+          <h4><strong>Education &amp; Training</strong></h4>
+          <p class="muted">Simple training that helps clients and teams understand taxes, compliance, and record keeping.</p>
         </div>
       </div>
 
-      <div class="row small-up-1 medium-up-3 services-cards" style="margin-top:1rem;">
-        <div class="column">
-          <div class="card">
-            <div class="tag">Training</div>
-            <h4><strong>Education &amp; Training</strong></h4>
-            <p class="muted">Simple training that helps clients and teams understand taxes, compliance, and record keeping.</p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="card">
-            <div class="tag">Support</div>
-            <h4><strong>IRS Notices</strong></h4>
-            <p class="muted">We break letters down in plain English and help you respond the right way.</p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="card">
-            <div class="tag">Across States</div>
-            <h4><strong>Representation</strong></h4>
-            <p class="muted">Support available in all 50 states for situations that need extra attention.</p>
-          </div>
+      <div class="column">
+        <div class="card">
+          <div class="tag">Support</div>
+          <h4><strong>IRS Notices</strong></h4>
+          <p class="muted">We break letters down in plain English and help you respond the right way.</p>
         </div>
       </div>
 
-      <!-- Quick Form -->
-      <div class="row" style="margin-top:2.2rem;">
-        <div class="medium-8 medium-centered columns">
-          <div class="card">
-            <h4 style="margin-bottom:.25rem;"><strong>Prefer a call/text back?</strong></h4>
-            <p class="muted" style="margin-top:0;">This goes straight to your inbox via Formspree.</p>
-
-            <form action="https://formspree.io/f/xjgrgqkb" method="POST">
-              <input type="hidden" name="_subject" value="New Lead — E Tax Pro Solutions Website">
-              <input type="hidden" name="_gotcha" style="display:none">
-              <!-- Optional: if you have a thank-you section, this will bounce them there after submit -->
-              <input type="hidden" name="_next" value="#thankyou">
-
-              <label>Full Name
-                <input type="text" name="name" placeholder="Your name" required>
-              </label>
-
-              <div class="row">
-                <div class="medium-6 columns">
-                  <label>Phone (optional)
-                    <input type="text" name="phone" placeholder="(225) 247-9803">
-                  </label>
-                </div>
-                <div class="medium-6 columns">
-                  <label>Email
-                    <input type="email" name="email" placeholder="you@email.com" required>
-                  </label>
-                </div>
-              </div>
-
-              <label>What do you need help with?
-                <select name="service" required>
-                  <option value="" disabled selected>Select one</option>
-                  <option>Tax Return Preparation (Individual)</option>
-                  <option>Business Tax Returns</option>
-                  <option>Bookkeeping</option>
-                  <option>Payroll Setup / Payroll Services</option>
-                  <option>Tax Planning / Consultancy</option>
-                  <option>Tax Education / Training</option>
-                  <option>IRS Representation / Notices</option>
-                  <option>Other</option>
-                </select>
-              </label>
-
-              <label>Brief details (optional)
-                <textarea name="details" rows="4" placeholder="Example: self-employed, IRS letter, multiple W-2s, bookkeeping/payroll..."></textarea>
-              </label>
-
-              <button type="submit" class="button primary expanded">Send Request</button>
-
-              <p class="muted" style="font-size:.9rem; margin: .75rem 0 0;">
-                By submitting, you agree we may contact you by phone/text/email.
-              </p>
-            </form>
-
-            <div id="thankyou" style="margin-top:1rem;"></div>
-          </div>
+      <div class="column">
+        <div class="card">
+          <div class="tag">Across States</div>
+          <h4><strong>Representation</strong></h4>
+          <p class="muted">Support available in all 50 states for situations that need extra attention.</p>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Pricing -->
-    <section id="pricing" class="section alt">
-      <div class="row column text-center">
-        <h2 class="section-title">Pricing</h2>
-        <p class="muted centered">
-          Different situations take different levels of time and paperwork. If you’re not sure where you fit, that’s normal — we’ll help you pick the right lane.
-        </p>
-      </div>
+    <!-- Quick Form -->
+    <div class="row" style="margin-top:2.2rem;">
+      <div class="medium-8 medium-centered columns">
+        <div class="card">
+          <h4 style="margin-bottom:.25rem;"><strong>Prefer a call/text back?</strong></h4>
+          <p class="muted" style="margin-top:0;">This goes straight to your inbox via Formspree.</p>
+          <form action="https://formspree.io/f/xjgrgqkb" method="POST">
+            <input type="hidden" name="_subject" value="New Lead — E Tax Pro Solutions Website">
+            <input type="hidden" name="_gotcha" style="display:none">
+            <input type="hidden" name="_next" value="#thankyou">
 
-      <div class="row small-up-1 medium-up-3 pricing-grid">
-        <div class="column">
-          <div class="card">
-            <div class="tag">Individuals</div>
-            <h4><strong>Individuals &amp; Small Business Filings</strong></h4>
-            <ul class="muted" style="margin-left:1.1rem;">
-              <li>W-2, 1099, self-employed filings</li>
-              <li>Small business &amp; single-member LLC returns</li>
-              <li>Credits, deductions, and filing support</li>
-              <li>Simple review of what’s being submitted</li>
-            </ul>
-            <p class="muted tight"><strong>Typical Range:</strong> $99–$200+ (depends on complexity)</p>
-            <a href="#book" class="button primary expanded">Book &amp; Get a Quote</a>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="card">
-            <div class="tag">Monthly</div>
-            <h4><strong>Bookkeeping &amp; Payroll</strong></h4>
-            <ul class="muted" style="margin-left:1.1rem;">
-              <li>Monthly bookkeeping &amp; reconciliation</li>
-              <li>Payroll setup + ongoing payroll support</li>
-              <li>Cleanup / catch-up bookkeeping available</li>
-              <li>Owner-friendly reporting (so you know what’s happening)</li>
-            </ul>
-            <p class="muted tight"><strong>Monthly Retainers:</strong> Custom (based on volume + needs)</p>
-            <!-- Updated to gold primary styling + glow -->
-            <a href="tel:+1-225-247-9803" class="button primary expanded">Call for Monthly Options</a>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="card">
-            <div class="tag">Strategy</div>
-            <h4><strong>Tax Planning &amp; Support</strong></h4>
-            <ul class="muted" style="margin-left:1.1rem;">
-              <li>Quarterly estimates &amp; planning</li>
-              <li>IRS notice review + response guidance</li>
-              <li>Business setup guidance (so you start clean)</li>
-              <li>Training/education for teams &amp; individuals</li>
-            </ul>
-            <p class="muted tight"><strong>Best For:</strong> business owners who want clarity year-round</p>
-            <a href="#contact" class="button primary expanded">Ask About Planning</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="row" style="margin-top:1.6rem;">
-        <div class="medium-9 medium-centered columns">
-          <div class="card">
-            <h4 style="margin-bottom:.25rem;"><strong>Not sure what you need?</strong></h4>
-            <p class="muted" style="margin-top:0;">
-              Book a 30-minute appointment. We’ll figure out what you actually need and the cleanest next step.
-            </p>
-            <div class="row">
-              <div class="medium-6 columns">
-                <a href="#book" class="button primary expanded">Book Appointment</a>
-              </div>
-              <div class="medium-6 columns">
-                <a href="tel:+1-225-247-9803" class="button hollow expanded">Call Now</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Team -->
-    <section id="team" class="section">
-      <div class="row column text-center">
-        <h2 class="section-title">Team</h2>
-        <p class="muted centered">
-          Real people, clear answers, and a process that keeps your stress low.
-        </p>
-      </div>
-
-      <div class="row small-up-1 medium-up-3">
-        <div class="column">
-          <div class="card photo-card">
-            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=70" alt="Team member">
-            <h4><strong>Client Support</strong></h4>
-            <p class="muted">Fast responses, simple instructions, and no runaround.</p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="card photo-card">
-            <!-- Replaced broken/missing middle image with a valid one -->
-            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=70" alt="Tax preparation work">
-            <h4><strong>Tax Prep</strong></h4>
-            <p class="muted">Accuracy first — and we explain what we file, not just “submit it.”</p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="card photo-card">
-            <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1600&q=70" alt="Business consulting">
-            <h4><strong>Business Services</strong></h4>
-            <p class="muted">Bookkeeping + payroll support that keeps you compliant and organized.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Why Us -->
-    <section id="why" class="section alt">
-      <div class="row column text-center">
-        <h2 class="section-title">Why E Tax Pro Solutions</h2>
-        <p class="muted centered">
-          You shouldn’t have to “hope it’s right.” You should know it’s right.
-        </p>
-      </div>
-
-      <div class="row small-up-1 medium-up-3">
-        <div class="column">
-          <div class="card">
-            <h4><strong>Clear Communication</strong></h4>
-            <p class="muted">We explain what we’re doing and what we need from you — without the jargon.</p>
-          </div>
-        </div>
-        <div class="column">
-          <div class="card">
-            <h4><strong>Organized Process</strong></h4>
-            <p class="muted">Easy checklist, smooth handoff, and fewer last-minute surprises.</p>
-          </div>
-        </div>
-        <div class="column">
-          <div class="card">
-            <h4><strong>Year-Round Support</strong></h4>
-            <p class="muted">Not just during tax season — we help you stay ready all year.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Reviews -->
-    <section id="reviews" class="section">
-      <div class="row column text-center">
-        <h2 class="section-title">Reviews</h2>
-        <p class="muted centered">Real Google reviews from clients who’ve worked with us.</p>
-
-        <!-- Auto-rotating orb review (no manual interaction) -->
-        <div class="orb-wrap">
-          <div id="reviewOrb" class="orb orb-fade-in" aria-live="polite">
-            <div class="orb-top">
-              <div class="orb-name" id="orbName">Moses Ihachi</div>
-              <div class="orb-stars" aria-label="5 star review">
-                <span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span>
-              </div>
-            </div>
-            <p class="orb-quote" id="orbText">
-              He’s been handling my taxes for a while now and I’ve never had a single issue. Everything is clear, easy, and done right the first time.
-            </p>
-            <div class="orb-meta" id="orbMeta">★★★★★ • Google Review</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Book -->
-    <section id="book" class="section alt">
-      <div class="row column text-center">
-        <h2 class="section-title">Book an Appointment</h2>
-        <p class="muted centered">
-          Choose a time that works for you. If you prefer, call us and we’ll schedule it together.
-        </p>
-        <div style="margin-top:.75rem;">
-          <a href="tel:+1-225-247-9803" class="button hollow">Call (225) 247-9803</a>
-          <a href="#contact" class="button primary">Send a Message</a>
-        </div>
-      </div>
-
-      <div class="row" style="margin-top:1.6rem;">
-        <div class="medium-10 medium-centered columns">
-          <div class="cal-wrap">
-            <!-- Calendly inline widget -->
-            <div
-              class="calendly-inline-widget"
-              data-url="https://calendly.com/etaxprosolutions/30min"
-              style="min-width:320px;height:820px;"
-            ></div>
-          </div>
-          <p class="muted" style="font-size:.92rem; margin-top:.75rem;">
-            <strong>Note:</strong> Replace <code>YOUR-CALENDLY-USERNAME/30min</code> with your actual Calendly link.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section">
-      <div class="row column text-center">
-        <h2 class="section-title">Contact</h2>
-        <p class="muted centered">
-          Call us, book online, or send a quick message — we’ll point you to the cleanest next step.
-        </p>
-      </div>
-
-      <div class="row">
-        <div class="medium-6 columns">
-          <div class="card">
-            <h4><strong>Get in touch</strong></h4>
-            <p class="muted">
-              <strong>Phone:</strong> <a href="tel:+1-225-247-9803">(225) 247-9803</a><br />
-              <strong>Location:</strong> Baton Rouge, Louisiana<br />
-              <strong>Hours:</strong> By appointment
-            </p>
+            <label>Full Name
+              <input type="text" name="name" placeholder="Your name" required>
+            </label>
 
             <div class="row">
               <div class="medium-6 columns">
-                <a href="#book" class="button primary expanded">Book Now</a>
+                <label>Phone (optional)
+                  <input type="text" name="phone" placeholder="(225) 247-9803">
+                </label>
               </div>
               <div class="medium-6 columns">
-                <a href="tel:+1-225-247-9803" class="button hollow expanded">Call Now</a>
+                <label>Email
+                  <input type="email" name="email" placeholder="you@email.com" required>
+                </label>
               </div>
+            </div>
+
+            <label>What do you need help with?
+              <select name="service" required>
+                <option value="" disabled selected>Select one</option>
+                <option>Tax Return Preparation (Individual)</option>
+                <option>Business Tax Returns</option>
+                <option>Bookkeeping</option>
+                <option>Payroll Setup / Payroll Services</option>
+                <option>Tax Planning / Consultancy</option>
+                <option>Tax Education / Training</option>
+                <option>IRS Representation / Notices</option>
+                <option>Other</option>
+              </select>
+            </label>
+
+            <label>Brief details (optional)
+              <textarea name="details" rows="4" placeholder="Example: self-employed, IRS letter, multiple W-2s, bookkeeping/payroll..."></textarea>
+            </label>
+
+            <button type="submit" class="button primary expanded">Send Request</button>
+            <p class="muted" style="font-size:.9rem; margin: .75rem 0 0;">
+              By submitting, you agree we may contact you by phone/text/email.
+            </p>
+          </form>
+          <div id="thankyou" style="margin-top:1rem;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="section alt">
+    <div class="row column text-center">
+      <h2 class="section-title">Pricing</h2>
+      <p class="muted centered">
+        Different situations take different levels of time and paperwork. If you’re not sure where you fit, that’s normal — we’ll help you pick the right lane.
+      </p>
+    </div>
+
+    <div class="row small-up-1 medium-up-3 pricing-grid">
+      <div class="column">
+        <div class="card">
+          <div class="tag">Individuals</div>
+          <h4><strong>Individuals &amp; Small Business Filings</strong></h4>
+          <ul class="muted" style="margin-left:1.1rem;">
+            <li>W-2, 1099, self-employed filings</li>
+            <li>Small business &amp; single-member LLC returns</li>
+            <li>Credits, deductions, and filing support</li>
+            <li>Simple review of what’s being submitted</li>
+          </ul>
+          <p class="muted tight"><strong>Typical Range:</strong> $99–$200+ (depends on complexity)</p>
+          <a href="#book" class="button primary expanded">Book &amp; Get a Quote</a>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <div class="tag">Monthly</div>
+          <h4><strong>Bookkeeping &amp; Payroll</strong></h4>
+          <ul class="muted" style="margin-left:1.1rem;">
+            <li>Monthly bookkeeping &amp; reconciliation</li>
+            <li>Payroll setup + ongoing payroll support</li>
+            <li>Cleanup / catch-up bookkeeping available</li>
+            <li>Owner-friendly reporting (so you know what’s happening)</li>
+          </ul>
+          <p class="muted tight"><strong>Monthly Retainers:</strong> Custom (based on volume + needs)</p>
+          <a href="tel:+1-225-247-9803" class="button primary expanded">Call for Monthly Options</a>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <div class="tag">Strategy</div>
+          <h4><strong>Tax Planning &amp; Support</strong></h4>
+          <ul class="muted" style="margin-left:1.1rem;">
+            <li>Quarterly estimates &amp; planning</li>
+            <li>IRS notice review + response guidance</li>
+            <li>Business setup guidance (so you start clean)</li>
+            <li>Training/education for teams &amp; individuals</li>
+          </ul>
+          <p class="muted tight"><strong>Best For:</strong> business owners who want clarity year-round</p>
+          <a href="#contact" class="button primary expanded">Ask About Planning</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:1.6rem;">
+      <div class="medium-9 medium-centered columns">
+        <div class="card">
+          <h4 style="margin-bottom:.25rem;"><strong>Not sure what you need?</strong></h4>
+          <p class="muted" style="margin-top:0;">
+            Book a 30-minute appointment. We’ll figure out what you actually need and the cleanest next step.
+          </p>
+          <div class="row">
+            <div class="medium-6 columns">
+              <a href="#book" class="button primary expanded">Book Appointment</a>
+            </div>
+            <div class="medium-6 columns">
+              <a href="tel:+1-225-247-9803" class="button hollow expanded">Call Now</a>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="medium-6 columns">
-          <div class="card">
-            <h4><strong>Send a message</strong></h4>
-            <p class="muted" style="margin-top:0;">This also goes to your inbox via Formspree.</p>
+  <!-- Team -->
+  <section id="team" class="section">
+    <div class="row column text-center">
+      <h2 class="section-title">Team</h2>
+      <p class="muted centered"> Real people, clear answers, and a process that keeps your stress low. </p>
+    </div>
 
-            <form action="https://formspree.io/f/xjgrgqkb" method="POST">
-              <input type="hidden" name="_subject" value="New Contact — E Tax Pro Solutions Website">
-              <input type="text" name="_gotcha" style="display:none">
-              <input type="hidden" name="_next" value="#thankyou">
+    <div class="row small-up-1 medium-up-3">
+      <div class="column">
+        <div class="card photo-card">
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=70" alt="Team member">
+          <h4><strong>Client Support</strong></h4>
+          <p class="muted">Fast responses, simple instructions, and no runaround.</p>
+        </div>
+      </div>
 
-              <label>Name
-                <input type="text" name="name" required>
-              </label>
-              <label>Email
-                <input type="email" name="email" required>
-              </label>
-              <label>Message
-                <textarea name="message" rows="4" placeholder="Tell us what’s going on..." required></textarea>
-              </label>
+      <div class="column">
+        <div class="card photo-card">
+          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=70" alt="Tax preparation work">
+          <h4><strong>Tax Prep</strong></h4>
+          <p class="muted">Accuracy first — and we explain what we file, not just “submit it.”</p>
+        </div>
+      </div>
 
-              <button class="button primary expanded" type="submit">Send Message</button>
-            </form>
+      <div class="column">
+        <div class="card photo-card">
+          <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1600&q=70" alt="Business consulting">
+          <h4><strong>Business Services</strong></h4>
+          <p class="muted">Bookkeeping + payroll support that keeps you compliant and organized.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us -->
+  <section id="why" class="section alt">
+    <div class="row column text-center">
+      <h2 class="section-title">Why E Tax Pro Solutions</h2>
+      <p class="muted centered"> You shouldn’t have to “hope it’s right.” You should know it’s right. </p>
+    </div>
+
+    <div class="row small-up-1 medium-up-3">
+      <div class="column">
+        <div class="card">
+          <h4><strong>Clear Communication</strong></h4>
+          <p class="muted">We explain what we’re doing and what we need from you — without the jargon.</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <h4><strong>Organized Process</strong></h4>
+          <p class="muted">Easy checklist, smooth handoff, and fewer last-minute surprises.</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <h4><strong>Year-Round Support</strong></h4>
+          <p class="muted">Not just during tax season — we help you stay ready all year.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="section">
+    <div class="row column text-center">
+      <h2 class="section-title">Reviews</h2>
+      <p class="muted centered">Real Google reviews from clients who’ve worked with us.</p>
+
+      <div class="orb-wrap">
+        <div id="reviewOrb" class="orb orb-fade-in" aria-live="polite">
+          <div class="orb-top">
+            <div class="orb-name" id="orbName">Moses Ihachi</div>
+            <div class="orb-stars-text" id="orbStars">★★★★★</div>
+          </div>
+          <p class="orb-quote" id="orbText">
+            He’s been handling my taxes for a while now and I’ve never had a single issue. Everything is clear, easy, and done right the first time.
+          </p>
+          <div class="orb-meta" id="orbMeta">Google Review</div>
+        </div>
+
+        <div class="orb-controls">
+          <button id="prevReview" class="button small hollow" type="button">Previous</button>
+          <button id="nextReview" class="button small primary" type="button">Next</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Book -->
+  <section id="book" class="section alt">
+    <div class="row column text-center">
+      <h2 class="section-title">Book an Appointment</h2>
+      <p class="muted centered"> Choose a time that works for you. If you prefer, call us and we’ll schedule it together. </p>
+      <div style="margin-top:.75rem;">
+        <a href="tel:+1-225-247-9803" class="button hollow">Call (225) 247-9803</a>
+        <a href="#contact" class="button primary">Send a Message</a>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:1.6rem;">
+      <div class="medium-10 medium-centered columns">
+        <div class="cal-wrap">
+          <div class="calendly-inline-widget" data-url="https://calendly.com/etaxprosolutions/30min" style="min-width:320px;height:820px;"></div>
+        </div>
+        <p class="muted" style="font-size:.92rem; margin-top:.75rem;">
+          <strong>Note:</strong> Replace <code>YOUR-CALENDLY-USERNAME/30min</code> with your actual Calendly link.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="row column text-center">
+      <h2 class="section-title">Contact</h2>
+      <p class="muted centered"> Call us, book online, or send a quick message — we’ll point you to the cleanest next step. </p>
+    </div>
+
+    <div class="row">
+      <div class="medium-6 columns">
+        <div class="card">
+          <h4><strong>Get in touch</strong></h4>
+          <p class="muted">
+            <strong>Phone:</strong> <a href="tel:+1-225-247-9803">(225) 247-9803</a><br />
+            <strong>Location:</strong> Baton Rouge, Louisiana<br />
+            <strong>Hours:</strong> By appointment
+          </p>
+          <div class="row">
+            <div class="medium-6 columns">
+              <a href="#book" class="button primary expanded">Book Now</a>
+            </div>
+            <div class="medium-6 columns">
+              <a href="tel:+1-225-247-9803" class="button hollow expanded">Call Now</a>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="row">
-        <div class="medium-7 columns">
-          <h4 style="margin:0 0 .35rem; font-weight:950;">E Tax Pro Solutions</h4>
-          <p style="margin:0; color: rgba(255,255,255,.82);">
-            Tax preparation • bookkeeping • payroll • planning — Baton Rouge, LA
-          </p>
-          <div style="margin-top:.9rem;">
-            <a href="tel:+1-225-247-9803">(225) 247-9803</a>
-            <span style="opacity:.5;"> • </span>
-            <a href="#book">Book</a>
-            <span style="opacity:.5;"> • </span>
-            <a href="#services">Services</a>
-          </div>
-        </div>
+      <div class="medium-6 columns">
+        <div class="card">
+          <h4><strong>Send a message</strong></h4>
+          <p class="muted" style="margin-top:0;">This also goes to your inbox via Formspree.</p>
+          <form action="https://formspree.io/f/xjgrgqkb" method="POST">
+            <input type="hidden" name="_subject" value="New Contact — E Tax Pro Solutions Website">
+            <input type="text" name="_gotcha" style="display:none">
+            <input type="hidden" name="_next" value="#thankyou">
 
-        <div class="medium-5 columns text-center medium-text-right" style="margin-top:1rem;">
-          <p style="margin:0; color: rgba(255,255,255,.78); font-size:.95rem;">
-            © <span id="year"></span> E Tax Pro Solutions. All rights reserved.
-          </p>
-          <p style="margin:.35rem 0 0; color: rgba(255,255,255,.55); font-size:.85rem;">
-            This site does not provide legal advice. For complex matters, ask about professional representation options.
-          </p>
+            <label>Name
+              <input type="text" name="name" required>
+            </label>
+
+            <label>Email
+              <input type="email" name="email" required>
+            </label>
+
+            <label>Message
+              <textarea name="message" rows="4" placeholder="Tell us what’s going on..." required></textarea>
+            </label>
+
+            <button class="button primary expanded" type="submit">Send Message</button>
+          </form>
         </div>
       </div>
-    </footer>
+    </div>
+  </section>
 
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-      document.getElementById("year").textContent = new Date().getFullYear();
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="row">
+      <div class="medium-7 columns">
+        <h4 style="margin:0 0 .35rem; font-weight:950;">E Tax Pro Solutions</h4>
+        <p style="margin:0; color: rgba(255,255,255,.82);">
+          Tax preparation • bookkeeping • payroll • planning — Baton Rouge, LA
+        </p>
+        <div style="margin-top:.9rem;">
+          <a href="tel:+1-225-247-9803">(225) 247-9803</a>
+          <span style="opacity:.5;"> • </span>
+          <a href="#book">Book</a>
+          <span style="opacity:.5;"> • </span>
+          <a href="#services">Services</a>
+        </div>
+      </div>
 
-      // Rotating Google Reviews (auto loop, no manual interaction)
-      const googleReviews = [
-        { name: "Moses Ihachi", text: "He’s been handling my taxes for a while now and I’ve never had a single issue. Everything is clear, easy, and done right the first time." },
-        { name: "Pita Kabs", text: "I’m a repeat customer and I don’t see that changing. I recommend him to all my family and friends." },
-        { name: "Eldridge Opwondo", text: "I always leave confident in the work he's done. Thats why we will always keep coming back and recommend him to everyone." },
-        { name: "Bellah maria", text: "My returner always feel correctly and on time that’s why I keep coming back" },
-        { name: "Lucas ondobo", text: "I’ve been going here for a couple years. He’s very nice and explains everything well and makes it easy to understand." },
-        { name: "César FERNANDES", text: "I’ve been filing here for years and I wouldn’t think of going anywhere else. He’s earned my trust." },
-        { name: "Trophine Reounodji", text: "Great service! If you are looking for where to get your tax return filed, don't look further. E Tax Pro Solutions LLC is the solution. Highly recommended." },
-        { name: "Enoch Reounodji", text: "Very professional. Highly recommended!" },
-        { name: "herbert twase", text: "Go to him!! He helped me find deductions I didn't even know I qualified for." },
-        { name: "Jackline Mukenya", text: "Mr. E made the tax process very easy. He is trustworthy and easy to work with. I definitely recommend them for tax services." },
-        { name: "Helien Kabati", text: "They're are very professional and actually explained everything clearly." }
-      ];
+      <div class="medium-5 columns text-center medium-text-right" style="margin-top:1rem;">
+        <p style="margin:0; color: rgba(255,255,255,.78); font-size:.95rem;">
+          © <span id="year"></span> E Tax Pro Solutions. All rights reserved.
+        </p>
+        <p style="margin:.35rem 0 0; color: rgba(255,255,255,.55); font-size:.85rem;">
+          This site does not provide legal advice. For complex matters, ask about professional representation options.
+        </p>
+      </div>
+    </div>
+  </footer>
 
-      const orb = document.getElementById("reviewOrb");
-      const orbName = document.getElementById("orbName");
-      const orbText = document.getElementById("orbText");
-      const orbMeta = document.getElementById("orbMeta");
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.js"></script>
 
-      let reviewIndex = 0;
+  <script>
+    $(document).foundation();
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-      function showReview(i){
-        const r = googleReviews[i];
-        // fade out
-        orb.classList.remove("orb-fade-in");
-        orb.classList.add("orb-fade-out");
+    // Reviews structured so you can add more later easily:
+    // Add another object: { source:"Google", name:"...", stars:5, meta:"...", text:"..." }
+    // NOTE: Removed "photos" everywhere as requested.
+    const testimonials = [
+      // Google Reviews
+      { source:"Google", name:"Moses Ihachi", stars:5, meta:"1 review", text:"He’s been handling my taxes for a while now and I’ve never had a single issue. Everything is clear, easy, and done right the first time." },
+      { source:"Google", name:"Pita Kabs", stars:5, meta:"Local Guide • 21 reviews", text:"I’m a repeat customer and I don’t see that changing. I recommend him to all my family and friends." },
+      { source:"Google", name:"Eldridge Opwondo", stars:5, meta:"6 reviews", text:"I always leave confident in the work he's done. Thats why we will always keep coming back and recommend him to everyone." },
+      { source:"Google", name:"Bellah maria", stars:5, meta:"3 reviews", text:"My returner always feel correctly and on time that’s why I keep coming back" },
+      { source:"Google", name:"Lucas ondobo", stars:5, meta:"1 review", text:"I’ve been going here for a couple years. He’s very nice and explains everything well and makes it easy to understand." },
+      { source:"Google", name:"César FERNANDES", stars:5, meta:"1 review", text:"I’ve been filing here for years and I wouldn’t think of going anywhere else. He’s earned my trust." },
+      { source:"Google", name:"Trophine Reounodji", stars:5, meta:"3 reviews", text:"Great service! If you are looking for where to get your tax return filed, don't look further. E Tax Pro Solutions LLC is the solution. Highly recommended." },
+      { source:"Google", name:"Enoch Reounodji", stars:5, meta:"2 reviews", text:"Very professional. Highly recommended!" },
+      { source:"Google", name:"herbert twase", stars:5, meta:"3 reviews", text:"Go to him!! He helped me find deductions I didn't even know I qualified for." },
+      { source:"Google", name:"Jackline Mukenya", stars:5, meta:"1 review", text:"Mr. E made the tax process very easy. He is trustworthy and easy to work with. I definitely recommend them for tax services." },
+      { source:"Google", name:"Helien Kabati", stars:5, meta:"1 review", text:"They're are very professional and actually explained everything clearly." },
 
-        setTimeout(() => {
-          orbName.textContent = r.name;
-          orbText.textContent = r.text;
-          orbMeta.textContent = "★★★★★ • Google Review";
-          // fade in
-          orb.classList.remove("orb-fade-out");
-          orb.classList.add("orb-fade-in");
-        }, 360);
-      }
+      // Additional Testimonials (non-Google)
+      { source:"Client", name:"Marcus L. — Independent Contractor (1099)", stars:5, meta:"Testimonial", text:"I’ve done my own taxes for years and always felt unsure. This time everything was explained clearly, my return was filed fast, and I actually understood where my money was going. Super smooth process." },
+      { source:"Client", name:"Danielle R. — Small Business Owner, Rouge Beauty Studio", stars:5, meta:"Testimonial", text:"Running a business and staying on top of taxes was stressing me out. They handled my bookkeeping and payroll so I could focus on clients. Huge weight off my shoulders." },
+      { source:"Client", name:"James W. — W-2 Employee", stars:5, meta:"Testimonial", text:"I booked an appointment just to make sure everything was right, and I’m glad I did. They caught things I would’ve missed and made the whole process easy and straightforward." },
+      { source:"Client", name:"Anthony B. — Owner, Bayou Construction Services", stars:5, meta:"Testimonial", text:"Payroll and quarterly filings were becoming a mess. After switching over, everything is organized, on time, and I finally feel confident about my numbers." },
+      { source:"Client", name:"Tasha M. — Self-Employed Consultant", stars:5, meta:"Testimonial", text:"I appreciated how professional and responsive they were. No rushing, no confusing jargon — just clear answers and solid advice." },
+      { source:"Client", name:"Eric D. — Owner, Capital City Auto Detail", stars:5, meta:"Testimonial", text:"They helped clean up my books and set up a better system going forward. I can actually see where my money is going now." },
+      { source:"Client", name:"Linda P. — Individual Tax Client", stars:5, meta:"Testimonial", text:"This was by far the easiest tax experience I’ve had. Communication was great and everything was handled quickly." },
+      { source:"Client", name:"Carlos G. — Owner, G-Force Landscaping", stars:5, meta:"Testimonial", text:"From payroll to tax planning, everything was handled professionally. I don’t worry about deadlines anymore." },
+      { source:"Client", name:"Nicole S. — Freelancer / Creative", stars:5, meta:"Testimonial", text:"I booked a tax strategy session not knowing what to expect, but it ended up saving me money and stress. Worth it." },
+      { source:"Client", name:"Robert K. — Owner, Baton Rouge Logistics LLC", stars:5, meta:"Testimonial", text:"They understand small businesses. Bookkeeping, payroll, and taxes are finally working together instead of feeling scattered." }
+    ];
 
-      // start on first, then rotate
-      showReview(reviewIndex);
+    const orb = document.getElementById("reviewOrb");
+    const orbName = document.getElementById("orbName");
+    const orbText = document.getElementById("orbText");
+    const orbMeta = document.getElementById("orbMeta");
+    const orbStars = document.getElementById("orbStars");
+    const prevBtn = document.getElementById("prevReview");
+    const nextBtn = document.getElementById("nextReview");
 
-      setInterval(() => {
-        reviewIndex = (reviewIndex + 1) % googleReviews.length;
-        showReview(reviewIndex);
-      }, 5200);
-    </script>
+    let reviewIndex = 0;
+    let timer = null;
 
-    <!-- Calendly -->
-    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-  </body>
+    function starsText(n){
+      const full = "★★★★★";
+      return full.slice(0, Math.max(0, Math.min(5, n)));
+    }
+
+    function renderReview(i){
+      const r = testimonials[i];
+      orb.classList.remove("orb-fade-in");
+      orb.classList.add("orb-fade-out");
+
+      setTimeout(() => {
+        orbName.textContent = r.name;
+        orbText.textContent = r.text;
+        orbMeta.textContent = `${r.source} • ${r.meta}`;
+        orbStars.textContent = starsText(r.stars);
+
+        orb.classList.remove("orb-fade-out");
+        orb.classList.add("orb-fade-in");
+      }, 360);
+    }
+
+    function nextReview(){
+      reviewIndex = (reviewIndex + 1) % testimonials.length;
+      renderReview(reviewIndex);
+    }
+
+    function prevReview(){
+      reviewIndex = (reviewIndex - 1 + testimonials.length) % testimonials.length;
+      renderReview(reviewIndex);
+    }
+
+    function resetTimer(){
+      if (timer) clearInterval(timer);
+      timer = setInterval(nextReview, 5200);
+    }
+
+    // init
+    renderReview(reviewIndex);
+    resetTimer();
+
+    // manual controls (and keep auto-rotating)
+    nextBtn.addEventListener("click", () => { nextReview(); resetTimer(); });
+    prevBtn.addEventListener("click", () => { prevReview(); resetTimer(); });
+  </script>
+
+  <!-- Calendly -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+</body>
 </html>
