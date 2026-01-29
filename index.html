@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Tax Preparation in Baton Rouge, LA | E Tax Pro Solutions</title>
+  <title>Tax Preparation in Baton Rouge, LA | E Tax Pro Solutions</title>
 
   <meta name="description" content="E Tax Pro Solutions in Baton Rouge, LA — tax preparation for individuals and businesses. Bookkeeping, payroll, tax planning, training, and IRS notice support." />
   <meta name="theme-color" content="#0b1020" />
 
   <!-- Social Preview -->
   <meta property="og:title" content="E Tax Pro Solutions | Baton Rouge Tax Preparation" />
-<meta name="description" content="Trusted tax preparation in Baton Rouge, LA for individuals and businesses. Bookkeeping, payroll, tax planning, and IRS support. 10+ years serving the local community." />
+  <meta property="og:description" content="Trusted tax preparation in Baton Rouge, LA for individuals and businesses. Bookkeeping, payroll, tax planning, and IRS support. 10+ years serving the local community." />
   <meta property="og:type" content="website" />
 
   <!-- Favicons -->
@@ -42,133 +42,225 @@
 
     /* Top bar */
     .top-bar, .top-bar ul { background: rgba(11,16,32,.96); }
-    .top-bar a { color: #fff; font-weight: 700; }
+    .top-bar a { color: #fff; font-weight: 900; }
     .top-bar a:hover { color: var(--gold); }
 
-    /* ===============================
-   LOGO — MAX SIZE, POLISHED
-   =============================== */
-.brand {
-  display: flex;
-  align-items: center;
-}
+    /* ===== NAV BRAND (logo + name) — BIGGER + POP ===== */
+    .menu .menu-text { padding: .35rem .6rem; }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.85rem;
+      text-decoration:none;
+      line-height:1;
+    }
 
-.brand img {
-  height: 68px;              /* BIG on desktop */
-  width: auto;
-  max-height: 72px;          /* safety cap */
-  padding: 6px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(242,193,78,0.3);
-  box-shadow:
-    0 6px 16px rgba(0,0,0,0.22),
-    inset 0 0 0 1px rgba(255,255,255,0.06);
-  transition: all 0.25s ease;
-}
+    /* Bigger logo in the NAV */
+    .brand img{
+      height: 96px;            /* BIG on desktop */
+      width: auto;
+      max-height: 110px;
+      padding: 8px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(242,193,78,0.35);
+      box-shadow:
+        0 10px 26px rgba(0,0,0,0.28),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
 
-/* Slight lift on hover (desktop only) */
-@media (hover: hover) {
-  .brand:hover img {
-    transform: translateY(-1px);
-    box-shadow:
-      0 10px 26px rgba(0,0,0,0.28),
-      inset 0 0 0 1px rgba(255,255,255,0.08);
-  }
-}
+    .brand span{
+      font-weight: 950;
+      letter-spacing: -0.4px;
+      font-size: 1.35rem;      /* Bigger brand text */
+      color:#fff;
+      white-space: nowrap;
+    }
 
-/* MOBILE — still large, but balanced */
-@media (max-width: 640px) {
-  .brand img {
-    height: 52px;
-    max-height: 56px;
-    padding: 5px;
-    border-radius: 12px;
-  }
-}
-    /* Hero */
+    @media (hover:hover){
+      .brand:hover img{
+        transform: translateY(-1px) scale(1.01);
+        box-shadow:
+          0 14px 34px rgba(0,0,0,0.34),
+          inset 0 0 0 1px rgba(255,255,255,0.10);
+      }
+    }
+
+    /* Make the top bar taller to fit the bigger logo */
+    .top-bar { padding: .45rem .35rem; }
+    .top-bar .menu > li > a { padding: .9rem .8rem; font-size: 1.05rem; }
+    .top-bar .top-bar-right .menu > li > a { font-size: 1.05rem; }
+
+    /* Mobile adjustments (still BIG, but not breaking layout) */
+    @media (max-width: 640px){
+      .top-bar .menu { flex-wrap: wrap; }
+      .brand { gap:.65rem; }
+      .brand img{
+        height: 74px;
+        max-height: 84px;
+        padding: 7px;
+        border-radius: 16px;
+      }
+      .brand span{ font-size: 1.15rem; }
+      .top-bar .menu > li > a { padding: .65rem .6rem; font-size: 1rem; }
+    }
+
+    /* ===== HERO — LOGO FIRST + BIG HEADLINE + BRIGHTER IMAGE ===== */
     .hero{
       padding: 5.2rem 0 4.4rem;
       color:#fff;
+      position: relative;
       background:
-        radial-gradient(900px 450px at 10% 15%, rgba(242,193,78,.22), transparent 60%),
-        radial-gradient(900px 450px at 90% 25%, rgba(207,214,228,.14), transparent 60%),
-        linear-gradient(135deg, rgba(11,16,32,.96), rgba(11,16,32,.78)),
-        url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=2400&q=70");
+        radial-gradient(900px 450px at 10% 15%, rgba(242,193,78,.24), transparent 60%),
+        radial-gradient(900px 450px at 90% 25%, rgba(207,214,228,.16), transparent 60%),
+        /* Lighter overlay so photo is visible (but still readable) */
+        linear-gradient(135deg, rgba(11,16,32,.72), rgba(11,16,32,.50)),
+        url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=2400&q=80");
       background-size: cover;
       background-position: center;
     }
 
+    /* Subtle “brightness” feel without washing text */
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(900px 500px at 60% 35%, rgba(255,255,255,.10), transparent 55%);
+      pointer-events:none;
+    }
+    .hero > .row{ position:relative; z-index:1; }
+
+    /* Big hero logo block (FIRST thing they see) */
+    .hero-brand{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:.9rem;
+      margin-bottom: 1.1rem;
+    }
+    .hero-brand img{
+      height: 170px;           /* SUPER BIG */
+      width: auto;
+      max-height: 190px;
+      padding: 10px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(242,193,78,0.40);
+      box-shadow:
+        0 18px 60px rgba(0,0,0,0.36),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+    }
+    .hero-brand .hero-name{
+      font-weight: 950;
+      letter-spacing: -0.6px;
+      font-size: 1.9rem;
+      line-height: 1.05;
+      margin: 0;
+    }
+    .hero-brand .hero-sub{
+      margin: 0;
+      color: rgba(255,255,255,.86);
+      font-weight: 850;
+      letter-spacing: -0.2px;
+      font-size: 1.05rem;
+    }
+
+    @media (max-width: 640px){
+      .hero{ padding: 4.1rem 0 3.6rem; }
+      .hero-brand img{
+        height: 130px;
+        max-height: 150px;
+      }
+      .hero-brand .hero-name{ font-size: 1.55rem; }
+      .hero-brand .hero-sub{ font-size: 1rem; }
+    }
+
     .pill{
       display:inline-flex; align-items:center; gap:.55rem;
-      padding:.55rem .95rem;
+      padding:.60rem 1.05rem;
       border-radius: 999px;
-      background: rgba(242,193,78,.14);
-      border: 1px solid rgba(242,193,78,.35);
-      color: rgba(255,255,255,.95);
-      font-weight: 800;
-      font-size: .92rem;
+      background: rgba(242,193,78,.16);
+      border: 1px solid rgba(242,193,78,.40);
+      color: rgba(255,255,255,.96);
+      font-weight: 950;
+      font-size: .98rem;
       margin-bottom: 1rem;
       backdrop-filter: blur(10px);
     }
 
-    .hero h1 { font-weight: 900; letter-spacing: -0.8px; margin-bottom:.55rem; }
-    .hero .lead {
-      color: rgba(255,255,255,.90);
+    /* Bigger hero headline */
+    .hero h1{
+      font-weight: 950;
+      letter-spacing: -1.1px;
+      margin-bottom:.65rem;
+      font-size: clamp(2.25rem, 4.2vw, 3.35rem);
+      line-height: 1.05;
+    }
+    .hero .lead{
+      color: rgba(255,255,255,.92);
       max-width: 66ch;
-      margin: .85rem auto 1.35rem;
-      font-size: 1.12rem;
+      margin: .9rem auto 1.55rem;
+      font-size: 1.18rem;
     }
 
     .hero-card{
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
       border-radius: 18px;
-      padding: 1.05rem 1.15rem;
+      padding: 1.15rem 1.25rem;
       backdrop-filter: blur(10px);
       text-align:left;
-      box-shadow: 0 18px 50px rgba(0,0,0,.25);
+      box-shadow: 0 18px 55px rgba(0,0,0,.28);
     }
-    .hero-card b { color:#fff; }
-    .hero-card .small { color: rgba(255,255,255,.86); }
+    .hero-card b { color:#fff; font-weight: 950; }
+    .hero-card .small { color: rgba(255,255,255,.88); font-weight: 650; }
 
     .checks{
       list-style:none; margin:0; padding:0;
-      display:grid; gap:.65rem;
+      display:grid; gap:.7rem;
     }
     .checks li{
-      display:flex; gap:.6rem; align-items:flex-start;
-      color: rgba(255,255,255,.92);
+      display:flex; gap:.65rem; align-items:flex-start;
+      color: rgba(255,255,255,.93);
     }
     .dot{
       width:10px; height:10px; border-radius: 999px;
       background: var(--gold);
-      margin-top:.35rem;
+      margin-top:.38rem;
       flex: 0 0 auto;
-      box-shadow: 0 0 0 4px rgba(242,193,78,.15);
+      box-shadow: 0 0 0 4px rgba(242,193,78,.16);
     }
 
     /* Buttons */
     .button.primary{
       background: linear-gradient(180deg, var(--gold), var(--gold2));
       color: #1b1205;
-      font-weight: 900;
+      font-weight: 950;
       border: 0;
       box-shadow: 0 14px 34px rgba(242,193,78,.22);
     }
     .button.primary:hover{ filter: brightness(.96); }
 
     .button.hollow.light{
-      border-color: rgba(255,255,255,.7);
+      border-color: rgba(255,255,255,.75);
       color:#fff;
-      font-weight: 900;
+      font-weight: 950;
     }
     .button.hollow.light:hover{ border-color: var(--gold); color: var(--gold); }
 
     /* Sections */
     .section { padding: 3.8rem 0; }
     .section.alt { background: var(--paper); }
-    .section-title { font-weight: 900; letter-spacing: -0.45px; margin-bottom: .65rem; }
+
+    /* Bigger section headers */
+    .section-title{
+      font-weight: 950;
+      letter-spacing: -0.7px;
+      margin-bottom: .75rem;
+      font-size: clamp(2rem, 2.4vw, 2.5rem);
+      line-height: 1.08;
+    }
     .muted { color: rgba(0,0,0,.62); }
 
     /* Cards */
@@ -180,11 +272,11 @@
       height: 100%;
       background: #fff;
     }
-    .card h4, .card h5 { font-weight: 900; }
+    .card h4, .card h5 { font-weight: 950; }
 
     .tag{
       display:inline-block;
-      font-weight: 900;
+      font-weight: 950;
       font-size: .82rem;
       color: rgba(11,16,32,.88);
       background: rgba(242,193,78,.18);
@@ -211,6 +303,12 @@
     }
     .tile .pad{ padding: 1rem 1.15rem 1.2rem; }
 
+    /* MAKE ALL SERVICE TITLES BOLD/CONSISTENT */
+    .tile h5, .card h4, .card h5{
+      font-weight: 950 !important;
+      letter-spacing: -0.3px;
+    }
+
     /* Logo strip */
     .logo-strip{
       display:flex;
@@ -226,7 +324,7 @@
       border: 1px solid rgba(0,0,0,.08);
       background: #fff;
       box-shadow: 0 10px 22px rgba(0,0,0,.05);
-      font-weight: 800;
+      font-weight: 900;
       color: rgba(11,16,32,.86);
       font-size: .95rem;
     }
@@ -265,12 +363,10 @@
       color:#fff;
       padding: 2.2rem 0;
     }
-    .footer a{ color:#fff; font-weight:700; }
+    .footer a{ color:#fff; font-weight:800; }
     .footer a:hover{ color: var(--gold); }
 
     .spacer{ height: 1rem; }
-
-    /* Small layout helpers */
     .tight { margin-top: .4rem; }
     .centered { max-width: 70ch; margin-left:auto; margin-right:auto; }
   </style>
@@ -311,8 +407,17 @@
   <section id="top" class="hero">
     <div class="row">
       <div class="medium-7 columns text-center medium-text-left">
+
+        <!-- BIG LOGO FIRST -->
+        <div class="hero-brand">
+          <img src="assets/logo.png" alt="E Tax Pro Solutions logo large">
+          <p class="hero-name">E Tax Pro Solutions</p>
+          <p class="hero-sub">Baton Rouge tax prep • bookkeeping • payroll</p>
+        </div>
+
         <div class="pill">10+ Years • Baton Rouge • Individuals + Businesses</div>
         <h1>Taxes, bookkeeping, and payroll — handled with clarity.</h1>
+
         <p class="lead">
           We help you stay organized, file correctly, and feel confident moving forward.
           In-person in Baton Rouge or remote support when you need it.
@@ -324,7 +429,7 @@
         </div>
 
         <div class="spacer"></div>
-        <p style="margin:0; color: rgba(255,255,255,.85); font-size: .95rem;">
+        <p style="margin:0; color: rgba(255,255,255,.88); font-size: 1rem; font-weight: 700;">
           Prefer a call/text back? Use the quick form below the Services section.
         </p>
       </div>
@@ -348,18 +453,16 @@
 
   <!-- Services -->
   <section id="services" class="section">
-  <div class="row column text-center">
-    <h2 class="section-title">Services</h2>
+    <div class="row column text-center">
+      <h2 class="section-title">Services</h2>
 
-    <!-- Local SEO signal -->
-    <h2 class="section-title">
-      Tax Preparation Services in Baton Rouge, Louisiana
-    </h2>
+      <!-- Local SEO signal -->
+      <h2 class="section-title">Tax Preparation Services in Baton Rouge, Louisiana</h2>
 
-    <p class="muted centered">
-      Professional help for tax season — and support that goes beyond filing.
-    </p>
-  </div>
+      <p class="muted centered">
+        Professional help for tax season — and support that goes beyond filing.
+      </p>
+    </div>
 
     <div class="row small-up-1 medium-up-3">
       <div class="column">
@@ -367,7 +470,7 @@
           <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=1600&q=70" alt="Tax preparation documents">
           <div class="pad">
             <div class="tag">Individuals</div>
-            <h5>Tax Return Preparation</h5>
+            <h5><strong>Tax Return Preparation</strong></h5>
             <p class="muted">W-2, 1099, self-employed, credits/deductions — filed clean and explained clearly.</p>
           </div>
         </div>
@@ -378,7 +481,7 @@
           <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1600&q=70" alt="Small business meeting">
           <div class="pad">
             <div class="tag">Businesses</div>
-            <h5>Business Services</h5>
+            <h5><strong>Business Services</strong></h5>
             <p class="muted">Bookkeeping, payroll, and business tax returns with a calm, organized process.</p>
           </div>
         </div>
@@ -389,7 +492,7 @@
           <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=70" alt="Planning and analytics">
           <div class="pad">
             <div class="tag">Planning</div>
-            <h5>Advisory & Strategy</h5>
+            <h5><strong>Advisory &amp; Strategy</strong></h5>
             <p class="muted">Tax planning, estimates, and guidance so you can make decisions with confidence.</p>
           </div>
         </div>
@@ -400,21 +503,21 @@
       <div class="column">
         <div class="card">
           <div class="tag">Training</div>
-          <h4>Education & Training</h4>
+          <h4><strong>Education &amp; Training</strong></h4>
           <p class="muted">Simple training that helps clients and teams understand taxes, compliance, and record keeping.</p>
         </div>
       </div>
       <div class="column">
         <div class="card">
           <div class="tag">Support</div>
-          <h4>IRS Notices</h4>
+          <h4><strong>IRS Notices</strong></h4>
           <p class="muted">We break letters down in plain English and help you respond the right way.</p>
         </div>
       </div>
       <div class="column">
         <div class="card">
           <div class="tag">Across States</div>
-          <h4>Representation</h4>
+          <h4><strong>Representation</strong></h4>
           <p class="muted">Support available in all 50 states for situations that need extra attention.</p>
         </div>
       </div>
@@ -423,7 +526,7 @@
     <div class="row" style="margin-top:2.2rem;">
       <div class="medium-8 medium-centered columns">
         <div class="card">
-          <h4 style="margin-bottom:.25rem;">Prefer a call/text back?</h4>
+          <h4 style="margin-bottom:.25rem;"><strong>Prefer a call/text back?</strong></h4>
           <p class="muted" style="margin-top:0;">This goes straight to your inbox via Formspree.</p>
 
           <form action="https://formspree.io/f/xjgrgqkb" method="POST">
@@ -488,15 +591,14 @@
       <div class="column">
         <div class="card">
           <div class="tag">Individuals</div>
-          <h4>Individuals & Small Business Filings</h4>
+          <h4><strong>Individuals &amp; Small Business Filings</strong></h4>
           <ul class="muted" style="margin-left:1.1rem;">
             <li>W-2, 1099, self-employed filings</li>
-            <li>Small business & single-member LLC returns</li>
+            <li>Small business &amp; single-member LLC returns</li>
             <li>Credits, deductions, and filing support</li>
             <li>Simple review of what’s being submitted</li>
           </ul>
           <p class="muted tight"><em>Typical investment depends on the details.</em></p>
-
           <div class="row">
             <div class="small-6 columns">
               <a href="tel:+1-225-247-9803" class="button expanded hollow">Call Now</a>
@@ -511,15 +613,14 @@
       <div class="column">
         <div class="card">
           <div class="tag">Ongoing</div>
-          <h4>Monthly Bookkeeping & Payroll</h4>
+          <h4><strong>Monthly Bookkeeping &amp; Payroll</strong></h4>
           <ul class="muted" style="margin-left:1.1rem;">
-            <li>Monthly bookkeeping & reconciliations</li>
+            <li>Monthly bookkeeping &amp; reconciliations</li>
             <li>Payroll setup and ongoing payroll help</li>
             <li>Cleanup / catch-up bookkeeping</li>
             <li>Organized records ready for tax season</li>
           </ul>
           <p class="muted tight"><em>Scope depends on volume and frequency.</em></p>
-
           <div class="row">
             <div class="small-6 columns">
               <a href="tel:+1-225-247-9803" class="button expanded hollow">Call Now</a>
@@ -534,15 +635,14 @@
       <div class="column">
         <div class="card">
           <div class="tag">Strategy</div>
-          <h4>Advisory & Growth Support</h4>
+          <h4><strong>Advisory &amp; Growth Support</strong></h4>
           <ul class="muted" style="margin-left:1.1rem;">
-            <li>Tax planning & estimates</li>
+            <li>Tax planning &amp; estimates</li>
             <li>IRS notices and response guidance</li>
             <li>Multi-state or advanced situations</li>
             <li>Year-round check-ins as things change</li>
           </ul>
           <p class="muted tight"><em>Usually based on goals and complexity.</em></p>
-
           <div class="row">
             <div class="small-6 columns">
               <a href="tel:+1-225-247-9803" class="button expanded hollow">Call Now</a>
@@ -558,7 +658,7 @@
     <div class="row" style="margin-top:2.25rem;">
       <div class="medium-10 medium-centered columns">
         <div class="card">
-          <h4 style="margin-bottom:.35rem;">How it usually works</h4>
+          <h4 style="margin-bottom:.35rem;"><strong>How it usually works</strong></h4>
           <p class="muted" style="margin-top:0;">
             Most clients start with a quick conversation. From there, we’ll recommend the simplest next step based on what you’re dealing with.
           </p>
@@ -591,7 +691,7 @@
       <div class="logo-strip">
         <div class="logo-pill"><span class="logo-mark"></span> 10+ years serving clients</div>
         <div class="logo-pill"><span class="logo-mark"></span> Individuals + businesses</div>
-        <div class="logo-pill"><span class="logo-mark"></span> In-person & remote</div>
+        <div class="logo-pill"><span class="logo-mark"></span> In-person &amp; remote</div>
         <div class="logo-pill"><span class="logo-mark"></span> Organized process</div>
       </div>
     </div>
@@ -600,21 +700,21 @@
       <div class="column">
         <div class="card photo-card">
           <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1600&q=70" alt="Friendly professional support">
-          <h5>Friendly, professional support</h5>
+          <h5><strong>Friendly, professional support</strong></h5>
           <p class="muted">You’ll get clear answers and a clean process — without feeling rushed.</p>
         </div>
       </div>
       <div class="column">
         <div class="card photo-card">
           <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&fit=crop&w=1600&q=70" alt="Organized paperwork and records">
-          <h5>Organized documents</h5>
+          <h5><strong>Organized documents</strong></h5>
           <p class="muted">We help you keep records clean so tax season is smoother year after year.</p>
         </div>
       </div>
       <div class="column">
         <div class="card photo-card">
           <img src="https://images.unsplash.com/photo-1454165205744-3b78555e5572?auto=format&fit=crop&w=1600&q=70" alt="Clear planning and guidance">
-          <h5>Clear next steps</h5>
+          <h5><strong>Clear next steps</strong></h5>
           <p class="muted">We focus on what matters now and what to do next — simple and practical.</p>
         </div>
       </div>
@@ -632,21 +732,21 @@
       <div class="column">
         <div class="card">
           <div class="tag">Clarity</div>
-          <h4>No confusion</h4>
+          <h4><strong>No confusion</strong></h4>
           <p class="muted">We explain what we’re doing and what you should expect—plain English, no runaround.</p>
         </div>
       </div>
       <div class="column">
         <div class="card">
           <div class="tag">Responsiveness</div>
-          <h4>You can reach us</h4>
+          <h4><strong>You can reach us</strong></h4>
           <p class="muted">Calls and messages don’t disappear. We keep communication simple and consistent.</p>
         </div>
       </div>
       <div class="column">
         <div class="card">
           <div class="tag">Year-round</div>
-          <h4>Support beyond April</h4>
+          <h4><strong>Support beyond April</strong></h4>
           <p class="muted">Bookkeeping, payroll, planning—help that’s available when life and business change.</p>
         </div>
       </div>
@@ -663,23 +763,21 @@
     <div class="row small-up-1 medium-up-3">
       <div class="column">
         <div class="card review">
-          <h4>★★★★★</h4>
+          <h4><strong>★★★★★</strong></h4>
           <p class="muted">“He’s been handling my taxes for a while now and I’ve never had a single issue. Everything is clear, easy, and done right the first time.”</p>
           <p style="margin:0;"><b>Moses Ihachi</b></p>
         </div>
       </div>
-
       <div class="column">
         <div class="card review">
-          <h4>★★★★★</h4>
+          <h4><strong>★★★★★</strong></h4>
           <p class="muted">“I’m a repeat customer and I don’t see that changing. I recommend him to all my family and friends.”</p>
           <p style="margin:0;"><b>Pita Kabs</b></p>
         </div>
       </div>
-
       <div class="column">
         <div class="card review">
-          <h4>★★★★★</h4>
+          <h4><strong>★★★★★</strong></h4>
           <p class="muted">“Very professional. Highly recommended!”</p>
           <p style="margin:0;"><b>Enoch Reounodji</b></p>
         </div>
@@ -701,7 +799,6 @@
             <b>30-Minute Appointment</b>
             <span class="muted"> • Baton Rouge + remote clients</span>
           </div>
-
           <div class="calendly-inline-widget"
                data-url="https://calendly.com/etaxprosolutions/30min?hide_gdpr_banner=1"
                style="min-width:320px;height:760px;"></div>
@@ -767,6 +864,5 @@
 
   <!-- Calendly script -->
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
 </body>
 </html>
