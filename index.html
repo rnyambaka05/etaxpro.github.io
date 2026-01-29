@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="E Tax Pro Solutions in Baton Rouge, LA — expert tax preparation for individuals and businesses. IRS returns, bookkeeping, payroll, tax planning, education, and representation in all 50 states." />
+  <meta name="theme-color" content="#0b1020" />
+  <title>E Tax Pro Solutions | Baton Rouge Tax Preparation & Business Services</title>
+
+  <!-- Social Preview -->
+  <meta property="og:title" content="E Tax Pro Solutions | Baton Rouge Tax Preparation" />
+  <meta property="og:description" content="Expert tax preparation for over 8 years. IRS returns, bookkeeping, payroll, tax planning & representation in all 50 states." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg:#070b16;
+      --panel:#0c1326;
+      --panel2:#0b1020;
+      --text:#eaf0ff;
+      --muted:#b9c4e2;
+      --muted2:#93a2c7;
+
+      --gold:#f2c14e;
+      --gold2:#d8a93b;
+      --gold3:#b7841e;
+
+      --line:rgba(255,255,255,.10);
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+
+      --ok:#35d07f;
+      --warn:#ffcc66;
+      --bad:#ff6b6b;
+
+      --max: 1200px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ margin:0; padding:0; background:radial-gradient(1200px 800px at 70% -10%, rgba(242,193,78,.14), transparent 55%),
+                                  radial-gradient(900px 700px at 20% 20%, rgba(123,92,255,.10), transparent 55%),
+                                  linear-gradient(180deg, var(--bg), #050712 70%);
+               color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+               line-height:1.5;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+
+    .container{ width:100%; max-width:var(--max); margin:0 auto; padding:0 20px; }
+
+    /* Top bar */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(7,11,22,.72);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:14px 0;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 220px;
+    }
+    .brand .logoWrap{
+      width:46px; height:46px; border-radius:14px;
+      background: linear-gradient(145deg, rgba(242,193,78,.18), rgba(255,255,255,.04));
+      border:1px solid rgba(242,193,78,.22);
+      display:flex; align-items:center; justify-content:center;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      overflow:hidden;
+    }
+    .brand .logoWrap img{ width:40px; height:40px; object-fit:contain; }
+    .brand strong{ font-size:14px; letter-spacing:.4px; display:block; }
+    .brand span{ font-size:12px; color:var(--muted2); display:block; margin-top:1px; }
+
+    .navlinks{
+      display:flex; align-items:center; gap:18px;
+    }
+    .navlinks a{
+      font-size:13px; color:var(--muted);
+      padding:8px 10px; border-radius:12px;
+      transition: .2s ease;
+    }
+    .navlinks a:hover{ background: rgba(255,255,255,.06); color:var(--text); }
+
+    .navcta{
+      display:flex; align-items:center; gap:10px;
+      min-width: 260px;
+      justify-content:flex-end;
+    }
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:12px; color:var(--muted);
+      padding:8px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .dot{ width:7px; height:7px; border-radius:999px; background: var(--ok); box-shadow: 0 0 0 6px rgba(53,208,127,.14); }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      border:none; cursor:pointer;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-weight: 700;
+      letter-spacing: .2px;
+      transition: transform .12s ease, filter .12s ease, background .2s ease, border .2s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:active{ transform: translateY(1px); }
+    .btnPrimary{
+      background: linear-gradient(180deg, var(--gold), var(--gold2));
+      color:#1b1205;
+      box-shadow: 0 16px 40px rgba(242,193,78,.20);
+    }
+    .btnPrimary:hover{ filter: brightness(1.03); }
+    .btnGhost{
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      color: var(--text);
+    }
+    .btnGhost:hover{ background: rgba(255,255,255,.08); }
+    .btnSmall{ padding:10px 12px; font-size:13px; border-radius: 12px; }
+
+    /* Mobile nav */
+    .menuBtn{ display:none; }
+
+    @media (max-width: 980px){
+      .navlinks{ display:none; }
+      .menuBtn{ display:inline-flex; }
+      .navcta{ min-width:auto; }
+      .brand{ min-width:auto; }
+    }
+
+    .mobileMenu{
+      display:none;
+      border-top: 1px solid var(--line);
+      padding: 12px 0 18px;
+    }
+    .mobileMenu a{
+      display:block; padding:12px 10px; border-radius: 12px;
+      color: var(--muted);
+      border:1px solid transparent;
+    }
+    .mobileMenu a:hover{
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      border-color: rgba(255,255,255,.08);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 56px 0 26px;
+    }
+    .heroGrid{
+      display:grid; grid-template-columns: 1.15fr .85fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+    @media (max-width: 980px){
+      .heroGrid{ grid-template-columns: 1fr; }
+    }
+
+    .heroCard{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .heroMain{ padding: 28px; }
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      font-size:12px; color: var(--muted);
+      background: rgba(242,193,78,.12);
+      border: 1px solid rgba(242,193,78,.22);
+      padding:8px 12px; border-radius: 999px;
+    }
+    .kicker b{ color: var(--text); }
+    h1{
+      margin: 14px 0 10px;
+      font-size: 44px;
+      line-height: 1.08;
+      letter-spacing: -0.8px;
+    }
+    @media (max-width: 560px){
+      h1{ font-size: 36px; }
+    }
+
+    .sub{
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 62ch;
+    }
+
+    .heroBadges{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top: 18px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .badge svg{ opacity:.9; }
+    .badge strong{ color: var(--text); font-weight: 800; }
+
+    .heroActions{
+      display:flex; flex-wrap:wrap; gap:12px;
+      margin-top: 18px;
+      align-items:center;
+    }
+    .heroActions .hint{
+      color: var(--muted2);
+      font-size: 12px;
+      line-height:1.35;
+    }
+
+    .trustRow{
+      display:grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+    @media (max-width: 560px){
+      .trustRow{ grid-template-columns: 1fr; }
+    }
+    .trustBox{
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+    }
+    .trustBox .tTitle{ font-weight: 900; letter-spacing:.2px; }
+    .trustBox .tSub{ color: var(--muted2); font-size: 12px; margin-top: 4px; }
+
+    /* Right card - booking */
+    .booking{ padding: 18px; }
+    .bookingHeader{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding: 12px 12px 10px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.20);
+    }
+    .bookingHeader .title{
+      font-weight: 900;
+      letter-spacing: .2px;
+    }
+    .bookingHeader .small{
+      color: var(--muted2);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+    .bookingHeader .right{
+      text-align:right;
+    }
+    .bookingHeader .right .gold{
+      font-weight: 900;
+      color: var(--gold);
+      font-size: 13px;
+    }
+
+    .form{
+      margin-top: 12px;
+      display:grid;
+      gap: 10px;
+    }
+
+    label{ font-size: 12px; color: var(--muted2); display:block; margin: 10px 0 6px; }
+    .field{
+      width:100%;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      padding: 12px 12px;
+      outline:none;
+    }
+    .field::placeholder{ color: rgba(185,196,226,.55); }
+    .field:focus{ border-color: rgba(242,193,78,.40); box-shadow: 0 0 0 5px rgba(242,193,78,.12); }
+
+    .twoCol{
+      display:grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    }
+    @media (max-width: 560px){
+      .twoCol{ grid-template-columns: 1fr; }
+    }
+
+    .fineprint{
+      color: var(--muted2);
+      font-size: 12px;
+      line-height:1.4;
+      margin-top: 8px;
+    }
+
+    .divider{
+      height:1px; background: rgba(255,255,255,.10);
+      margin: 14px 0;
+    }
+
+    .callBox{
+      border-radius: 16px;
+      padding: 14px;
+      border: 1px dashed rgba(242,193,78,.35);
+      background: rgba(242,193,78,.08);
+    }
+    .callBox strong{ display:block; font-size: 14px; }
+    .callBox span{ display:block; color: var(--muted2); font-size: 12px; margin-top: 3px; }
+
+    /* Sections */
+    section{ padding: 46px 0; }
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+      margin-bottom: 18px;
+    }
+    .sectionHead h2{
+      margin:0;
+      font-size: 30px;
+      letter-spacing: -0.4px;
+    }
+    .sectionHead p{
+      margin:0;
+      color: var(--muted);
+      max-width: 70ch;
+      font-size: 14px;
+    }
+
+    .grid3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 980px){
+      .grid3{ grid-template-columns: 1fr; }
+      .grid2{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 40px rgba(0,0,0,.25);
+      padding: 18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card .cap{
+      display:inline-flex; align-items:center; gap:10px;
+      font-size: 12px;
+      color: var(--muted2);
+      margin-bottom: 8px;
+    }
+    .card h3{ margin: 4px 0 8px; font-size: 18px; letter-spacing: -0.2px; }
+    .card p{ margin: 0; color: var(--muted); font-size: 14px; }
+    .card ul{ margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: 14px; }
+    .card li{ margin: 8px 0; }
+
+    .shine:before{
+      content:"";
+      position:absolute; inset:-120px -140px auto auto;
+      width:260px; height:260px;
+      background: radial-gradient(circle at 30% 30%, rgba(242,193,78,.16), transparent 60%);
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+
+    /* Process timeline */
+    .steps{
+      display:grid;
+      gap: 12px;
+    }
+    .step{
+      display:flex; gap: 12px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+    }
+    .num{
+      width:40px; height:40px; border-radius: 14px;
+      background: rgba(242,193,78,.14);
+      border: 1px solid rgba(242,193,78,.25);
+      display:flex; align-items:center; justify-content:center;
+      font-weight: 900;
+      color: var(--gold);
+      flex: 0 0 auto;
+    }
+    .step strong{ display:block; }
+    .step span{ display:block; color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+    /* Testimonials */
+    .quote{
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+    .who{
+      display:flex; align-items:center; justify-content:space-between;
+      margin-top: 12px;
+      gap: 10px;
+      color: var(--muted2);
+      font-size: 12px;
+    }
+    .stars{ color: var(--gold); letter-spacing: 2px; }
+
+    /* FAQ */
+    details{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 14px;
+    }
+    details + details{ margin-top: 10px; }
+    summary{
+      cursor:pointer;
+      font-weight: 900;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{ margin: 10px 0 0; color: var(--muted); font-size: 14px; }
+
+    /* Footer */
+    footer{
+      border-top: 1px solid var(--line);
+      padding: 28px 0 34px;
+      background: rgba(0,0,0,.18);
+    }
+    .footGrid{
+      display:grid; grid-template-columns: 1.25fr .75fr;
+      gap: 14px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .footGrid{ grid-template-columns: 1fr; }
+    }
+    .footSmall{ color: var(--muted2); font-size: 12px; margin-top: 10px; }
+
+    .miniLinks{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top: 12px;
+    }
+    .miniLinks a{
+      font-size: 12px;
+      color: var(--muted);
+      padding:8px 10px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .miniLinks a:hover{ color: var(--text); background: rgba(255,255,255,.06); }
+
+    /* Floating CTA */
+    .floatCta{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      display:flex;
+      gap: 10px;
+      align-items:center;
+    }
+    @media (max-width: 520px){
+      .floatCta{ right: 12px; bottom: 12px; flex-direction:column; align-items:stretch; }
+    }
+
+    /* Utilities */
+    .muted{ color: var(--muted); }
+    .goldText{ color: var(--gold); font-weight: 900; }
+    .srOnly{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="E Tax Pro Solutions Home">
+          <div class="logoWrap">
+            <!-- Logo path: put logo at assets/logo.png -->
+            <img src="assets/logo.png" alt="E Tax Pro Solutions Logo">
+          </div>
+          <div>
+            <strong>E Tax Pro Solutions</strong>
+            <span>Baton Rouge, Louisiana • Tax Prep & Business Services</span>
+          </div>
+        </a>
+
+        <div class="navlinks" aria-label="Primary navigation">
+          <a href="#services">Services</a>
+          <a href="#process">How It Works</a>
+          <a href="#why">Why Us</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="navcta">
+          <div class="pill" title="Fast responses during business hours">
+            <span class="dot"></span>
+            <span><b class="goldText">Now booking</b> • Same-week appointments</span>
+          </div>
+          <button class="btn btnGhost btnSmall menuBtn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">
+            Menu
+          </button>
+          <a class="btn btnPrimary btnSmall" href="#book">Book Appointment</a>
+        </div>
+      </div>
+
+      <div class="mobileMenu" id="mobileMenu">
+        <a href="#services">Services</a>
+        <a href="#process">How It Works</a>
+        <a href="#why">Why Us</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn btnPrimary btnSmall" href="#book" style="text-align:center;">Book Appointment</a>
+          <a class="btn btnGhost btnSmall" href="tel:+1-225-247-9803" style="text-align:center;">Call Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <main id="top" class="hero">
+    <div class="container">
+      <div class="heroGrid">
+        <!-- Left: main pitch -->
+        <div class="heroCard shine">
+          <div class="heroMain">
+            <div class="kicker">
+              <span>⭐</span>
+              <span><b>8+ Years</b> helping individuals & businesses file correctly, confidently, and on time</span>
+            </div>
+
+            <h1>
+              Baton Rouge tax preparation that feels <span class="goldText">simple</span> — and gets done <span class="goldText">right</span>.
+            </h1>
+
+            <p class="sub">
+              E Tax Pro Solutions provides professional tax return preparation, bookkeeping, payroll, tax consultancy & planning,
+              tax education & training, and representation in <b>all 50 states</b>.
+              If you want clear answers, clean filing, and a plan — you’re in the right place.
+            </p>
+
+            <div class="heroBadges">
+              <div class="badge">
+                <span aria-hidden="true">✅</span>
+                <div><strong>Fast, accurate filing</strong><div class="muted" style="font-size:12px;">Individuals + business returns</div></div>
+              </div>
+              <div class="badge">
+                <span aria-hidden="true">🧾</span>
+                <div><strong>Year-round support</strong><div class="muted" style="font-size:12px;">Not just during tax season</div></div>
+              </div>
+              <div class="badge">
+                <span aria-hidden="true">📍</span>
+                <div><strong>Baton Rouge local</strong><div class="muted" style="font-size:12px;">Remote service available too</div></div>
+              </div>
+            </div>
+
+            <div class="heroActions">
+              <a class="btn btnPrimary" href="#book" aria-label="Book an appointment now">
+                Book an Appointment
+                <span aria-hidden="true">→</span>
+              </a>
+              <a class="btn btnGhost" href="tel:+1-225-247-9803" aria-label="Call E Tax Pro Solutions">
+                Call (225) 247-9803
+              </a>
+              <div class="hint">
+                Prefer text/email? Fill out the quick form and we’ll follow up.<br>
+                <span class="muted">Typical response time: same business day.</span>
+              </div>
+            </div>
+
+            <div class="trustRow" aria-label="Trust indicators">
+              <div class="trustBox">
+                <div class="tTitle">All IRS Returns</div>
+                <div class="tSub">W-2, 1099, self-employed, LLC, S-Corp, and more.</div>
+              </div>
+              <div class="trustBox">
+                <div class="tTitle">Audit & IRS Help</div>
+                <div class="tSub">Representation + guidance when things get stressful.</div>
+              </div>
+              <div class="trustBox">
+                <div class="tTitle">50-State Support</div>
+                <div class="tSub">File from anywhere — we handle multi-state needs.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: booking card -->
+        <div class="heroCard" id="book">
+          <div class="booking">
+            <div class="bookingHeader">
+              <div>
+                <div class="title">Request Your Appointment</div>
+                <div class="small">A quick form — we confirm your time by phone/text/email.</div>
+              </div>
+              <div class="right">
+                <div class="gold">New clients welcome</div>
+                <div class="small">In-person or remote</div>
+              </div>
+            </div>
+
+            <form class="form" id="leadForm">
+              <div>
+                <label for="name">Full Name</label>
+                <input class="field" id="name" name="name" placeholder="e.g., Jordan Smith" required />
+              </div>
+
+              <div class="twoCol">
+                <div>
+                  <label for="phone">Phone Number</label>
+                  <input class="field" id="phone" name="phone" placeholder="(225) 555-0123" />
+                </div>
+                <div>
+                  <label for="email">Email</label>
+                  <input class="field" id="email" name="email" type="email" placeholder="you@email.com" required />
+                </div>
+              </div>
+
+              <div class="twoCol">
+                <div>
+                  <label for="service">What do you need help with?</label>
+                  <select class="field" id="service" name="service" required>
+                    <option value="" selected disabled>Select a service</option>
+                    <option>Tax Return Preparation (Individual)</option>
+                    <option>Business Tax Returns</option>
+                    <option>Bookkeeping</option>
+                    <option>Payroll Setup / Payroll Services</option>
+                    <option>Tax Planning / Consultancy</option>
+                    <option>Tax Education / Training</option>
+                    <option>IRS Representation / Notices</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="timing">When are you trying to meet?</label>
+                  <select class="field" id="timing" name="timing" required>
+                    <option value="" selected disabled>Choose timing</option>
+                    <option>This week</option>
+                    <option>Next week</option>
+                    <option>Within 2–3 weeks</option>
+                    <option>Not sure yet</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="details">Anything we should know?</label>
+                <textarea class="field" id="details" name="details" rows="4"
+                  placeholder="Example: self-employed income, multiple W-2s, IRS letter, new business, back taxes, multi-state, etc."></textarea>
+              </div>
+
+              <button class="btn btnPrimary" type="submit">
+                Submit Request
+                <span aria-hidden="true">→</span>
+              </button>
+
+              <div class="fineprint">
+                By submitting, you agree we may contact you by phone/text/email to confirm your appointment.
+                <br><span class="muted">Tip:</span> If it’s urgent, call now for the fastest help.
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="callBox">
+                <strong>Want the fastest option?</strong>
+                <span>
+                  Call us at <a class="goldText" href="tel:+1-225-247-9803">(225) 247-9803</a> and we’ll get you scheduled.
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Services that cover the full picture</h2>
+          <p>
+            Whether you need a simple return, a full business setup, or long-term planning — we help you file correctly,
+            stay organized, and avoid costly mistakes.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="card shine">
+          <div class="cap">🧾 <span>Tax Return Preparation</span></div>
+          <h3>IRS Tax Returns (Individuals + Families)</h3>
+          <p>W-2, 1099, self-employed, deductions, credits, and everything in between — filed clean and on time.</p>
+          <ul>
+            <li>Accurate reporting to reduce delays</li>
+            <li>Help organizing your documents</li>
+            <li>Clear explanation of your return</li>
+            <li>Guidance on what to track for next year</li>
+          </ul>
+        </div>
+
+        <div class="card shine">
+          <div class="cap">🏢 <span>Business Services</span></div>
+          <h3>Bookkeeping, Payroll, and Business Returns</h3>
+          <p>Stay compliant and organized while keeping your finances ready for taxes, growth, and clarity.</p>
+          <ul>
+            <li>Bookkeeping support (monthly/ongoing)</li>
+            <li>Payroll setup & payroll services</li>
+            <li>Business tax return preparation</li>
+            <li>Best practices to avoid common penalties</li>
+          </ul>
+        </div>
+
+        <div class="card shine">
+          <div class="cap">📈 <span>Tax Planning</span></div>
+          <h3>Consultancy & Planning</h3>
+          <p>Don’t just “file” — plan. We help you understand your numbers and make smarter moves for the year ahead.</p>
+          <ul>
+            <li>Quarterly planning & estimated taxes</li>
+            <li>Strategy for self-employed and owners</li>
+            <li>Multi-state filing guidance</li>
+            <li>Year-round advisory support</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid3" style="margin-top:14px;">
+        <div class="card">
+          <div class="cap">🎓 <span>Education & Training</span></div>
+          <h3>Tax Education That Actually Makes Sense</h3>
+          <p>
+            We offer training and education designed to help individuals and teams understand taxes, compliance,
+            and how to keep better records (without feeling overwhelmed).
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="cap">🛡️ <span>Representation</span></div>
+          <h3>Representation in All 50 States</h3>
+          <p>
+            If you’ve received IRS notices, need help responding, or want professional representation,
+            we help guide you through the process with clarity and confidence.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="cap">📬 <span>IRS Notices</span></div>
+          <h3>Help with Letters, Corrections, and Next Steps</h3>
+          <p>
+            Getting mail from the IRS can be stressful. We help you understand what it means, what to do next,
+            and how to respond properly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>How it works (simple and guided)</h2>
+          <p>
+            You shouldn’t have to guess what to do next. Here’s the exact process clients follow —
+            designed to be easy, fast, and clear.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="card shine">
+          <h3>Our 4-Step Client Process</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="num">1</div>
+              <div>
+                <strong>Request an appointment</strong>
+                <span>Use the form or call. We’ll confirm your appointment time and what documents you’ll need.</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="num">2</div>
+              <div>
+                <strong>Quick review + document check</strong>
+                <span>We identify what’s missing (if anything) and make sure your filing is clean and complete.</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="num">3</div>
+              <div>
+                <strong>Prepare, explain, and file</strong>
+                <span>We prepare your return, explain the key points in plain English, then file accurately.</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="num">4</div>
+              <div>
+                <strong>Support after filing</strong>
+                <span>Questions later? IRS letter? Next year planning? We’re here year-round.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>What to bring (most common)</h3>
+          <p class="muted">
+            Every situation is different, but here’s a helpful starter list. If you’re missing something —
+            don’t stress. We’ll guide you.
+          </p>
+          <ul>
+            <li>Photo ID</li>
+            <li>W-2s, 1099s, or income statements</li>
+            <li>Business income/expense records (if self-employed)</li>
+            <li>Last year’s tax return (if available)</li>
+            <li>IRS letters/notices (if applicable)</li>
+            <li>Any deductions/credits documents (education, childcare, etc.)</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <p class="muted" style="margin-top:0;">
+            Not sure what applies to you? Request an appointment and tell us your situation —
+            we’ll send you a tailored checklist.
+          </p>
+
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn btnPrimary" href="#book">Book Appointment</a>
+            <a class="btn btnGhost" href="tel:+1-225-247-9803">Call for Checklist</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Us -->
+  <section id="why">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Why clients choose E Tax Pro Solutions</h2>
+          <p>
+            You’re not just buying “a tax return.” You’re choosing peace of mind, a clean filing, and a team
+            that makes sure you understand what’s happening.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="card shine">
+          <div class="cap">⭐ <span>Experience</span></div>
+          <h3>8+ years of real tax preparation work</h3>
+          <p>
+            We’ve handled a wide range of situations — from simple W-2 returns to self-employed clients,
+            growing businesses, payroll, and multi-state filings.
+          </p>
+        </div>
+
+        <div class="card shine">
+          <div class="cap">🧠 <span>Clarity</span></div>
+          <h3>We explain things like a human</h3>
+          <p>
+            We don’t talk “over” you. You get clear answers, clean next steps, and confidence you’re filing the right way.
+          </p>
+        </div>
+
+        <div class="card shine">
+          <div class="cap">🛡️ <span>Support</span></div>
+          <h3>We stay with you after filing</h3>
+          <p>
+            If you get a letter, a question pops up, or you want a smarter plan for next year —
+            you can reach us.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid2" style="margin-top:14px;">
+        <div class="card">
+          <h3>Perfect if you’re thinking:</h3>
+          <ul>
+            <li>“I don’t want to mess this up.”</li>
+            <li>“I’m self-employed and I’m not sure what counts.”</li>
+            <li>“I got a letter from the IRS and I need help.”</li>
+            <li>“I want bookkeeping/payroll that keeps me organized.”</li>
+            <li>“I want someone local in Baton Rouge I can trust.”</li>
+          </ul>
+        </div>
+        <div class="card shine">
+          <h3>What you’ll feel after working with us</h3>
+          <ul>
+            <li><b class="goldText">Relief</b> — because you’re not guessing anymore</li>
+            <li><b class="goldText">Confidence</b> — because your return is clean and explained</li>
+            <li><b class="goldText">Control</b> — because you know what to track moving forward</li>
+            <li><b class="goldText">Support</b> — because you have a real point of contact</li>
+          </ul>
+
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn btnPrimary" href="#book">Schedule Now</a>
+            <a class="btn btnGhost" href="tel:+1-225-247-9803">Talk to Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="reviews">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Client experiences</h2>
+          <p>
+            These are example testimonials you can keep, edit, or replace with real reviews later.
+            (When you get your Google reviews, we can plug them in here.)
+          </p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="card shine">
+          <div class="stars" aria-label="5 star rating">★★★★★</div>
+          <div class="quote">
+            “Super professional and fast. They walked me through everything and made it simple.
+            I’m never doing my taxes alone again.”
+          </div>
+          <div class="who">
+            <span>— Baton Rouge Client</span>
+            <span class="muted">Individual Return</span>
+          </div>
+        </div>
+
+        <div class="card shine">
+          <div class="stars" aria-label="5 star rating">★★★★★</div>
+          <div class="quote">
+            “As a business owner, bookkeeping and payroll used to stress me out.
+            Now it’s organized, handled, and I know what’s going on.”
+          </div>
+          <div class="who">
+            <span>— Louisiana Business Owner</span>
+            <span class="muted">Bookkeeping + Payroll</span>
+          </div>
+        </div>
+
+        <div class="card shine">
+          <div class="stars" aria-label="5 star rating">★★★★★</div>
+          <div class="quote">
+            “I got an IRS notice and didn’t know what to do. They explained it clearly and helped me respond.
+            Huge peace of mind.”
+          </div>
+          <div class="who">
+            <span>— Remote Client</span>
+            <span class="muted">IRS Help</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>FAQ (quick answers)</h2>
+          <p>
+            If you have a different question, just call — we’ll tell you exactly what to do next.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <details>
+            <summary>Do you only help clients in Louisiana?</summary>
+            <p>No — we provide representation and support in <b>all 50 states</b>. We can work with you remotely if needed.</p>
+          </details>
+
+          <details>
+            <summary>What if I’m missing documents?</summary>
+            <p>That’s common. Request an appointment anyway — we’ll help you identify what’s needed and what alternatives may work.</p>
+          </details>
+
+          <details>
+            <summary>Can you help with self-employed taxes?</summary>
+            <p>Yes. We help self-employed clients organize income and expenses, plan for estimated taxes, and file correctly.</p>
+          </details>
+
+          <details>
+            <summary>Do you offer tax planning outside of tax season?</summary>
+            <p>Yes. Planning year-round can prevent surprises. We offer consultancy and planning based on your goals and situation.</p>
+          </details>
+        </div>
+
+        <div>
+          <details>
+            <summary>How fast can I get an appointment?</summary>
+            <p>We often have same-week availability. The fastest method is calling us directly to schedule.</p>
+          </details>
+
+          <details>
+            <summary>Do you provide bookkeeping and payroll for businesses?</summary>
+            <p>Yes — bookkeeping, payroll setup, payroll services, and business filing support are available.</p>
+          </details>
+
+          <details>
+            <summary>What if I received a letter from the IRS?</summary>
+            <p>Bring it (or upload/send it securely when requested). We’ll explain what it means and help you respond properly.</p>
+          </details>
+
+          <details>
+            <summary>How do I get started?</summary>
+            <p>Use the appointment form above or call us. We’ll confirm your time and tell you exactly what to bring.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="sectionHead">
+        <div>
+          <h2>Contact E Tax Pro Solutions</h2>
+          <p>
+            Call to book the fastest — or send a message and we’ll follow up.
+            Update the phone, address, email, and hours below with your real business info.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="card shine">
+          <h3>Get in touch</h3>
+
+          <p class="muted" style="margin-top:8px;">
+            <b>Phone:</b> <a class="goldText" href="tel:+1-225-247-9803">(225) 247-9803</a><br>
+            <b>Email:</b> <a class="goldText" href="mailto:etaxprosolutions@gmail.com">etaxprosolutions@gmail.com</a><br>
+            <b>Location:</b> Baton Rouge, LA (Update address if you want it displayed)<br>
+            <b>Hours:</b> Mon–Fri 9am–6pm (Update as needed)
+          </p>
+
+          <div class="divider"></div>
+
+          <h3>Quick message</h3>
+          <form id="contactForm" class="form">
+            <div class="twoCol">
+              <div>
+                <label for="cname">Name</label>
+                <input class="field" id="cname" name="cname" placeholder="Your name" required>
+              </div>
+              <div>
+                <label for="cemail">Email</label>
+                <input class="field" id="cemail" name="cemail" type="email" placeholder="you@email.com" required>
+              </div>
+            </div>
+            <div>
+              <label for="cmsg">Message</label>
+              <textarea class="field" id="cmsg" name="cmsg" rows="4" placeholder="Tell us what you need help with..." required></textarea>
+            </div>
+            <button class="btn btnPrimary" type="submit">Send Message</button>
+            <div class="fineprint">This form opens your email app to send the message (simple and beginner-friendly).</div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Want this to convert even harder?</h3>
+          <p class="muted">
+            Here are the best “upgrade” options you can add next (I can help you with any of these):
+          </p>
+          <ul>
+            <li><b>Real booking link</b> (Calendly embed or a booking page button)</li>
+            <li><b>Google reviews</b> section pulled from your business profile</li>
+            <li><b>Pricing / Packages</b> (even “starting at” ranges boost conversions)</li>
+            <li><b>Lead capture</b> that sends submissions to your email automatically (Formspree / Netlify forms)</li>
+            <li><b>FAQ tuned to your exact client objections</b> (refund timing, fees, documents, etc.)</li>
+          </ul>
+
+          <div class="divider"></div>
+
+          <h3>Optional: Add a map</h3>
+          <p class="muted">
+            If you want a Google Map embedded here, paste the embed iframe code into this box.
+            (Right now it’s a placeholder.)
+          </p>
+
+          <div style="border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.03); padding:14px;">
+            <div class="muted" style="font-size:12px; margin-bottom:8px;">Map placeholder</div>
+            <div style="height:220px; border-radius:14px; border:1px dashed rgba(255,255,255,.20); display:flex; align-items:center; justify-content:center; color:rgba(185,196,226,.7);">
+              Paste Google Maps embed iframe here (optional)
+            </div>
+          </div>
+
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn btnPrimary" href="tel:+1-225-247-9803">Call Now</a>
+            <a class="btn btnGhost" href="#book">Book Appointment</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footGrid">
+        <div>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="logoWrap" style="width:44px; height:44px;">
+              <img src="assets/logo.png" alt="E Tax Pro Solutions Logo small">
+            </div>
+            <div>
+              <strong style="display:block;">E Tax Pro Solutions</strong>
+              <span class="muted" style="font-size:12px;">Baton Rouge, Louisiana • Tax Preparation & Business Services</span>
+            </div>
+          </div>
+
+          <div class="miniLinks" aria-label="Footer navigation">
+            <a href="#services">Services</a>
+            <a href="#process">How It Works</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+            <a href="tel:+1-225-247-9803">Call</a>
+          </div>
+
+          <div class="footSmall">
+            © <span id="year"></span> E Tax Pro Solutions. All rights reserved.
+            <br>
+            This website is for informational purposes and does not create a client relationship until confirmed.
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="margin:0;">
+            <h3 style="margin:0 0 8px;">Ready to book?</h3>
+            <p class="muted">Call now for the fastest scheduling or submit the appointment request form.</p>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn btnPrimary" href="tel:+1-225-247-9803">Call (225) 247-9803</a>
+              <a class="btn btnGhost" href="#book">Appointment Form</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating CTA buttons -->
+  <div class="floatCta" aria-label="Quick actions">
+    <a class="btn btnGhost btnSmall" href="tel:+1-225-247-9803">Call Now</a>
+    <a class="btn btnPrimary btnSmall" href="#book">Book</a>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        const isOpen = mobileMenu.style.display === 'block';
+        mobileMenu.style.display = isOpen ? 'none' : 'block';
+        menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    }
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lead form submit: beginner-friendly (creates a mailto draft with the info)
+    document.getElementById('leadForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const service = document.getElementById('service').value;
+      const timing = document.getElementById('timing').value;
+      const details = document.getElementById('details').value.trim();
+
+      const subject = encodeURIComponent('New Appointment Request — E Tax Pro Solutions');
+      const body = encodeURIComponent(
+        `Appointment Request\n\n` +
+        `Name: ${name}\n` +
+        `Phone: ${phone}\n` +
+        `Email: ${email}\n` +
+        `Service: ${service}\n` +
+        `Timing: ${timing}\n\n` +
+        `Details:\n${details}\n\n` +
+        `— Submitted from website`
+      );
+
+      // Update this email to the real business email:
+      window.location.href = `mailto:etaxprosolutions@gmail.com?subject=${subject}&body=${body}`;
+    });
+
+    // Contact form submit (mailto)
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const cname = document.getElementById('cname').value.trim();
+      const cemail = document.getElementById('cemail').value.trim();
+      const cmsg = document.getElementById('cmsg').value.trim();
+
+      const subject = encodeURIComponent('Website Message — E Tax Pro Solutions');
+      const body = encodeURIComponent(
+        `New message from website\n\n` +
+        `Name: ${cname}\n` +
+        `Email: ${cemail}\n\n` +
+        `Message:\n${cmsg}\n\n` +
+        `— Sent from website`
+      );
+
+      // Update this email to the real business email:
+      window.location.href = `mailto:etaxprosolutions@gmail.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
