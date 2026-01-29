@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>E Tax Pro Solutions | Baton Rouge Tax Preparation & Business Services</title>
+<title>Tax Preparation in Baton Rouge, LA | E Tax Pro Solutions</title>
 
   <meta name="description" content="E Tax Pro Solutions in Baton Rouge, LA — tax preparation for individuals and businesses. Bookkeeping, payroll, tax planning, training, and IRS notice support." />
   <meta name="theme-color" content="#0b1020" />
 
   <!-- Social Preview -->
   <meta property="og:title" content="E Tax Pro Solutions | Baton Rouge Tax Preparation" />
-  <meta property="og:description" content="Trusted tax preparation for 10+ years. Bookkeeping, payroll, tax planning & support for individuals and businesses." />
+<meta name="description" content="Trusted tax preparation in Baton Rouge, LA for individuals and businesses. Bookkeeping, payroll, tax planning, and IRS support. 10+ years serving the local community." />
   <meta property="og:type" content="website" />
 
   <!-- Favicons -->
@@ -45,43 +45,47 @@
     .top-bar a { color: #fff; font-weight: 700; }
     .top-bar a:hover { color: var(--gold); }
 
-    /* Brand / Logo — polished and responsive */
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    /* ===============================
+   LOGO — MAX SIZE, POLISHED
+   =============================== */
+.brand {
+  display: flex;
+  align-items: center;
+}
 
-    .logo {
-      height: 54px;              /* desktop size (slightly larger) */
-      width: auto;
-      padding: 6px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(242,193,78,0.28);
-      box-shadow:
-        0 6px 16px rgba(0,0,0,0.22),
-        inset 0 0 0 1px rgba(255,255,255,0.06);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
+.brand img {
+  height: 68px;              /* BIG on desktop */
+  width: auto;
+  max-height: 72px;          /* safety cap */
+  padding: 6px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(242,193,78,0.3);
+  box-shadow:
+    0 6px 16px rgba(0,0,0,0.22),
+    inset 0 0 0 1px rgba(255,255,255,0.06);
+  transition: all 0.25s ease;
+}
 
-    .brand:hover .logo {
-      transform: translateY(-1px);
-      box-shadow:
-        0 10px 26px rgba(0,0,0,0.28),
-        inset 0 0 0 1px rgba(255,255,255,0.08);
-    }
+/* Slight lift on hover (desktop only) */
+@media (hover: hover) {
+  .brand:hover img {
+    transform: translateY(-1px);
+    box-shadow:
+      0 10px 26px rgba(0,0,0,0.28),
+      inset 0 0 0 1px rgba(255,255,255,0.08);
+  }
+}
 
-    /* Mobile sizing */
-    @media (max-width: 640px) {
-      .logo {
-        height: 40px;            /* smaller on mobile */
-        padding: 5px;
-        border-radius: 11px;
-      }
-      .brand { gap: 8px; }
-    }
-
+/* MOBILE — still large, but balanced */
+@media (max-width: 640px) {
+  .brand img {
+    height: 52px;
+    max-height: 56px;
+    padding: 5px;
+    border-radius: 12px;
+  }
+}
     /* Hero */
     .hero{
       padding: 5.2rem 0 4.4rem;
@@ -344,10 +348,18 @@
 
   <!-- Services -->
   <section id="services" class="section">
-    <div class="row column text-center">
-      <h2 class="section-title">Services</h2>
-      <p class="muted centered">Professional help for tax season — and support that goes beyond filing.</p>
-    </div>
+  <div class="row column text-center">
+    <h2 class="section-title">Services</h2>
+
+    <!-- Local SEO signal -->
+    <h2 class="section-title">
+      Tax Preparation Services in Baton Rouge, Louisiana
+    </h2>
+
+    <p class="muted centered">
+      Professional help for tax season — and support that goes beyond filing.
+    </p>
+  </div>
 
     <div class="row small-up-1 medium-up-3">
       <div class="column">
