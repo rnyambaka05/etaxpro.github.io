@@ -44,8 +44,7 @@
     body { color: var(--ink); }
 
     /* =========================
-       TOP BAR (HEADER) — UNIFIED SINGLE NAVY
-       + PREMIUM CONTAINED GOLD GLOW (CLIPPED TO HEADER ONLY)
+       TOP BAR (HEADER) — UNIFIED SINGLE NAVY + PREMIUM CONTAINED GOLD GLOW (CLIPPED TO HEADER ONLY)
        ========================= */
     .top-bar{
       background: var(--navy-header) !important;
@@ -57,7 +56,7 @@
 
       /* contained glow controls */
       position: relative;
-      overflow: hidden; /* CLIPS glow strictly to header bounds */
+      overflow: hidden;   /* CLIPS glow strictly to header bounds */
       isolation: isolate; /* keeps blend/overlays contained */
     }
 
@@ -68,8 +67,6 @@
       inset:0;
       pointer-events:none;
       z-index:0;
-
-      /* tasteful gold illumination + subtle depth */
       background:
         radial-gradient(900px 220px at 20% 0%, rgba(242,193,78,.28), transparent 60%),
         radial-gradient(760px 220px at 80% 0%, rgba(242,193,78,.20), transparent 62%),
@@ -86,8 +83,6 @@
       inset:0;
       pointer-events:none;
       z-index:0;
-
-      /* inner ring + soft vignette to feel premium */
       box-shadow:
         inset 0 0 0 1px rgba(242,193,78,.10),
         inset 0 18px 40px rgba(242,193,78,.10),
@@ -96,18 +91,12 @@
     }
 
     /* Make every internal top-bar region inherit the SAME background (no extra tones) */
-    .top-bar,
-    .top-bar *{
-      background-color: transparent;
-    }
+    .top-bar, .top-bar *{ background-color: transparent; }
 
-    .top-bar-left,
-    .top-bar-right,
-    .top-bar ul,
-    .top-bar .menu{
+    .top-bar-left, .top-bar-right, .top-bar ul, .top-bar .menu{
       background: var(--navy-header) !important;
-      position: relative; /* ensure content sits above overlays */
-      z-index: 1;
+      position: relative;
+      z-index: 1; /* content sits above overlays */
     }
 
     /* Remove any Foundation “pill”/panel effect on right side */
@@ -119,7 +108,7 @@
       box-shadow: none !important;
     }
 
-    .top-bar a { color: #fff; font-weight: 900; } /* uniform bold */
+    .top-bar a { color: #fff; font-weight: 900; }
     .top-bar a:hover { color: var(--gold); }
 
     /* Flex layout */
@@ -144,40 +133,101 @@
       align-items:center;
       text-decoration:none;
       line-height:1;
-      margin-right: 1.65rem; /* more breathing room before nav starts */
+      margin-right: 1.65rem;
       flex: 0 0 auto;
       position: relative;
+      isolation: isolate; /* keeps halo behind logo clean */
     }
 
-    /* LOGO: max size that still stays clean */
-    .brand img{
-      height: 172px; /* BIG */
-      width: auto;
-      max-height: 190px;
-      display:block;
+    /* (A) LOGO HALO BEHIND THE LOGO (radial gradient) — makes it feel like it emits light */
+    .brand::before{
+      content:"";
+      position:absolute;
+      left: 50%;
+      top: 50%;
+      width: 320px;
+      height: 220px;
+      transform: translate(-50%, -52%);
+      pointer-events:none;
+      z-index: 0;
+      background:
+        radial-gradient(closest-side at 50% 50%,
+          rgba(242,193,78,.30),
+          rgba(242,193,78,.14) 42%,
+          rgba(242,193,78,0) 72%);
+      filter: blur(10px);
+      opacity: .95;
+      mix-blend-mode: screen; /* diffuses into navy nicely */
+    }
 
-      /* Blend into header — no box */
+    /* LOGO: bigger + grand + multi-layer glow that matches CTA gold */
+    .brand img{
+      height: 204px;            /* BIGGER + more grand */
+      width: auto;
+      max-height: 220px;
+      display:block;
       padding: 0;
       background: transparent;
       border: 0;
       border-radius: 0;
 
-      /* Premium soft gold glow + embedded feel */
-      filter: drop-shadow(0 22px 52px rgba(0,0,0,0.50))
-              drop-shadow(0 0 22px rgba(242,193,78,0.18));
+      /* (B) Multi-layer stacked soft glows — same gold as CTA */
+      filter:
+        drop-shadow(0 26px 66px rgba(0,0,0,0.55))
+        drop-shadow(0 0 10px rgba(242,193,78,0.18))
+        drop-shadow(0 0 18px rgba(242,193,78,0.16))
+        drop-shadow(0 0 30px rgba(242,193,78,0.12))
+        drop-shadow(0 0 44px rgba(242,193,78,0.08));
 
-      /* Subtle “tone blend” so logo blues feel embedded in navy header */
+      /* (C) Slightly soften edges + blend into header */
       mix-blend-mode: screen;
-      opacity: 0.98;
+      opacity: 0.985;
+
+      /* subtle “alive” polish */
       transition: transform .18s ease, filter .18s ease, opacity .18s ease;
+      will-change: transform, filter, opacity;
+      position: relative;
+      z-index: 1; /* above halo */
+    }
+
+    /* (D) Optional premium glow pulse (very slow + subtle, not flashy) */
+    @keyframes logoPulse{
+      0%, 100%{
+        filter:
+          drop-shadow(0 26px 66px rgba(0,0,0,0.55))
+          drop-shadow(0 0 10px rgba(242,193,78,0.16))
+          drop-shadow(0 0 18px rgba(242,193,78,0.14))
+          drop-shadow(0 0 30px rgba(242,193,78,0.10))
+          drop-shadow(0 0 44px rgba(242,193,78,0.06));
+        opacity: 0.985;
+        transform: translateY(0) scale(1);
+      }
+      50%{
+        filter:
+          drop-shadow(0 30px 74px rgba(0,0,0,0.58))
+          drop-shadow(0 0 12px rgba(242,193,78,0.20))
+          drop-shadow(0 0 22px rgba(242,193,78,0.18))
+          drop-shadow(0 0 36px rgba(242,193,78,0.12))
+          drop-shadow(0 0 52px rgba(242,193,78,0.08));
+        opacity: 1;
+        transform: translateY(-1px) scale(1.005);
+      }
+    }
+
+    .brand img{
+      animation: logoPulse 9.5s ease-in-out infinite;
     }
 
     /* Hover glow slightly stronger */
     @media (hover:hover){
       .brand:hover img{
         transform: translateY(-1px) scale(1.01);
-        filter: drop-shadow(0 26px 60px rgba(0,0,0,0.55))
-                drop-shadow(0 0 30px rgba(242,193,78,0.24));
+        filter:
+          drop-shadow(0 34px 82px rgba(0,0,0,0.60))
+          drop-shadow(0 0 14px rgba(242,193,78,0.24))
+          drop-shadow(0 0 24px rgba(242,193,78,0.20))
+          drop-shadow(0 0 40px rgba(242,193,78,0.14))
+          drop-shadow(0 0 58px rgba(242,193,78,0.10));
         opacity: 1;
       }
     }
@@ -205,21 +255,16 @@
       white-space: nowrap;
     }
 
-    /* (2) HEADER CTA: Restore strong gold + glowing style, matching site primary buttons
-       - does NOT change spacing or layout, only styling
-    */
+    /* (2) HEADER CTA: Restore strong gold + glowing style, matching site primary buttons */
     .top-bar-right .button.primary{
       background: linear-gradient(180deg, var(--gold), var(--gold2)) !important;
       color: #1b1205 !important;
       font-weight: 950 !important;
       border: 0 !important;
-
-      /* clear soft gold glow */
       box-shadow:
         0 14px 34px rgba(242,193,78,.30),
         0 0 24px rgba(242,193,78,.22),
         inset 0 1px 0 rgba(255,255,255,.28) !important;
-
       filter: saturate(1.08);
       transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
     }
@@ -244,19 +289,34 @@
 
     /* Keep header clean on smaller widths */
     @media (max-width: 980px){
-      .brand img{ height: 150px; max-height: 165px; }
+      .brand::before{
+        width: 290px;
+        height: 200px;
+        opacity: .9;
+      }
+      .brand img{
+        height: 178px;
+        max-height: 195px;
+      }
       .top-bar .menu > li > a{ padding: .95rem .72rem; font-size: 1.02rem; }
     }
 
     /* Mobile: stack gracefully */
     @media (max-width: 640px){
       .top-bar .menu { flex-wrap: wrap; }
-      .brand{ width: 100%; margin-right: 0; margin-bottom: .35rem; }
+      .brand{ width: 100%; margin-right: 0; margin-bottom: .35rem; justify-content: center; }
+      .brand::before{
+        width: 240px;
+        height: 170px;
+        mix-blend-mode: normal; /* avoid odd blending on some mobile browsers */
+        opacity: .7;
+      }
       .brand img{
-        height: 118px;
-        max-height: 130px;
+        height: 132px;
+        max-height: 145px;
         mix-blend-mode: normal; /* avoid weird blending on mobile browsers */
         opacity: 1;
+        animation: none; /* keep it stable on mobile */
       }
       .top-bar{ padding: .65rem .5rem; }
       .top-bar .menu > li > a{ padding: .78rem .65rem; font-size: 1.02rem; }
@@ -283,6 +343,7 @@
       pointer-events:none;
     }
     .hero > .row{ position:relative; z-index:1; }
+
     .pill{
       display:inline-flex;
       align-items:center;
@@ -321,6 +382,7 @@
     }
     .hero-card b { color:#fff; font-weight: 950; }
     .hero-card .small { color: rgba(255,255,255,.88); font-weight: 650; }
+
     /* HERO CARD TITLE accent only (not bullets) */
     .hero-card .hero-card-title{
       display:inline-block;
@@ -328,19 +390,9 @@
       border-bottom: 2px solid rgba(242,193,78,.55);
       text-shadow: 0 0 14px rgba(242,193,78,.24);
     }
-    .checks{
-      list-style:none;
-      margin:0;
-      padding:0;
-      display:grid;
-      gap:.7rem;
-    }
-    .checks li{
-      display:flex;
-      gap:.65rem;
-      align-items:flex-start;
-      color: rgba(255,255,255,.93);
-    }
+
+    .checks{ list-style:none; margin:0; padding:0; display:grid; gap:.7rem; }
+    .checks li{ display:flex; gap:.65rem; align-items:flex-start; color: rgba(255,255,255,.93); }
     .dot{
       width:10px;
       height:10px;
@@ -360,7 +412,6 @@
       color: #1b1205;
       font-weight: 950;
       border: 0;
-      /* subtle outer glow (not neon) */
       box-shadow: 0 14px 34px rgba(242,193,78,.22), 0 0 20px rgba(242,193,78,.16);
       transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
     }
@@ -416,7 +467,6 @@
     /* ========================= SERVICES — PERFECT UNIFORM GRID (same W/H) ========================= */
     .services-grid, .services-cards{ display:flex; flex-wrap: wrap; }
     .services-grid .column, .services-cards .column{ display:flex; }
-
     .tile{
       border-radius: 18px;
       overflow: hidden;
@@ -427,20 +477,8 @@
       display:flex;
       flex-direction: column;
     }
-    .tile img{
-      width:100%;
-      height: 190px;
-      object-fit: cover;
-      display:block;
-      flex: 0 0 auto;
-    }
-    .tile .pad{
-      padding: 1rem 1.15rem 1.2rem;
-      display:flex;
-      flex-direction: column;
-      flex: 1 1 auto;
-    }
-
+    .tile img{ width:100%; height: 190px; object-fit: cover; display:block; flex: 0 0 auto; }
+    .tile .pad{ padding: 1rem 1.15rem 1.2rem; display:flex; flex-direction: column; flex: 1 1 auto; }
     .service-title, .services-cards .card h4{
       font-family: inherit;
       font-weight: 950 !important;
@@ -449,7 +487,6 @@
       line-height: 1.2;
     }
     .service-title{ margin: 0 0 .45rem; }
-
     .services-grid .tile{ height: 420px; } /* fixed height for top 3 */
     .services-cards .card{
       height: 260px;
@@ -497,32 +534,30 @@
     .footer{ background: rgba(11,16,32,.98); color:#fff; padding: 2.2rem 0; }
     .footer a{ color:#fff; font-weight:800; }
     .footer a:hover{ color: var(--gold); }
+
     .spacer{ height: 1rem; }
     .tight { margin-top: .4rem; }
     .centered { max-width: 70ch; margin-left:auto; margin-right:auto; }
 
-    /* ========================= REVIEWS ORB — AUTO + MANUAL CONTROLS
+    /* =========================
+       REVIEWS ORB — AUTO + MANUAL CONTROLS
        Keep layout as-is, add subtle premium gold accents (NO layout changes)
        ========================= */
     .orb-wrap{
       position: relative;
       max-width: 900px;
       margin: 1.25rem auto 0;
-
-      /* keep accents contained to the reviews container */
       overflow: hidden;
-      border-radius: 26px; /* does not affect layout; just clips decorations */
+      border-radius: 26px; /* clips decorations only */
     }
 
-    /* (3) Decorative, minimal sparkles + soft shimmer behind card — contained */
+    /* Decorative, minimal sparkles + soft shimmer behind card — contained */
     .orb-wrap::before{
       content:"";
       position:absolute;
       inset:0;
       pointer-events:none;
       z-index:0;
-
-      /* tiny gold sparkle dots + faint shimmer band */
       background:
         radial-gradient(2px 2px at 10% 18%, rgba(242,193,78,.85), transparent 65%),
         radial-gradient(2px 2px at 18% 78%, rgba(242,193,78,.70), transparent 65%),
@@ -536,7 +571,6 @@
       filter: blur(.15px);
     }
 
-    /* thin decorative flourish near corners (no movement, no layout) */
     .orb-wrap::after{
       content:"";
       position:absolute;
@@ -553,20 +587,37 @@
       position: relative;
       border-radius: 22px;
       padding: 1.35rem 1.35rem 1.15rem;
+
+      /* (E) soft gold-tinted gradient wash inside the card (subtle + premium) */
       background:
-        radial-gradient(620px 280px at 20% 25%, rgba(242,193,78,.18), transparent 60%),
-        radial-gradient(520px 260px at 85% 35%, rgba(207,214,228,.22), transparent 62%),
-        linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.94));
+        radial-gradient(680px 320px at 18% 18%, rgba(242,193,78,.16), transparent 62%),
+        radial-gradient(560px 300px at 86% 34%, rgba(207,214,228,.20), transparent 64%),
+        linear-gradient(180deg, rgba(255,255,255,0.985), rgba(255,255,255,0.945));
+
       border: 1px solid rgba(0,0,0,.08);
 
-      /* Increased premium glow */
-      box-shadow: 0 22px 70px rgba(0,0,0,.11), 0 0 46px rgba(242,193,78,.14);
+      /* (F) elegant depth + gentle gold aura */
+      box-shadow:
+        0 22px 70px rgba(0,0,0,.11),
+        0 0 46px rgba(242,193,78,.14);
 
       overflow:hidden;
-      animation: orbFloat 7s ease-in-out infinite;
 
-      /* keep it above the wrap decorations */
+      animation: orbFloat 7s ease-in-out infinite;
       z-index: 1;
+
+      /* (G) hover lift (layout unchanged) */
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    @media (hover:hover){
+      .orb:hover{
+        transform: translateY(-3px);
+        border-color: rgba(242,193,78,.28);
+        box-shadow:
+          0 28px 84px rgba(0,0,0,.13),
+          0 0 58px rgba(242,193,78,.18);
+      }
     }
 
     /* faint shimmer highlight (already classy) */
@@ -580,13 +631,13 @@
       opacity:.55;
     }
 
-    /* subtle premium gold “sprinkles” (tiny dots) near edges — not busy */
+    /* subtle premium gold “sprinkles” (tiny dots) */
     .orb::after{
       content:"";
       position:absolute;
       inset:0;
       pointer-events:none;
-      opacity: .22;
+      opacity: .20;
       background:
         radial-gradient(2px 2px at 8% 18%, rgba(242,193,78,.9), transparent 60%),
         radial-gradient(2px 2px at 14% 82%, rgba(242,193,78,.75), transparent 60%),
@@ -597,6 +648,20 @@
         linear-gradient(90deg, transparent, rgba(242,193,78,.10), transparent);
       mix-blend-mode: multiply;
       filter: blur(.15px);
+    }
+
+    /* (H) thin gold accent line detail (verified/premium feel) */
+    .orb-accent-line{
+      position:absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(242,193,78,.80), transparent);
+      opacity: .70;
+      pointer-events:none;
+      filter: drop-shadow(0 0 10px rgba(242,193,78,.20));
+      z-index: 2;
     }
 
     @keyframes orbFloat{
@@ -613,12 +678,20 @@
       position:relative;
       z-index:1;
     }
+
     .orb-name{
       font-weight: 950;
       letter-spacing: -0.3px;
       color: rgba(11,16,32,.92);
       font-size: 1.08rem;
     }
+
+    /* (I) gentle star opacity animation for warmth/trust (subtle) */
+    @keyframes starWarmth{
+      0%, 100%{ opacity: .92; filter: drop-shadow(0 0 10px rgba(242,193,78,.16)); }
+      50%{ opacity: 1; filter: drop-shadow(0 0 16px rgba(242,193,78,.22)); }
+    }
+
     .orb-stars-text{
       font-weight: 950;
       letter-spacing: 1px;
@@ -626,7 +699,9 @@
       text-shadow: 0 0 18px rgba(242,193,78,.22);
       font-size: 1rem;
       white-space: nowrap;
+      animation: starWarmth 4.8s ease-in-out infinite;
     }
+
     .orb-quote{
       position:relative;
       z-index:1;
@@ -635,27 +710,66 @@
       line-height: 1.55;
       margin: .25rem 0 0;
     }
+
+    /* (J) “Google · reviews” area gets subtle verified emphasis */
     .orb-meta{
       position:relative;
       z-index:1;
       margin-top: .75rem;
       font-size: .92rem;
-      color: rgba(0,0,0,.55);
-      font-weight: 750;
+      color: rgba(0,0,0,.58);
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .32rem .6rem;
+      border-radius: 999px;
+      background: rgba(242,193,78,.10);
+      border: 1px solid rgba(242,193,78,.18);
+      box-shadow: 0 10px 22px rgba(0,0,0,.06), 0 0 18px rgba(242,193,78,.10);
     }
-    .orb-controls{ display:flex; justify-content:center; gap:.6rem; margin-top: .9rem; position:relative; z-index:1; }
+    .orb-meta::before{
+      content:"";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(242,193,78,.14);
+      flex: 0 0 auto;
+    }
+
+    .orb-controls{
+      display:flex;
+      justify-content:center;
+      gap:.6rem;
+      margin-top: .9rem;
+      position:relative;
+      z-index:1;
+    }
     .orb-controls .button{ margin: 0; }
     .orb-controls .button.hollow{
       border-color: rgba(11,16,32,.25);
       color: rgba(11,16,32,.86);
       font-weight: 900;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
     }
     .orb-controls .button.hollow:hover{
       border-color: rgba(242,193,78,.55);
       color: rgba(11,16,32,.92);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(0,0,0,.08), 0 0 22px rgba(242,193,78,.12);
     }
-    .orb-fade-out{ opacity: 0; transform: translateY(6px); transition: opacity .35s ease, transform .35s ease; }
-    .orb-fade-in{ opacity: 1; transform: translateY(0); transition: opacity .35s ease, transform .35s ease; }
+
+    .orb-fade-out{
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity .35s ease, transform .35s ease;
+    }
+    .orb-fade-in{
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity .35s ease, transform .35s ease;
+    }
   </style>
 </head>
 
@@ -695,8 +809,7 @@
         <div class="pill">10+ Years • Baton Rouge • Individuals + Businesses</div>
         <h1>Taxes, bookkeeping, and payroll — handled with clarity.</h1>
         <p class="lead">
-          We help you stay organized, file correctly, and feel confident moving forward.
-          In-person in Baton Rouge or remote support when you need it.
+          We help you stay organized, file correctly, and feel confident moving forward. In-person in Baton Rouge or remote support when you need it.
         </p>
         <div>
           <a href="#book" class="button large primary">Book a 30-Min Appointment</a>
@@ -729,7 +842,7 @@
   <section id="services" class="section">
     <div class="row column text-center">
       <h2 class="section-title">Tax Preparation Services in Baton Rouge, Louisiana</h2>
-      <p class="muted centered"> Professional help for tax season — and support that goes beyond filing. </p>
+      <p class="muted centered">Professional help for tax season — and support that goes beyond filing.</p>
     </div>
 
     <div class="row small-up-1 medium-up-3 services-grid">
@@ -799,6 +912,7 @@
         <div class="card">
           <h4 style="margin-bottom:.25rem;"><strong>Prefer a call/text back?</strong></h4>
           <p class="muted" style="margin-top:0;">This goes straight to your inbox via Formspree.</p>
+
           <form action="https://formspree.io/f/xjgrgqkb" method="POST">
             <input type="hidden" name="_subject" value="New Lead — E Tax Pro Solutions Website">
             <input type="hidden" name="_gotcha" style="display:none">
@@ -840,10 +954,12 @@
             </label>
 
             <button type="submit" class="button primary expanded">Send Request</button>
+
             <p class="muted" style="font-size:.9rem; margin: .75rem 0 0;">
               By submitting, you agree we may contact you by phone/text/email.
             </p>
           </form>
+
           <div id="thankyou" style="margin-top:1rem;"></div>
         </div>
       </div>
@@ -930,7 +1046,7 @@
   <section id="team" class="section">
     <div class="row column text-center">
       <h2 class="section-title">Team</h2>
-      <p class="muted centered"> Real people, clear answers, and a process that keeps your stress low. </p>
+      <p class="muted centered">Real people, clear answers, and a process that keeps your stress low.</p>
     </div>
 
     <div class="row small-up-1 medium-up-3">
@@ -964,7 +1080,7 @@
   <section id="why" class="section alt">
     <div class="row column text-center">
       <h2 class="section-title">Why E Tax Pro Solutions</h2>
-      <p class="muted centered"> You shouldn’t have to “hope it’s right.” You should know it’s right. </p>
+      <p class="muted centered">You shouldn’t have to “hope it’s right.” You should know it’s right.</p>
     </div>
 
     <div class="row small-up-1 medium-up-3">
@@ -999,13 +1115,17 @@
 
       <div class="orb-wrap">
         <div id="reviewOrb" class="orb orb-fade-in" aria-live="polite">
+          <div class="orb-accent-line" aria-hidden="true"></div>
+
           <div class="orb-top">
             <div class="orb-name" id="orbName">Moses Ihachi</div>
             <div class="orb-stars-text" id="orbStars">★★★★★</div>
           </div>
+
           <p class="orb-quote" id="orbText">
             He’s been handling my taxes for a while now and I’ve never had a single issue. Everything is clear, easy, and done right the first time.
           </p>
+
           <div class="orb-meta" id="orbMeta">Google Review</div>
         </div>
 
@@ -1021,7 +1141,8 @@
   <section id="book" class="section alt">
     <div class="row column text-center">
       <h2 class="section-title">Book an Appointment</h2>
-      <p class="muted centered"> Choose a time that works for you. If you prefer, call us and we’ll schedule it together. </p>
+      <p class="muted centered">Choose a time that works for you. If you prefer, call us and we’ll schedule it together.</p>
+
       <div style="margin-top:.75rem;">
         <a href="tel:+1-225-247-9803" class="button hollow">Call (225) 247-9803</a>
         <a href="#contact" class="button primary">Send a Message</a>
@@ -1044,7 +1165,7 @@
   <section id="contact" class="section">
     <div class="row column text-center">
       <h2 class="section-title">Contact</h2>
-      <p class="muted centered"> Call us, book online, or send a quick message — we’ll point you to the cleanest next step. </p>
+      <p class="muted centered">Call us, book online, or send a quick message — we’ll point you to the cleanest next step.</p>
     </div>
 
     <div class="row">
@@ -1056,6 +1177,7 @@
             <strong>Location:</strong> Baton Rouge, Louisiana<br />
             <strong>Hours:</strong> By appointment
           </p>
+
           <div class="row">
             <div class="medium-6 columns">
               <a href="#book" class="button primary expanded">Book Now</a>
@@ -1071,6 +1193,7 @@
         <div class="card">
           <h4><strong>Send a message</strong></h4>
           <p class="muted" style="margin-top:0;">This also goes to your inbox via Formspree.</p>
+
           <form action="https://formspree.io/f/xjgrgqkb" method="POST">
             <input type="hidden" name="_subject" value="New Contact — E Tax Pro Solutions Website">
             <input type="text" name="_gotcha" style="display:none">
@@ -1079,11 +1202,9 @@
             <label>Name
               <input type="text" name="name" required>
             </label>
-
             <label>Email
               <input type="email" name="email" required>
             </label>
-
             <label>Message
               <textarea name="message" rows="4" placeholder="Tell us what’s going on..." required></textarea>
             </label>
@@ -1103,6 +1224,7 @@
         <p style="margin:0; color: rgba(255,255,255,.82);">
           Tax preparation • bookkeeping • payroll • planning — Baton Rouge, LA
         </p>
+
         <div style="margin-top:.9rem;">
           <a href="tel:+1-225-247-9803">(225) 247-9803</a>
           <span style="opacity:.5;"> • </span>
@@ -1126,7 +1248,6 @@
   <!-- Scripts -->
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.js"></script>
-
   <script>
     $(document).foundation();
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -1185,9 +1306,11 @@
       setTimeout(() => {
         orbName.textContent = r.name;
         orbText.textContent = r.text;
-        orbMeta.textContent = `${r.source} • ${r.meta}`;
-        orbStars.textContent = starsText(r.stars);
 
+        // FIXED: template literal was broken in your pasted code
+        orbMeta.textContent = `${r.source} • ${r.meta}`;
+
+        orbStars.textContent = starsText(r.stars);
         orb.classList.remove("orb-fade-out");
         orb.classList.add("orb-fade-in");
       }, 360);
