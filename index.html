@@ -20,7 +20,7 @@
   <link rel="manifest" href="site.webmanifest" />
   <link rel="icon" href="favicon.ico" />
 
-  <!-- ✅ LocalBusiness Schema (Google reads this even if visitors don’t see it) -->
+  <!-- ✅ LocalBusiness Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -58,6 +58,7 @@
       --navy:#0b1020;
       --navy2:#111a33;
 
+      /* Slightly darker, richer gold + reduced glow */
       --gold:#e2b13c;
       --gold2:#c99520;
       --gold3:#ffd36a;
@@ -67,6 +68,7 @@
       --ink:#0e1222;
       --navy-header:#0b1020;
 
+      /* CTA glow tuning (darker + less intense) */
       --cta-glow: rgba(226,177,60,.18);
       --cta-glow-strong: rgba(226,177,60,.26);
       --cta-depth: rgba(0,0,0,.18);
@@ -114,12 +116,10 @@
       box-shadow: none !important;
       background: transparent !important;
     }
-
-    /* ✅ Shrink logo to reduce header height (links/phone/button unchanged) */
     .brand img{
-      height: 64px;          /* was 220px */
+      height: 220px;
       width: auto;
-      max-height: 64px;      /* keeps header tight */
+      max-height: 240px;
       display:block;
       background: transparent !important;
       border: 0;
@@ -128,7 +128,7 @@
       opacity: 1;
     }
 
-    /* Nav links (unchanged) */
+    /* Nav links */
     .top-bar-left .menu > li:not(.menu-text){ margin-left: .25rem; }
     .top-bar .menu > li > a{
       padding: 1.05rem .9rem;
@@ -138,7 +138,7 @@
       white-space: nowrap;
     }
 
-    /* Right-side phone + button spacing (unchanged) */
+    /* Right-side phone + button spacing */
     .top-bar-right .menu{
       display:flex;
       align-items:center;
@@ -195,12 +195,13 @@
       color: var(--gold);
     }
 
-    /* Responsive logo only (links/phone/button remain same) */
+    /* Keep header clean on smaller widths */
     @media (max-width: 980px){
-      .brand img{ height: 56px; max-height: 56px; }
+      .brand img{ height: 190px; max-height: 210px; }
       .top-bar .menu > li > a{ padding: .95rem .72rem; font-size: 1.02rem; }
     }
 
+    /* Mobile: stack gracefully */
     @media (max-width: 640px){
       .top-bar .menu { flex-wrap: wrap; }
       .brand{
@@ -209,7 +210,7 @@
         margin-bottom: .35rem;
         justify-content: center;
       }
-      .brand img{ height: 48px; max-height: 48px; }
+      .brand img{ height: 150px; max-height: 165px; }
       .top-bar{ padding: .65rem .5rem; }
       .top-bar .menu > li > a{ padding: .78rem .65rem; font-size: 1.02rem; }
     }
@@ -427,18 +428,56 @@
     .footer a{ color:#fff; font-weight:800; }
     .footer a:hover{ color: var(--gold); }
 
-    /* ========================= REVIEWS (CLEAN): Option A Soft Radial Glow + Floating Card ========================= */
+    /* ========================= REVIEWS: CLEAN + PHOTO STRIP ========================= */
     #reviews{
       position: relative;
       overflow: hidden;
-
-      /* ✅ Option A: soft radial glow (no stars) */
-      background:
-        radial-gradient(circle at top center, rgba(226,177,60,.10), transparent 58%),
-        radial-gradient(900px 360px at 50% 70%, rgba(11,16,32,.04), transparent 62%),
-        #fff;
     }
+
+    /* ✅ Remove the huge background stars entirely */
+    #reviews::before,
+    #reviews::after{
+      content: none !important;
+    }
+
     #reviews .row{ position:relative; z-index:1; }
+
+    /* Review photos layout */
+    .review-photos{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      max-width: 1000px;
+      margin: 1.2rem auto 0;
+    }
+
+    .review-photo-card{
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 12px 28px rgba(0,0,0,.06);
+      background: #fff;
+    }
+
+    .review-photo-card img{
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .review-photo-caption{
+      padding: .75rem .95rem;
+      font-weight: 900;
+      color: rgba(11,16,32,.92);
+      border-top: 1px solid rgba(0,0,0,.06);
+      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(246,247,251,.96));
+    }
+
+    @media (max-width: 740px){
+      .review-photos{ grid-template-columns: 1fr; }
+      .review-photo-card img{ height: 240px; }
+    }
 
     /* Glowing pill for "Google • x reviews" */
     .meta-pill{
@@ -469,7 +508,7 @@
       box-shadow: 0 0 0 4px rgba(226,177,60,.16);
     }
 
-    /* ✅ Floating review card (micro-animation) */
+    /* ========================= REVIEW ORB: SOFT BOUNCE ========================= */
     #reviewOrb{
       animation: orbFloat 6.5s ease-in-out infinite;
       will-change: transform;
@@ -833,6 +872,19 @@
       <h2 class="section-title">Reviews</h2>
       <p class="muted centered">Real Google reviews from clients who’ve worked with us.</p>
 
+      <!-- ✅ Review screenshots (your two images) -->
+      <div class="review-photos" aria-label="Google review screenshots">
+        <div class="review-photo-card">
+          <img src="assets/reviews/review-1.png" alt="Google review screenshot for E Tax Pro Solutions">
+          <div class="review-photo-caption">Google Review Screenshot</div>
+        </div>
+        <div class="review-photo-card">
+          <img src="assets/reviews/review-2.png" alt="Google review screenshot for E Tax Pro Solutions">
+          <div class="review-photo-caption">Google Review Screenshot</div>
+        </div>
+      </div>
+
+      <!-- Rotating review orb -->
       <div class="card" style="max-width:900px; margin: 1.25rem auto 0;">
         <div id="reviewOrb" aria-live="polite">
           <div style="display:flex; align-items:center; justify-content: space-between; gap:.75rem; margin-bottom:.55rem;">
