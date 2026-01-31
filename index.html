@@ -26,6 +26,25 @@
   <!-- Calendly Embed Styles -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
 
+  <!-- LocalBusiness schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AccountingService",
+    "name": "E Tax Pro Solutions",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1543 Delplaza Dr # 10",
+      "addressLocality": "Baton Rouge",
+      "addressRegion": "LA",
+      "postalCode": "70815",
+      "addressCountry": "US"
+    },
+    "telephone": "+1-225-247-9803",
+    "areaServed": "Baton Rouge, LA"
+  }
+  </script>
+
   <style>
     :root{
       --navy:#0b1020;
@@ -42,11 +61,6 @@
 
       /* ONE source of truth for the header background */
       --navy-header: #0b1020;
-
-      /* CTA glow tuning (consistent sitewide) */
-      --cta-glow: rgba(242,193,78,.24);
-      --cta-glow-strong: rgba(242,193,78,.34);
-      --cta-depth: rgba(0,0,0,.16);
     }
 
     html { scroll-behavior: smooth; }
@@ -142,26 +156,33 @@
       margin-right: 1.65rem;
       flex: 0 0 auto;
 
-      /* IMPORTANT: isolate layering so glow stays behind */
+      /* isolate layering so glow stays behind */
       position: relative;
       isolation: isolate;
 
-      /* ====== BACKGROUND BLENDING FIX (NO VISIBLE SQUARE) ======
-         Force the container to be exactly the header navy with NO contrast,
-         then fade its edges perfectly into the same navy so the rectangle
-         cannot be perceived at all. */
-      background: var(--navy-header) !important;
+      /* EDGE BLENDING: remove any “container square” entirely */
+      background: transparent !important;
       border: 0 !important;
       box-shadow: none !important;
       outline: none !important;
-
-      /* Keep layout identical while allowing a clean fade */
       padding: 0;
       border-radius: 0;
 
-      /* Controlled edge fade (best): mask-image */
-      -webkit-mask-image: radial-gradient(closest-side at 50% 50%, rgba(0,0,0,1) 72%, rgba(0,0,0,.92) 82%, rgba(0,0,0,0) 100%);
-              mask-image: radial-gradient(closest-side at 50% 50%, rgba(0,0,0,1) 72%, rgba(0,0,0,.92) 82%, rgba(0,0,0,0) 100%);
+      /* Make sure nothing can show a hard edge even if the browser paints something */
+      -webkit-tap-highlight-color: transparent;
+
+      /* Perfect fade safety net: the clickable area itself fades to nothing.
+         This prevents ANY faint top/right/bottom edge from being visible. */
+      -webkit-mask-image: radial-gradient(closest-side at 50% 50%,
+        rgba(0,0,0,1) 66%,
+        rgba(0,0,0,.96) 76%,
+        rgba(0,0,0,.70) 86%,
+        rgba(0,0,0,0) 100%);
+              mask-image: radial-gradient(closest-side at 50% 50%,
+        rgba(0,0,0,1) 66%,
+        rgba(0,0,0,.96) 76%,
+        rgba(0,0,0,.70) 86%,
+        rgba(0,0,0,0) 100%);
       -webkit-mask-repeat: no-repeat;
               mask-repeat: no-repeat;
       -webkit-mask-size: 100% 100%;
@@ -170,11 +191,9 @@
               mask-position: center;
     }
 
-    /* Fallback if mask-image unsupported: ensure ZERO contrast edges */
+    /* Fallback if mask-image unsupported */
     @supports not ((mask-image: radial-gradient(circle, #000, transparent)) or (-webkit-mask-image: radial-gradient(circle, #000, transparent))){
-      .brand{
-        background: transparent !important;
-      }
+      .brand{ background: transparent !important; }
     }
 
     /* =========================
@@ -193,7 +212,6 @@
       pointer-events:none;
       z-index: 0;
 
-      /* bright but soft premium halo */
       background:
         radial-gradient(closest-side at 50% 50%,
           rgba(242,193,78,.52),
@@ -225,30 +243,26 @@
       opacity: .95;
     }
 
-    /* LOGO: BIG, SHARP, READABLE — NO mix-blend-mode, NO heavy glow on the logo itself */
+    /* LOGO: slightly bigger, still sharp; NO glow on image itself */
     .brand img{
-      height: 204px; /* BIGGER + more grand */
+      height: 218px; /* increased slightly for readability + drama */
       width: auto;
-      max-height: 220px;
+      max-height: 236px;
       display:block;
       padding: 0;
       background: transparent !important;
       border: 0;
       border-radius: 0;
 
-      /* Keep it crisp (no blend modes, no glow that washes text) */
       mix-blend-mode: normal;
-      filter:
-        drop-shadow(0 26px 66px rgba(0,0,0,0.55)); /* depth only (not gold glow) */
-
+      filter: drop-shadow(0 26px 66px rgba(0,0,0,0.55));
       opacity: 1;
       transition: transform .18s ease, filter .18s ease;
       will-change: transform, filter;
       position: relative;
-      z-index: 1; /* ABOVE halo layers */
+      z-index: 1;
     }
 
-    /* Very subtle premium motion without altering readability */
     @keyframes logoFloat{
       0%, 100%{ transform: translateY(0) scale(1); }
       50%{ transform: translateY(-1px) scale(1.003); }
@@ -286,82 +300,76 @@
     }
 
     /* =========================
-       BUTTONS — CONSISTENT PREMIUM WARM GOLD GLOW (SITEWIDE)
-       (Header CTA inherits same system; no layout changes)
+       CTA BUTTONS — UNIFIED GOLD COLOR + GLOW SYSTEM (YOUR EXACT SNIPPET)
+       - One source of truth for gold
+       - Sitewide glow
+       - Stronger header CTA glow
        ========================= */
+
+    /* GOLD SOURCE */
+    :root{
+      --gold:#f2c14e;
+      --gold2:#d9a92c;
+    }
+
+    /* BASE CTA (ALL PRIMARY BUTTONS) */
     .button.primary{
-      background: linear-gradient(180deg, var(--gold3) 0%, var(--gold) 35%, var(--gold2) 100%);
-      color: #1b1205 !important;
+      background: linear-gradient(180deg, var(--gold), var(--gold2));
+      color: #1b1205;
       font-weight: 950;
-      border: 0 !important;
+      border: 0;
+      letter-spacing: -0.2px;
 
+      /* premium soft gold glow */
       box-shadow:
-        0 14px 34px var(--cta-depth),
-        0 0 22px var(--cta-glow),
-        0 0 44px rgba(242,193,78,.10),
-        inset 0 1px 0 rgba(255,255,255,.32) !important;
+        0 14px 34px rgba(242,193,78,.24),
+        0 0 22px rgba(242,193,78,.18),
+        inset 0 1px 0 rgba(255,255,255,.26);
 
-      filter: saturate(1.08);
+      filter: saturate(1.06);
       transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
     }
 
-    .button.primary:hover,
-    .button.primary:focus{
-      filter: brightness(1.03) saturate(1.12);
-      box-shadow:
-        0 18px 48px rgba(0,0,0,.18),
-        0 0 32px var(--cta-glow-strong),
-        0 0 62px rgba(242,193,78,.14),
-        inset 0 1px 0 rgba(255,255,255,.36) !important;
+    /* HOVER */
+    .button.primary:hover{
       transform: translateY(-1px);
-      outline: none;
+      filter: brightness(1.03) saturate(1.10);
+      box-shadow:
+        0 18px 48px rgba(242,193,78,.30),
+        0 0 34px rgba(242,193,78,.24),
+        inset 0 1px 0 rgba(255,255,255,.32);
     }
 
+    /* ACTIVE */
     .button.primary:active{
       transform: translateY(0);
-      filter: brightness(.99) saturate(1.06);
+      filter: brightness(.99) saturate(1.05);
       box-shadow:
-        0 12px 30px rgba(0,0,0,.15),
-        0 0 18px rgba(242,193,78,.18),
-        0 0 40px rgba(242,193,78,.10),
-        inset 0 1px 0 rgba(255,255,255,.26) !important;
+        0 12px 30px rgba(242,193,78,.22),
+        0 0 18px rgba(242,193,78,.16),
+        inset 0 1px 0 rgba(255,255,255,.22);
     }
 
-    /* Header CTA (kept, but now truly consistent with sitewide primary styling) */
+    /* =========================
+       HEADER CTA BOOST
+       (same system, just louder)
+       ========================= */
     .top-bar-right .button.primary{
-      background: linear-gradient(180deg, var(--gold3) 0%, var(--gold) 35%, var(--gold2) 100%) !important;
-      color: #1b1205 !important;
-      font-weight: 950 !important;
-      border: 0 !important;
       box-shadow:
-        0 14px 34px rgba(0,0,0,.18),
-        0 0 22px var(--cta-glow),
-        0 0 44px rgba(242,193,78,.10),
-        inset 0 1px 0 rgba(255,255,255,.32) !important;
-      filter: saturate(1.08);
-      transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
-    }
-    .top-bar-right .button.primary:hover,
-    .top-bar-right .button.primary:focus{
-      filter: brightness(1.03) saturate(1.12);
-      box-shadow:
-        0 18px 48px rgba(0,0,0,.20),
-        0 0 32px var(--cta-glow-strong),
-        0 0 62px rgba(242,193,78,.14),
-        inset 0 1px 0 rgba(255,255,255,.36) !important;
-      transform: translateY(-1px);
-      outline: none;
-    }
-    .top-bar-right .button.primary:active{
-      transform: translateY(0);
-      filter: brightness(.99) saturate(1.06);
-      box-shadow:
-        0 12px 30px rgba(0,0,0,.16),
-        0 0 18px rgba(242,193,78,.18),
-        0 0 40px rgba(242,193,78,.10),
-        inset 0 1px 0 rgba(255,255,255,.26) !important;
+        0 16px 40px rgba(242,193,78,.34),
+        0 0 30px rgba(242,193,78,.26),
+        inset 0 1px 0 rgba(255,255,255,.30);
     }
 
+    /* HEADER CTA HOVER */
+    .top-bar-right .button.primary:hover{
+      box-shadow:
+        0 22px 58px rgba(242,193,78,.40),
+        0 0 42px rgba(242,193,78,.30),
+        inset 0 1px 0 rgba(255,255,255,.36);
+    }
+
+    /* Keep the existing “light hollow” hero button behavior */
     .button.hollow.light{
       border-color: rgba(255,255,255,.75);
       color:#fff;
@@ -376,7 +384,7 @@
     @media (max-width: 980px){
       .brand::before{ width: 320px; height: 220px; opacity: 1; }
       .brand::after{ width: 400px; height: 280px; opacity: .9; }
-      .brand img{ height: 178px; max-height: 195px; }
+      .brand img{ height: 192px; max-height: 206px; }
       .top-bar .menu > li > a{ padding: .95rem .72rem; font-size: 1.02rem; }
     }
 
@@ -392,9 +400,9 @@
       .brand::before{ width: 260px; height: 180px; opacity: .95; }
       .brand::after{ width: 320px; height: 220px; opacity: .85; }
       .brand img{
-        height: 132px;
-        max-height: 145px;
-        animation: none; /* keep it stable on mobile */
+        height: 140px; /* slightly larger than before */
+        max-height: 152px;
+        animation: none;
       }
       .top-bar{ padding: .65rem .5rem; }
       .top-bar .menu > li > a{ padding: .78rem .65rem; font-size: 1.02rem; }
@@ -460,7 +468,6 @@
     .hero-card b { color:#fff; font-weight: 950; }
     .hero-card .small { color: rgba(255,255,255,.88); font-weight: 650; }
 
-    /* HERO CARD TITLE accent only (not bullets) */
     .hero-card .hero-card-title{
       display:inline-block;
       padding-bottom: .25rem;
@@ -496,7 +503,7 @@
 
     /* Sections */
     .section { padding: 3.8rem 0; }
-    .section.alt { background: var(--paper); }
+    .section.alt { background: #f6f7fb; }
     .section-title{
       font-weight: 950;
       letter-spacing: -0.7px;
@@ -564,7 +571,7 @@
       line-height: 1.2;
     }
     .service-title{ margin: 0 0 .45rem; }
-    .services-grid .tile{ height: 420px; } /* fixed height for top 3 */
+    .services-grid .tile{ height: 420px; }
     .services-cards .card{
       height: 260px;
       width:100%;
@@ -577,7 +584,7 @@
     .pricing-grid .column{ display:flex; }
     .pricing-grid .card{
       width:100%;
-      height: 520px; /* fixed height so all align */
+      height: 520px;
       display:flex;
       flex-direction: column;
     }
@@ -622,17 +629,15 @@
 
     /* =========================
        REVIEWS ORB — AUTO + MANUAL CONTROLS
-       Keep layout as-is, add subtle premium gold accents (NO layout changes)
        ========================= */
     .orb-wrap{
       position: relative;
       max-width: 900px;
       margin: 1.25rem auto 0;
       overflow: hidden;
-      border-radius: 26px; /* clips decorations only */
+      border-radius: 26px;
     }
 
-    /* Decorative, minimal sparkles + soft shimmer behind card — contained */
     .orb-wrap::before{
       content:"";
       position:absolute;
@@ -1232,7 +1237,7 @@
           <h4><strong>Get in touch</strong></h4>
           <p class="muted">
             <strong>Phone:</strong> <a href="tel:+1-225-247-9803">(225) 247-9803</a><br />
-            <strong>Location:</strong> Baton Rouge, Louisiana<br />
+            <strong>Address:</strong> 1543 Delplaza Dr # 10, Baton Rouge, LA 70815<br />
             <strong>Hours:</strong> By appointment
           </p>
           <div class="row">
@@ -1283,6 +1288,9 @@
         <p style="margin:0; color: rgba(255,255,255,.82);">
           Tax preparation • bookkeeping • payroll • planning — Baton Rouge, LA
         </p>
+        <p style="margin:.55rem 0 0; color: rgba(255,255,255,.82);">
+          <strong>Address:</strong> 1543 Delplaza Dr # 10, Baton Rouge, LA 70815
+        </p>
         <div style="margin-top:.9rem;">
           <a href="tel:+1-225-247-9803">(225) 247-9803</a>
           <span style="opacity:.5;"> • </span>
@@ -1311,11 +1319,7 @@
     $(document).foundation();
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Reviews structured so you can add more later easily:
-    // Add another object: { source:"Google", name:"...", stars:5, meta:"...", text:"..." }
-    // NOTE: Removed "photos" everywhere as requested.
     const testimonials = [
-      // Google Reviews
       { source:"Google", name:"Moses Ihachi", stars:5, meta:"1 review", text:"He’s been handling my taxes for a while now and I’ve never had a single issue. Everything is clear, easy, and done right the first time." },
       { source:"Google", name:"Pita Kabs", stars:5, meta:"Local Guide • 21 reviews", text:"I’m a repeat customer and I don’t see that changing. I recommend him to all my family and friends." },
       { source:"Google", name:"Eldridge Opwondo", stars:5, meta:"6 reviews", text:"I always leave confident in the work he's done. Thats why we will always keep coming back and recommend him to everyone." },
@@ -1328,7 +1332,6 @@
       { source:"Google", name:"Jackline Mukenya", stars:5, meta:"1 review", text:"Mr. E made the tax process very easy. He is trustworthy and easy to work with. I definitely recommend them for tax services." },
       { source:"Google", name:"Helien Kabati", stars:5, meta:"1 review", text:"They're are very professional and actually explained everything clearly." },
 
-      // Additional Testimonials (non-Google)
       { source:"Client", name:"Marcus L. — Independent Contractor (1099)", stars:5, meta:"Testimonial", text:"I’ve done my own taxes for years and always felt unsure. This time everything was explained clearly, my return was filed fast, and I actually understood where my money was going. Super smooth process." },
       { source:"Client", name:"Danielle R. — Small Business Owner, Rouge Beauty Studio", stars:5, meta:"Testimonial", text:"Running a business and staying on top of taxes was stressing me out. They handled my bookkeeping and payroll so I could focus on clients. Huge weight off my shoulders." },
       { source:"Client", name:"James W. — W-2 Employee", stars:5, meta:"Testimonial", text:"I booked an appointment just to make sure everything was right, and I’m glad I did. They caught things I would’ve missed and made the whole process easy and straightforward." },
@@ -1366,9 +1369,7 @@
         orbName.textContent = r.name;
         orbText.textContent = r.text;
 
-        // Proper template literal
         orbMeta.textContent = `${r.source} • ${r.meta}`;
-
         orbStars.textContent = starsText(r.stars);
 
         orb.classList.remove("orb-fade-out");
@@ -1391,11 +1392,9 @@
       timer = setInterval(nextReview, 5200);
     }
 
-    // init
     renderReview(reviewIndex);
     resetTimer();
 
-    // manual controls (and keep auto-rotating)
     nextBtn.addEventListener("click", () => { nextReview(); resetTimer(); });
     prevBtn.addEventListener("click", () => { prevReview(); resetTimer(); });
   </script>
