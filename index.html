@@ -21,7 +21,6 @@
   <link rel="icon" href="favicon.ico" />
 
   <!-- ✅ LocalBusiness Schema (Google reads this even if visitors don’t see it) -->
-  <!-- Replace the "url" with your real website URL if you want it perfect -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -40,14 +39,8 @@
       "addressCountry": "US"
     },
     "areaServed": [
-      {
-        "@type": "City",
-        "name": "Baton Rouge"
-      },
-      {
-        "@type": "AdministrativeArea",
-        "name": "Louisiana"
-      }
+      { "@type": "City", "name": "Baton Rouge" },
+      { "@type": "AdministrativeArea", "name": "Louisiana" }
     ],
     "openingHours": "By appointment",
     "sameAs": []
@@ -66,9 +59,9 @@
       --navy2:#111a33;
 
       /* Slightly darker, richer gold + reduced glow */
-      --gold:#e2b13c;   /* darker than before */
-      --gold2:#c99520;  /* deeper */
-      --gold3:#ffd36a;  /* highlight */
+      --gold:#e2b13c;
+      --gold2:#c99520;
+      --gold3:#ffd36a;
 
       --silver:#cfd6e4;
       --paper:#f6f7fb;
@@ -124,14 +117,14 @@
       background: transparent !important;
     }
     .brand img{
-      height: 220px; /* bigger + grand */
+      height: 220px;
       width: auto;
       max-height: 240px;
       display:block;
       background: transparent !important;
       border: 0;
       border-radius: 0;
-      filter: none; /* remove any logo effects */
+      filter: none;
       opacity: 1;
     }
 
@@ -191,6 +184,7 @@
         0 0 30px rgba(226,177,60,.08),
         inset 0 1px 0 rgba(255,255,255,.22) !important;
     }
+
     .button.hollow.light{
       border-color: rgba(255,255,255,.75);
       color:#fff;
@@ -242,6 +236,7 @@
       pointer-events:none;
     }
     .hero > .row{ position:relative; z-index:1; }
+
     .pill{
       display:inline-flex;
       align-items:center;
@@ -337,6 +332,7 @@
       background: #fff;
     }
     .card h4, .card h5 { font-weight: 950 !important; letter-spacing: -0.3px; }
+
     .tag{
       display:inline-block;
       font-weight: 950;
@@ -431,6 +427,91 @@
     }
     .footer a{ color:#fff; font-weight:800; }
     .footer a:hover{ color: var(--gold); }
+
+    /* ========================= REVIEWS: BIG STAR BACKDROP + META GLOW PILL ========================= */
+    #reviews{
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Big subtle 5-star background */
+    #reviews::before{
+      content:"★★★★★";
+      position:absolute;
+      left:50%;
+      top:60%; /* ✅ safer: keeps stars away from section title */
+      transform: translate(-50%, -50%);
+      font-size: clamp(120px, 18vw, 260px);
+      letter-spacing: .22em;
+      color: rgba(226,177,60,.12);
+      text-shadow: 0 20px 60px rgba(0,0,0,.06);
+      pointer-events:none;
+      user-select:none;
+      white-space: nowrap;
+      filter: blur(.3px); /* ✅ makes it feel like soft light */
+    }
+
+    /* Soft glow haze behind stars */
+    #reviews::after{
+      content:"";
+      position:absolute;
+      inset:-20%;
+      background:
+        radial-gradient(700px 300px at 50% 50%, rgba(226,177,60,.08), transparent 60%),
+        radial-gradient(600px 260px at 50% 75%, rgba(11,16,32,.04), transparent 60%);
+      pointer-events:none;
+    }
+
+    /* Keep content above the background */
+    #reviews .row{ position:relative; z-index:1; }
+
+    /* Glowing pill for "Google • x reviews" */
+    .meta-pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.5rem;
+      padding: .45rem .85rem;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: .92rem;
+      color: rgba(11,16,32,.88);
+      background: rgba(226,177,60,.18);
+      border: 1px solid rgba(226,177,60,.34);
+      box-shadow:
+        0 10px 26px rgba(0,0,0,.06),
+        0 0 22px rgba(226,177,60,.18);
+      margin-left: auto;
+      margin-right: auto;
+      width: fit-content;
+    }
+    .meta-pill::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background: var(--gold2);
+      box-shadow: 0 0 0 4px rgba(226,177,60,.16);
+    }
+
+    /* ========================= REVIEW ORB: SOFT BOUNCE ========================= */
+    #reviewOrb{
+      animation: orbFloat 6.5s ease-in-out infinite;
+      will-change: transform;
+      position: relative;
+      z-index: 2; /* ✅ always above stars */
+    }
+    #reviewOrb:hover{ animation-play-state: paused; }
+
+    @keyframes orbFloat{
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-8px); }
+      100% { transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      #reviewOrb{ animation: none; }
+    }
   </style>
 </head>
 
@@ -441,7 +522,6 @@
       <ul class="menu">
         <li class="menu-text">
           <a href="#top" class="brand" aria-label="E Tax Pro Solutions Home">
-            <!-- IMPORTANT: ensure your logo is at assets/logo.png -->
             <img src="assets/logo.png" alt="E Tax Pro Solutions logo">
           </a>
         </li>
@@ -473,10 +553,12 @@
           We help you stay organized, file correctly, and feel confident moving forward.
           In-person in Baton Rouge or remote support when you need it.
         </p>
+
         <div>
           <a href="#book" class="button large primary">Book a 30-Min Appointment</a>
           <a href="tel:+1-225-247-9803" class="button large hollow light">Call Now</a>
         </div>
+
         <div class="spacer"></div>
         <p style="margin:0; color: rgba(255,255,255,.88); font-size: 1rem; font-weight: 700;">
           Prefer a call/text back? Use the quick form below the Services section.
@@ -787,7 +869,7 @@
             He’s been handling my taxes for a while now and I’ve never had a single issue. Everything is clear, easy, and done right the first time.
           </p>
 
-          <div style="margin-top:.75rem; font-size:.92rem; color: rgba(0,0,0,.58); font-weight:800;" id="orbMeta">Google • 1 review</div>
+          <div style="margin-top:.75rem;" id="orbMeta" class="meta-pill">Google • 1 review</div>
         </div>
 
         <div style="display:flex; justify-content:center; gap:.6rem; margin-top: .9rem;">
@@ -803,6 +885,7 @@
     <div class="row column text-center">
       <h2 class="section-title">Book an Appointment</h2>
       <p class="muted centered">Choose a time that works for you. If you prefer, call us and we’ll schedule it together.</p>
+
       <div style="margin-top:.75rem;">
         <a href="tel:+1-225-247-9803" class="button hollow">Call (225) 247-9803</a>
         <a href="#contact" class="button primary">Send a Message</a>
@@ -814,9 +897,6 @@
         <div class="cal-wrap">
           <div class="calendly-inline-widget" data-url="https://calendly.com/etaxprosolutions/30min" style="min-width:320px;height:820px;"></div>
         </div>
-        <p class="muted" style="font-size:.92rem; margin-top:.75rem;">
-          <strong>Note:</strong> Replace <code>etaxprosolutions/30min</code> with your actual Calendly link if needed.
-        </p>
       </div>
     </div>
   </section>
@@ -889,9 +969,11 @@
         <p style="margin:0; color: rgba(255,255,255,.82);">
           Tax preparation • bookkeeping • payroll • planning — Baton Rouge, LA
         </p>
+
         <p style="margin:.7rem 0 0; color: rgba(255,255,255,.86); font-weight:800;">
           <span style="opacity:.9;">Address:</span> 1543 Delplaza Dr # 10, Baton Rouge, LA 70815
         </p>
+
         <div style="margin-top:.9rem;">
           <a href="tel:+1-225-247-9803">(225) 247-9803</a>
           <span style="opacity:.5;"> • </span>
@@ -932,6 +1014,7 @@
       { source:"Google", name:"herbert twase", stars:5, meta:"3 reviews", text:"Go to him!! He helped me find deductions I didn't even know I qualified for." },
       { source:"Google", name:"Jackline Mukenya", stars:5, meta:"1 review", text:"Mr. E made the tax process very easy. He is trustworthy and easy to work with. I definitely recommend them for tax services." },
       { source:"Google", name:"Helien Kabati", stars:5, meta:"1 review", text:"They're are very professional and actually explained everything clearly." },
+
       { source:"Client", name:"Marcus L. — Independent Contractor (1099)", stars:5, meta:"Testimonial", text:"I’ve done my own taxes for years and always felt unsure. This time everything was explained clearly, my return was filed fast, and I actually understood where my money was going. Super smooth process." },
       { source:"Client", name:"Danielle R. — Small Business Owner, Rouge Beauty Studio", stars:5, meta:"Testimonial", text:"Running a business and staying on top of taxes was stressing me out. They handled my bookkeeping and payroll so I could focus on clients. Huge weight off my shoulders." },
       { source:"Client", name:"James W. — W-2 Employee", stars:5, meta:"Testimonial", text:"I booked an appointment just to make sure everything was right, and I’m glad I did. They caught things I would’ve missed and made the whole process easy and straightforward." },
@@ -963,7 +1046,7 @@
       const r = testimonials[i];
       orbName.textContent = r.name;
       orbText.textContent = r.text;
-      orbMeta.textContent = `${r.source} • ${r.meta}`;  // ✅ fixed template literal
+      orbMeta.textContent = `${r.source} • ${r.meta}`;
       orbStars.textContent = starsText(r.stars);
     }
 
