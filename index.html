@@ -20,7 +20,7 @@
   <link rel="manifest" href="site.webmanifest" />
   <link rel="icon" href="favicon.ico" />
 
-  <!-- ✅ LocalBusiness Schema -->
+  <!-- ✅ LocalBusiness Schema (Google reads this even if visitors don’t see it) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -114,10 +114,12 @@
       box-shadow: none !important;
       background: transparent !important;
     }
+
+    /* ✅ Shrink logo to reduce header height (links/phone/button unchanged) */
     .brand img{
-      height: 220px;
+      height: 64px;          /* was 220px */
       width: auto;
-      max-height: 240px;
+      max-height: 64px;      /* keeps header tight */
       display:block;
       background: transparent !important;
       border: 0;
@@ -126,7 +128,7 @@
       opacity: 1;
     }
 
-    /* Nav links */
+    /* Nav links (unchanged) */
     .top-bar-left .menu > li:not(.menu-text){ margin-left: .25rem; }
     .top-bar .menu > li > a{
       padding: 1.05rem .9rem;
@@ -136,7 +138,7 @@
       white-space: nowrap;
     }
 
-    /* Right-side phone + button spacing */
+    /* Right-side phone + button spacing (unchanged) */
     .top-bar-right .menu{
       display:flex;
       align-items:center;
@@ -193,13 +195,12 @@
       color: var(--gold);
     }
 
-    /* Keep header clean on smaller widths */
+    /* Responsive logo only (links/phone/button remain same) */
     @media (max-width: 980px){
-      .brand img{ height: 190px; max-height: 210px; }
+      .brand img{ height: 56px; max-height: 56px; }
       .top-bar .menu > li > a{ padding: .95rem .72rem; font-size: 1.02rem; }
     }
 
-    /* Mobile: stack gracefully */
     @media (max-width: 640px){
       .top-bar .menu { flex-wrap: wrap; }
       .brand{
@@ -208,7 +209,7 @@
         margin-bottom: .35rem;
         justify-content: center;
       }
-      .brand img{ height: 150px; max-height: 165px; }
+      .brand img{ height: 48px; max-height: 48px; }
       .top-bar{ padding: .65rem .5rem; }
       .top-bar .menu > li > a{ padding: .78rem .65rem; font-size: 1.02rem; }
     }
@@ -426,50 +427,17 @@
     .footer a{ color:#fff; font-weight:800; }
     .footer a:hover{ color: var(--gold); }
 
-    /* ========================= REVIEWS: STAR BACKDROP + PULSE REVEAL + WARP ========================= */
+    /* ========================= REVIEWS (CLEAN): Option A Soft Radial Glow + Floating Card ========================= */
     #reviews{
       position: relative;
       overflow: hidden;
-    }
 
-    /* Base stars (subtle) */
-    #reviews::before{
-      content:"★★★★★";
-      position:absolute;
-      left:50%;
-      top:60%;
-      transform: translate(-50%, -50%);
-      font-size: clamp(120px, 18vw, 260px);
-      letter-spacing: .22em;
-      color: rgba(226,177,60,.08);
-      text-shadow: 0 20px 60px rgba(0,0,0,.06);
-      pointer-events:none;
-      user-select:none;
-      white-space: nowrap;
-
-      opacity: .45;
-      filter: blur(1.2px);
-      transition: opacity 500ms ease, filter 500ms ease;
-    }
-
-    /* Pulse reveal on switch */
-    #reviews.star-pulse::before{
-      opacity: .92;
-      filter: blur(.25px);
-    }
-
-    /* Soft glow haze behind stars */
-    #reviews::after{
-      content:"";
-      position:absolute;
-      inset:-20%;
+      /* ✅ Option A: soft radial glow (no stars) */
       background:
-        radial-gradient(700px 300px at 50% 50%, rgba(226,177,60,.08), transparent 60%),
-        radial-gradient(600px 260px at 50% 75%, rgba(11,16,32,.04), transparent 60%);
-      pointer-events:none;
+        radial-gradient(circle at top center, rgba(226,177,60,.10), transparent 58%),
+        radial-gradient(900px 360px at 50% 70%, rgba(11,16,32,.04), transparent 62%),
+        #fff;
     }
-
-    /* Keep content above the background */
     #reviews .row{ position:relative; z-index:1; }
 
     /* Glowing pill for "Google • x reviews" */
@@ -501,10 +469,10 @@
       box-shadow: 0 0 0 4px rgba(226,177,60,.16);
     }
 
-    /* Orb float (soft bounce) */
+    /* ✅ Floating review card (micro-animation) */
     #reviewOrb{
       animation: orbFloat 6.5s ease-in-out infinite;
-      will-change: transform, filter, opacity;
+      will-change: transform;
       position: relative;
       z-index: 2;
     }
@@ -516,22 +484,8 @@
       100% { transform: translateY(0); }
     }
 
-    /* Warp-in on switch */
-    #reviewOrb.warp{
-      animation: warpIn 520ms cubic-bezier(.25,.9,.25,1) both;
-    }
-    @keyframes warpIn{
-      0%   { transform: scale(1);     filter: blur(0);   opacity: 1; }
-      30%  { transform: scale(.92);  filter: blur(3px); opacity: .65; }
-      60%  { transform: scale(1.04); filter: blur(0);   opacity: 1; }
-      100% { transform: scale(1);    filter: blur(0);   opacity: 1; }
-    }
-
-    /* Respect reduced-motion */
     @media (prefers-reduced-motion: reduce){
-      #reviewOrb{ animation: none !important; }
-      #reviewOrb.warp{ animation: none !important; }
-      #reviews::before{ transition: none !important; }
+      #reviewOrb{ animation: none; }
     }
   </style>
 </head>
@@ -1048,9 +1002,6 @@
       { source:"Client", name:"Robert K. — Owner, Baton Rouge Logistics LLC", stars:5, meta:"Testimonial", text:"They understand small businesses. Bookkeeping, payroll, and taxes are finally working together instead of feeling scattered." }
     ];
 
-    const reviewsSection = document.getElementById("reviews");
-    const reviewOrb = document.getElementById("reviewOrb");
-
     const orbName = document.getElementById("orbName");
     const orbText = document.getElementById("orbText");
     const orbMeta = document.getElementById("orbMeta");
@@ -1066,31 +1017,12 @@
       return full.slice(0, Math.max(0, Math.min(5, n)));
     }
 
-    function pulseStarsAndWarp(){
-      // Restart warp animation cleanly
-      reviewOrb.classList.remove("warp");
-      void reviewOrb.offsetWidth; // reflow
-      reviewOrb.classList.add("warp");
-
-      // Pulse stars briefly
-      reviewsSection.classList.add("star-pulse");
-      setTimeout(() => {
-        reviewsSection.classList.remove("star-pulse");
-      }, 900);
-    }
-
     function renderReview(i){
       const r = testimonials[i];
-
-      pulseStarsAndWarp();
-
-      // Update text a split-second after warp starts (feels like it “warps into” new content)
-      setTimeout(() => {
-        orbName.textContent = r.name;
-        orbText.textContent = r.text;
-        orbMeta.textContent = `${r.source} • ${r.meta}`;
-        orbStars.textContent = starsText(r.stars);
-      }, 180);
+      orbName.textContent = r.name;
+      orbText.textContent = r.text;
+      orbMeta.textContent = `${r.source} • ${r.meta}`;
+      orbStars.textContent = starsText(r.stars);
     }
 
     function nextReview(){
