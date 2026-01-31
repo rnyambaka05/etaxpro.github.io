@@ -20,7 +20,7 @@
   <link rel="manifest" href="site.webmanifest" />
   <link rel="icon" href="favicon.ico" />
 
-  <!-- ✅ LocalBusiness Schema (Google reads this even if visitors don’t see it) -->
+  <!-- ✅ LocalBusiness Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -58,7 +58,6 @@
       --navy:#0b1020;
       --navy2:#111a33;
 
-      /* Slightly darker, richer gold + reduced glow */
       --gold:#e2b13c;
       --gold2:#c99520;
       --gold3:#ffd36a;
@@ -68,7 +67,6 @@
       --ink:#0e1222;
       --navy-header:#0b1020;
 
-      /* CTA glow tuning (darker + less intense) */
       --cta-glow: rgba(226,177,60,.18);
       --cta-glow-strong: rgba(226,177,60,.26);
       --cta-depth: rgba(0,0,0,.18);
@@ -428,27 +426,36 @@
     .footer a{ color:#fff; font-weight:800; }
     .footer a:hover{ color: var(--gold); }
 
-    /* ========================= REVIEWS: BIG STAR BACKDROP + META GLOW PILL ========================= */
+    /* ========================= REVIEWS: STAR BACKDROP + PULSE REVEAL + WARP ========================= */
     #reviews{
       position: relative;
       overflow: hidden;
     }
 
-    /* Big subtle 5-star background */
+    /* Base stars (subtle) */
     #reviews::before{
       content:"★★★★★";
       position:absolute;
       left:50%;
-      top:60%; /* ✅ safer: keeps stars away from section title */
+      top:60%;
       transform: translate(-50%, -50%);
       font-size: clamp(120px, 18vw, 260px);
       letter-spacing: .22em;
-      color: rgba(226,177,60,.12);
+      color: rgba(226,177,60,.08);
       text-shadow: 0 20px 60px rgba(0,0,0,.06);
       pointer-events:none;
       user-select:none;
       white-space: nowrap;
-      filter: blur(.3px); /* ✅ makes it feel like soft light */
+
+      opacity: .45;
+      filter: blur(1.2px);
+      transition: opacity 500ms ease, filter 500ms ease;
+    }
+
+    /* Pulse reveal on switch */
+    #reviews.star-pulse::before{
+      opacity: .92;
+      filter: blur(.25px);
     }
 
     /* Soft glow haze behind stars */
@@ -494,12 +501,12 @@
       box-shadow: 0 0 0 4px rgba(226,177,60,.16);
     }
 
-    /* ========================= REVIEW ORB: SOFT BOUNCE ========================= */
+    /* Orb float (soft bounce) */
     #reviewOrb{
       animation: orbFloat 6.5s ease-in-out infinite;
-      will-change: transform;
+      will-change: transform, filter, opacity;
       position: relative;
-      z-index: 2; /* ✅ always above stars */
+      z-index: 2;
     }
     #reviewOrb:hover{ animation-play-state: paused; }
 
@@ -509,8 +516,22 @@
       100% { transform: translateY(0); }
     }
 
+    /* Warp-in on switch */
+    #reviewOrb.warp{
+      animation: warpIn 520ms cubic-bezier(.25,.9,.25,1) both;
+    }
+    @keyframes warpIn{
+      0%   { transform: scale(1);     filter: blur(0);   opacity: 1; }
+      30%  { transform: scale(.92);  filter: blur(3px); opacity: .65; }
+      60%  { transform: scale(1.04); filter: blur(0);   opacity: 1; }
+      100% { transform: scale(1);    filter: blur(0);   opacity: 1; }
+    }
+
+    /* Respect reduced-motion */
     @media (prefers-reduced-motion: reduce){
-      #reviewOrb{ animation: none; }
+      #reviewOrb{ animation: none !important; }
+      #reviewOrb.warp{ animation: none !important; }
+      #reviews::before{ transition: none !important; }
     }
   </style>
 </head>
@@ -1027,6 +1048,9 @@
       { source:"Client", name:"Robert K. — Owner, Baton Rouge Logistics LLC", stars:5, meta:"Testimonial", text:"They understand small businesses. Bookkeeping, payroll, and taxes are finally working together instead of feeling scattered." }
     ];
 
+    const reviewsSection = document.getElementById("reviews");
+    const reviewOrb = document.getElementById("reviewOrb");
+
     const orbName = document.getElementById("orbName");
     const orbText = document.getElementById("orbText");
     const orbMeta = document.getElementById("orbMeta");
@@ -1042,12 +1066,31 @@
       return full.slice(0, Math.max(0, Math.min(5, n)));
     }
 
+    function pulseStarsAndWarp(){
+      // Restart warp animation cleanly
+      reviewOrb.classList.remove("warp");
+      void reviewOrb.offsetWidth; // reflow
+      reviewOrb.classList.add("warp");
+
+      // Pulse stars briefly
+      reviewsSection.classList.add("star-pulse");
+      setTimeout(() => {
+        reviewsSection.classList.remove("star-pulse");
+      }, 900);
+    }
+
     function renderReview(i){
       const r = testimonials[i];
-      orbName.textContent = r.name;
-      orbText.textContent = r.text;
-      orbMeta.textContent = `${r.source} • ${r.meta}`;
-      orbStars.textContent = starsText(r.stars);
+
+      pulseStarsAndWarp();
+
+      // Update text a split-second after warp starts (feels like it “warps into” new content)
+      setTimeout(() => {
+        orbName.textContent = r.name;
+        orbText.textContent = r.text;
+        orbMeta.textContent = `${r.source} • ${r.meta}`;
+        orbStars.textContent = starsText(r.stars);
+      }, 180);
     }
 
     function nextReview(){
