@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tax Preparation in Baton Rouge, LA | E Tax Pro Solutions</title>
 
+  <title>Tax Preparation in Baton Rouge, LA | E Tax Pro Solutions</title>
   <meta name="description" content="E Tax Pro Solutions in Baton Rouge, LA — tax preparation for individuals and businesses. Bookkeeping, payroll, tax planning, training, and IRS notice support." />
   <meta name="theme-color" content="#0b1020" />
 
@@ -19,6 +19,40 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
   <link rel="manifest" href="site.webmanifest" />
   <link rel="icon" href="favicon.ico" />
+
+  <!-- ✅ LocalBusiness Schema (Google reads this even if visitors don’t see it) -->
+  <!-- Replace the "url" with your real website URL if you want it perfect -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "E Tax Pro Solutions",
+    "image": "assets/logo.png",
+    "logo": "assets/logo.png",
+    "url": "https://etaxpro.github.io/",
+    "telephone": "+1-225-247-9803",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1543 Delplaza Dr # 10",
+      "addressLocality": "Baton Rouge",
+      "addressRegion": "LA",
+      "postalCode": "70815",
+      "addressCountry": "US"
+    },
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Baton Rouge"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Louisiana"
+      }
+    ],
+    "openingHours": "By appointment",
+    "sameAs": []
+  }
+  </script>
 
   <!-- Foundation CSS -->
   <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css" />
@@ -39,7 +73,6 @@
       --silver:#cfd6e4;
       --paper:#f6f7fb;
       --ink:#0e1222;
-
       --navy-header:#0b1020;
 
       /* CTA glow tuning (darker + less intense) */
@@ -60,26 +93,13 @@
       width: 100%;
       position: relative;
     }
-
     .top-bar, .top-bar *{ background-color: transparent; }
-    .top-bar-left, .top-bar-right, .top-bar ul, .top-bar .menu{
-      background: var(--navy-header) !important;
-    }
-
+    .top-bar-left, .top-bar-right, .top-bar ul, .top-bar .menu{ background: var(--navy-header) !important; }
     .top-bar a { color: #fff; font-weight: 900; }
     .top-bar a:hover { color: var(--gold); }
-
-    .top-bar-left, .top-bar-right{
-      display:flex;
-      align-items:center;
-    }
-    .top-bar-left{
-      flex: 1 1 auto;
-      min-width: 0;
-    }
-    .top-bar-right{
-      flex: 0 0 auto;
-    }
+    .top-bar-left, .top-bar-right{ display:flex; align-items:center; }
+    .top-bar-left{ flex: 1 1 auto; min-width: 0; }
+    .top-bar-right{ flex: 0 0 auto; }
     .top-bar-left .menu{
       display:flex;
       align-items:center;
@@ -103,16 +123,15 @@
       box-shadow: none !important;
       background: transparent !important;
     }
-
     .brand img{
-      height: 220px;          /* bigger + grand */
+      height: 220px; /* bigger + grand */
       width: auto;
       max-height: 240px;
       display:block;
       background: transparent !important;
       border: 0;
       border-radius: 0;
-      filter: none;           /* remove any logo effects */
+      filter: none; /* remove any logo effects */
       opacity: 1;
     }
 
@@ -153,8 +172,7 @@
       filter: saturate(1.04);
       transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
     }
-    .button.primary:hover,
-    .button.primary:focus{
+    .button.primary:hover, .button.primary:focus{
       filter: brightness(1.01) saturate(1.06);
       box-shadow:
         0 18px 48px rgba(0,0,0,.20),
@@ -173,7 +191,6 @@
         0 0 30px rgba(226,177,60,.08),
         inset 0 1px 0 rgba(255,255,255,.22) !important;
     }
-
     .button.hollow.light{
       border-color: rgba(255,255,255,.75);
       color:#fff;
@@ -206,8 +223,7 @@
 
     /* ========================= HERO ========================= */
     .hero{
-      /* CHANGED: smaller top padding to reduce space below header */
-      padding: 3.2rem 0 4.4rem;
+      padding: 5.2rem 0 4.4rem;
       color:#fff;
       position: relative;
       background:
@@ -292,10 +308,8 @@
       flex: 0 0 auto;
       box-shadow: 0 0 0 4px rgba(226,177,60,.14);
     }
-
-    /* CHANGED: smaller mobile top padding too */
     @media (max-width: 640px){
-      .hero{ padding: 2.6rem 0 3.6rem; }
+      .hero{ padding: 4.1rem 0 3.6rem; }
     }
 
     /* Sections */
@@ -323,7 +337,6 @@
       background: #fff;
     }
     .card h4, .card h5 { font-weight: 950 !important; letter-spacing: -0.3px; }
-
     .tag{
       display:inline-block;
       font-weight: 950;
@@ -371,7 +384,12 @@
       margin: 0 0 .45rem;
     }
     .services-grid .tile{ height: 420px; }
-    .services-cards .card{ height: 260px; width:100%; display:flex; flex-direction: column; }
+    .services-cards .card{
+      height: 260px;
+      width:100%;
+      display:flex;
+      flex-direction: column;
+    }
 
     /* Pricing */
     .pricing-grid{ display:flex; flex-wrap: wrap; }
@@ -455,12 +473,10 @@
           We help you stay organized, file correctly, and feel confident moving forward.
           In-person in Baton Rouge or remote support when you need it.
         </p>
-
         <div>
           <a href="#book" class="button large primary">Book a 30-Min Appointment</a>
           <a href="tel:+1-225-247-9803" class="button large hollow light">Call Now</a>
         </div>
-
         <div class="spacer"></div>
         <p style="margin:0; color: rgba(255,255,255,.88); font-size: 1rem; font-weight: 700;">
           Prefer a call/text back? Use the quick form below the Services section.
@@ -534,6 +550,7 @@
           <p class="muted">Simple training that helps clients and teams understand taxes, compliance, and record keeping.</p>
         </div>
       </div>
+
       <div class="column">
         <div class="card">
           <div class="tag">Support</div>
@@ -541,6 +558,7 @@
           <p class="muted">We break letters down in plain English and help you respond the right way.</p>
         </div>
       </div>
+
       <div class="column">
         <div class="card">
           <div class="tag">Across States</div>
@@ -560,7 +578,7 @@
           <form action="https://formspree.io/f/xjgrgqkb" method="POST">
             <input type="hidden" name="_subject" value="New Lead — E Tax Pro Solutions Website">
             <input type="hidden" name="_gotcha" style="display:none">
-            <input type="hidden" name="_next" value="#thankyou">
+            <input type="hidden" name="_next" value="#thankyou-services">
 
             <label>Full Name
               <input type="text" name="name" placeholder="Your name" required>
@@ -604,7 +622,7 @@
             </p>
           </form>
 
-          <div id="thankyou" style="margin-top:1rem;"></div>
+          <div id="thankyou-services" style="margin-top:1rem;"></div>
         </div>
       </div>
     </div>
@@ -615,7 +633,8 @@
     <div class="row column text-center">
       <h2 class="section-title">Pricing</h2>
       <p class="muted centered">
-        Different situations take different levels of time and paperwork. If you’re not sure where you fit, that’s normal — we’ll help you pick the right lane.
+        Different situations take different levels of time and paperwork.
+        If you’re not sure where you fit, that’s normal — we’ll help you pick the right lane.
       </p>
     </div>
 
@@ -701,6 +720,7 @@
           <p class="muted">Fast responses, simple instructions, and no runaround.</p>
         </div>
       </div>
+
       <div class="column">
         <div class="card photo-card">
           <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=70" alt="Tax preparation work">
@@ -708,6 +728,7 @@
           <p class="muted">Accuracy first — and we explain what we file, not just “submit it.”</p>
         </div>
       </div>
+
       <div class="column">
         <div class="card photo-card">
           <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1600&q=70" alt="Business consulting">
@@ -732,12 +753,14 @@
           <p class="muted">We explain what we’re doing and what we need from you — without the jargon.</p>
         </div>
       </div>
+
       <div class="column">
         <div class="card">
           <h4><strong>Organized Process</strong></h4>
           <p class="muted">Easy checklist, smooth handoff, and fewer last-minute surprises.</p>
         </div>
       </div>
+
       <div class="column">
         <div class="card">
           <h4><strong>Year-Round Support</strong></h4>
@@ -759,9 +782,11 @@
             <div style="font-weight:950; letter-spacing:-0.3px; color: rgba(11,16,32,.92); font-size:1.08rem;" id="orbName">Moses Ihachi</div>
             <div style="font-weight:950; letter-spacing:1px; color: var(--gold2); font-size:1rem; white-space:nowrap;" id="orbStars">★★★★★</div>
           </div>
+
           <p style="font-size: 1.05rem; color: rgba(0,0,0,.72); line-height: 1.55; margin: .25rem 0 0;" id="orbText">
             He’s been handling my taxes for a while now and I’ve never had a single issue. Everything is clear, easy, and done right the first time.
           </p>
+
           <div style="margin-top:.75rem; font-size:.92rem; color: rgba(0,0,0,.58); font-weight:800;" id="orbMeta">Google • 1 review</div>
         </div>
 
@@ -778,7 +803,6 @@
     <div class="row column text-center">
       <h2 class="section-title">Book an Appointment</h2>
       <p class="muted centered">Choose a time that works for you. If you prefer, call us and we’ll schedule it together.</p>
-
       <div style="margin-top:.75rem;">
         <a href="tel:+1-225-247-9803" class="button hollow">Call (225) 247-9803</a>
         <a href="#contact" class="button primary">Send a Message</a>
@@ -834,7 +858,7 @@
           <form action="https://formspree.io/f/xjgrgqkb" method="POST">
             <input type="hidden" name="_subject" value="New Contact — E Tax Pro Solutions Website">
             <input type="text" name="_gotcha" style="display:none">
-            <input type="hidden" name="_next" value="#thankyou">
+            <input type="hidden" name="_next" value="#thankyou-contact">
 
             <label>Name
               <input type="text" name="name" required>
@@ -851,7 +875,7 @@
             <button class="button primary expanded" type="submit">Send Message</button>
           </form>
 
-          <div id="thankyou" style="margin-top:1rem;"></div>
+          <div id="thankyou-contact" style="margin-top:1rem;"></div>
         </div>
       </div>
     </div>
@@ -865,11 +889,9 @@
         <p style="margin:0; color: rgba(255,255,255,.82);">
           Tax preparation • bookkeeping • payroll • planning — Baton Rouge, LA
         </p>
-
         <p style="margin:.7rem 0 0; color: rgba(255,255,255,.86); font-weight:800;">
           <span style="opacity:.9;">Address:</span> 1543 Delplaza Dr # 10, Baton Rouge, LA 70815
         </p>
-
         <div style="margin-top:.9rem;">
           <a href="tel:+1-225-247-9803">(225) 247-9803</a>
           <span style="opacity:.5;"> • </span>
@@ -910,7 +932,6 @@
       { source:"Google", name:"herbert twase", stars:5, meta:"3 reviews", text:"Go to him!! He helped me find deductions I didn't even know I qualified for." },
       { source:"Google", name:"Jackline Mukenya", stars:5, meta:"1 review", text:"Mr. E made the tax process very easy. He is trustworthy and easy to work with. I definitely recommend them for tax services." },
       { source:"Google", name:"Helien Kabati", stars:5, meta:"1 review", text:"They're are very professional and actually explained everything clearly." },
-
       { source:"Client", name:"Marcus L. — Independent Contractor (1099)", stars:5, meta:"Testimonial", text:"I’ve done my own taxes for years and always felt unsure. This time everything was explained clearly, my return was filed fast, and I actually understood where my money was going. Super smooth process." },
       { source:"Client", name:"Danielle R. — Small Business Owner, Rouge Beauty Studio", stars:5, meta:"Testimonial", text:"Running a business and staying on top of taxes was stressing me out. They handled my bookkeeping and payroll so I could focus on clients. Huge weight off my shoulders." },
       { source:"Client", name:"James W. — W-2 Employee", stars:5, meta:"Testimonial", text:"I booked an appointment just to make sure everything was right, and I’m glad I did. They caught things I would’ve missed and made the whole process easy and straightforward." },
@@ -942,7 +963,7 @@
       const r = testimonials[i];
       orbName.textContent = r.name;
       orbText.textContent = r.text;
-      orbMeta.textContent = `${r.source} • ${r.meta}`;
+      orbMeta.textContent = `${r.source} • ${r.meta}`;  // ✅ fixed template literal
       orbStars.textContent = starsText(r.stars);
     }
 
