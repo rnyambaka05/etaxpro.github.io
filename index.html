@@ -16,6 +16,10 @@
   <meta name="geo.placename" content="Baton Rouge" />
   <meta name="geo.position" content="30.4515;-91.1871" />
   <meta name="ICBM" content="30.4515,-91.1871" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="author" content="E Tax Pro Solutions" />
+  <meta name="application-name" content="E Tax Pro Solutions" />
+  <link rel="alternate" href="https://etaxpro.github.io/" hreflang="en-us" />
 
   <!-- Preconnect (small speed boost) -->
   <link rel="preconnect" href="https://dhbhdrzi4tiry.cloudfront.net" crossorigin />
@@ -24,12 +28,16 @@
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
   <link rel="dns-prefetch" href="//images.unsplash.com" />
 
+  <!-- Preload key on-site image -->
+  <link rel="preload" as="image" href="./assets/logo.png" />
+
   <!-- Social Preview -->
   <meta property="og:title" content="E Tax Pro Solutions | Baton Rouge Tax Preparation" />
   <meta property="og:type" content="website" />
   <meta property="og:description" content="Trusted tax preparation in Baton Rouge, LA for individuals and businesses. Bookkeeping, payroll, tax planning, training, and IRS notice support. 10+ years serving the local community." />
   <meta property="og:url" content="https://etaxpro.github.io/" />
   <meta property="og:image" content="https://etaxpro.github.io/assets/logo.png" />
+  <meta property="og:locale" content="en_US" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -44,39 +52,77 @@
   <link rel="manifest" href="site.webmanifest" />
   <link rel="icon" href="favicon.ico" />
 
-  <!-- ✅ Structured Data (AccountingService) -->
+  <!-- ✅ Structured Data (Local Business + Website + Page) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "AccountingService",
-    "name": "E Tax Pro Solutions",
-    "url": "https://etaxpro.github.io/",
-    "telephone": "+1-225-247-9803",
-    "image": "https://etaxpro.github.io/assets/logo.png",
-    "logo": "https://etaxpro.github.io/assets/logo.png",
-    "priceRange": "$$",
-    "areaServed": [
-      { "@type": "City", "name": "Baton Rouge" },
-      { "@type": "AdministrativeArea", "name": "Louisiana" }
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "1543 Delplaza Dr # 10",
-      "addressLocality": "Baton Rouge",
-      "addressRegion": "LA",
-      "postalCode": "70815",
-      "addressCountry": "US"
-    },
-    "openingHours": "By appointment",
-    "serviceType": [
-      "Tax Preparation",
-      "Bookkeeping",
-      "Payroll",
-      "Tax Planning",
-      "IRS Notice Support",
-      "Training"
-    ],
-    "sameAs": []
+    "@graph": [
+      {
+        "@type": "AccountingService",
+        "@id": "https://etaxpro.github.io/#business",
+        "name": "E Tax Pro Solutions",
+        "url": "https://etaxpro.github.io/",
+        "telephone": "+1-225-247-9803",
+        "image": "https://etaxpro.github.io/assets/logo.png",
+        "logo": "https://etaxpro.github.io/assets/logo.png",
+        "priceRange": "$$",
+        "areaServed": [
+          { "@type": "City", "name": "Baton Rouge" },
+          { "@type": "AdministrativeArea", "name": "Louisiana" }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1543 Delplaza Dr # 10",
+          "addressLocality": "Baton Rouge",
+          "addressRegion": "LA",
+          "postalCode": "70815",
+          "addressCountry": "US"
+        },
+        "openingHours": "By appointment",
+        "serviceType": [
+          "Tax Preparation",
+          "Bookkeeping",
+          "Payroll",
+          "Tax Planning",
+          "IRS Notice Support",
+          "Training"
+        ],
+        "sameAs": [],
+        "keywords": [
+          "tax preparation baton rouge",
+          "bookkeeping baton rouge",
+          "payroll services baton rouge",
+          "tax planning baton rouge",
+          "IRS notice help baton rouge"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://etaxpro.github.io/#website",
+        "url": "https://etaxpro.github.io/",
+        "name": "E Tax Pro Solutions",
+        "publisher": { "@id": "https://etaxpro.github.io/#business" },
+        "inLanguage": "en-US",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://etaxpro.github.io/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://etaxpro.github.io/#webpage",
+        "url": "https://etaxpro.github.io/",
+        "name": "Tax Preparation in Baton Rouge, LA | E Tax Pro Solutions",
+        "isPartOf": { "@id": "https://etaxpro.github.io/#website" },
+        "about": { "@id": "https://etaxpro.github.io/#business" },
+        "inLanguage": "en-US",
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://etaxpro.github.io/assets/logo.png"
+        }
+      }
+    ]
   }
   </script>
 
@@ -465,6 +511,13 @@
     #reviews{
       position: relative;
       overflow: hidden;
+
+      /* ✅ NEW: soft radial gold glow across the whole section */
+      background:
+        radial-gradient(900px 520px at 50% 20%, rgba(226,177,60,.14), transparent 62%),
+        radial-gradient(900px 520px at 15% 70%, rgba(226,177,60,.09), transparent 62%),
+        radial-gradient(900px 520px at 85% 75%, rgba(201,149,32,.07), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(246,247,251,1) 100%);
     }
 
     /* ✅ Remove the huge background stars entirely */
@@ -484,14 +537,8 @@
       margin: 1.2rem auto 0;
     }
 
-    /* ========= Option B: hide caption but keep in HTML ========= */
-    .review-photo-caption{
-      display: none !important;
-    }
-
-    /* ========= NEW: allow more of the screenshot to be seen ========= */
+    /* ========= NEW: ORB FRAME GLOW (OUTLINE ONLY) ========= */
     .review-photo-card{
-      padding: .7rem;
       position: relative;
       border-radius: 18px;
       overflow: hidden; /* keeps inside clean */
@@ -535,22 +582,30 @@
       z-index: 2;
     }
 
-    /* Show more of the screenshot (no cropping) */
+    /* ========= NEW: IMAGE “GRAND SHINY” GOLD GLOW BEHIND ========= */
     .review-photo-card img{
       width: 100%;
-      height: auto;          /* let it expand naturally */
-      object-fit: contain;   /* prevents cropping */
+      height: 260px;
+      object-fit: cover;
       display: block;
-
-      /* crisp depth + grand gold glow behind */
+      /* crisp depth */
       box-shadow:
         0 14px 36px rgba(0,0,0,0.16),
         0 0 0 1px rgba(255, 225, 160, 0.22);
+      /* glow that sits behind image (not tinting it) */
       filter:
         drop-shadow(0 0 16px rgba(255, 205, 120, 0.40))
         drop-shadow(0 0 36px rgba(226,177,60, 0.26))
         drop-shadow(0 0 62px rgba(201,149,32, 0.18));
       transform: translateZ(0);
+    }
+
+    .review-photo-caption{
+      padding: .75rem .95rem;
+      font-weight: 900;
+      color: rgba(11,16,32,.92);
+      border-top: 1px solid rgba(0,0,0,.06);
+      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(246,247,251,.96));
     }
 
     /* Optional “luxury hover” */
@@ -569,7 +624,7 @@
 
     @media (max-width: 740px){
       .review-photos{ grid-template-columns: 1fr; }
-      .review-photo-card{ padding: .6rem; }
+      .review-photo-card img{ height: 240px; }
     }
 
     /* Glowing pill for "Google • x reviews" */
