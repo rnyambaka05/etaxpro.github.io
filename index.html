@@ -521,6 +521,9 @@
       position: relative;
       overflow: hidden;
 
+      /* ✅ keep section compact so images + written review fit in one viewport */
+      padding: 3.4rem 0 !important;
+
       /* ✅ soft radial gold glow across the whole section */
       background:
         radial-gradient(900px 520px at 50% 20%, rgba(226,177,60,.14), transparent 62%),
@@ -542,53 +545,103 @@
 
     #reviews .row{ position:relative; z-index:1; }
 
-    /* ✅ Standalone review screenshots (no card/box containers) */
+    /* Review photos layout */
     .review-photos{
-      display: flex;                 /* was grid */
-      justify-content: center;
-      align-items: center;
-      gap: .6rem;                    /* closer together */
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
       max-width: 1000px;
-      margin: 1.2rem auto 0;
+      margin: 1.0rem auto 0; /* slightly tighter to preserve viewport fit */
     }
 
+    /* ========= ORB FRAME GLOW (OUTLINE ONLY) ========= */
     .review-photo-card{
-      /* remove the “card” look completely */
-      position: static;
-      border: 0 !important;
-      background: transparent !important;
-      box-shadow: none !important;
-      overflow: visible !important;
-      border-radius: 0 !important;
-      isolation: auto;
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden; /* ✅ ensures image fully clips to card with no gaps */
+      border: 1px solid rgba(0,0,0,.08);
+      background: #fff;
+      box-shadow: 0 12px 28px rgba(0,0,0,.06);
+      isolation: isolate;
     }
-    .review-photo-card::before,
+
+    /* Outer warm golden aura — sits behind the card */
+    .review-photo-card::before{
+      content:"";
+      position:absolute;
+      inset: -14px;
+      border-radius: inherit;
+      pointer-events:none;
+      z-index: 0;
+      box-shadow:
+        0 0 0 1px rgba(255, 210, 140, 0.35),
+        0 0 34px 10px rgba(226,177,60,0.34),
+        0 0 78px 22px rgba(201,149,32,0.16);
+      opacity: .95;
+    }
+
+    /* Rim highlight — affects only the “frame” edge */
     .review-photo-card::after{
-      content: none !important;
+      content:"";
+      position:absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events:none;
+      z-index: 1;
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 225, 165, 0.62),
+        inset 0 0 18px rgba(226,177,60,0.18);
     }
+
+    .review-photo-card > *{
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ✅ Image wrapper: clips + controls height (subtle +5–8% scale) */
+    .review-photo-media{
+      width: 100%;
+      height: 276px;           /* was 260px → ~+6% */
+      overflow: hidden;        /* ✅ no white space / no spill */
+      background: #fff;
+    }
+
+    /* ✅ Image fully covers card area */
+    .review-photo-media img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      box-shadow:
+        0 14px 36px rgba(0,0,0,0.16),
+        0 0 0 1px rgba(255, 225, 160, 0.22);
+      filter:
+        drop-shadow(0 0 16px rgba(255, 205, 120, 0.40))
+        drop-shadow(0 0 36px rgba(226,177,60, 0.26))
+        drop-shadow(0 0 62px rgba(201,149,32, 0.18));
+      transform: translateZ(0);
+    }
+
+    /* ✅ No caption space (prevents bottom white band) */
     .review-photo-caption{ display:none !important; }
 
-    /* Slightly larger, full visible, no cropping, rounded corners only */
-    .review-photo-card img{
-      width: clamp(320px, 42vw, 460px); /* slightly bigger but still balanced */
-      height: auto;                      /* preserve natural aspect ratio */
-      object-fit: contain;               /* no cropping */
-      display: block;
-      border-radius: 14px;               /* soft modern radius */
-      background: transparent;           /* no letterbox panel */
-      box-shadow: none !important;       /* no shadow */
-      filter: none !important;           /* no glow */
-      transform: none !important;
+    .review-photo-card:hover::before{
+      box-shadow:
+        0 0 0 1px rgba(255, 210, 140, 0.48),
+        0 0 44px 12px rgba(226,177,60,0.40),
+        0 0 96px 26px rgba(201,149,32,0.20);
+    }
+    .review-photo-card:hover .review-photo-media img{
+      filter:
+        drop-shadow(0 0 20px rgba(255, 210, 140, 0.46))
+        drop-shadow(0 0 42px rgba(226,177,60, 0.30))
+        drop-shadow(0 0 74px rgba(201,149,32, 0.20));
     }
 
     @media (max-width: 740px){
-      .review-photos{
-        flex-direction: column;
-        gap: .65rem;
-      }
-      .review-photo-card img{
-        width: min(92vw, 520px);
-      }
+      .review-photos{ grid-template-columns: 1fr; }
+      .review-photo-media{ height: 252px; } /* slightly smaller on mobile */
     }
 
     /* Glowing pill */
@@ -1001,18 +1054,24 @@
       <h2 class="section-title">Reviews</h2>
       <p class="muted centered">Real Google reviews from clients who’ve worked with us.</p>
 
-      <!-- ✅ Review screenshots (standalone images, no boxes) -->
+      <!-- ✅ Review screenshots -->
       <div class="review-photos" aria-label="Google review screenshots">
         <div class="review-photo-card">
-          <img src="./assets/reviews/review-1.png" alt="Google review screenshot for E Tax Pro Solutions">
+          <div class="review-photo-media">
+            <img src="./assets/reviews/review-1.png" alt="Google review screenshot for E Tax Pro Solutions">
+          </div>
+          <div class="review-photo-caption"></div>
         </div>
         <div class="review-photo-card">
-          <img src="./assets/reviews/review-2.png" alt="Google review screenshot for E Tax Pro Solutions">
+          <div class="review-photo-media">
+            <img src="./assets/reviews/review-2.png" alt="Google review screenshot for E Tax Pro Solutions">
+          </div>
+          <div class="review-photo-caption"></div>
         </div>
       </div>
 
       <!-- Rotating review orb -->
-      <div class="card" style="max-width:900px; margin: 1.25rem auto 0;">
+      <div class="card" style="max-width:900px; margin: 1.1rem auto 0;">
         <div id="reviewOrb" aria-live="polite">
           <div style="display:flex; align-items:center; justify-content: space-between; gap:.75rem; margin-bottom:.55rem;">
             <div style="font-weight:950; letter-spacing:-0.3px; color: rgba(11,16,32,.92); font-size:1.08rem;" id="orbName">Moses Ihachi</div>
