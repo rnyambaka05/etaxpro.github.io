@@ -542,101 +542,53 @@
 
     #reviews .row{ position:relative; z-index:1; }
 
-    /* Review photos layout */
+    /* ✅ Standalone review screenshots (no card/box containers) */
     .review-photos{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      display: flex;                 /* was grid */
+      justify-content: center;
+      align-items: center;
+      gap: .6rem;                    /* closer together */
       max-width: 1000px;
       margin: 1.2rem auto 0;
     }
 
-    /* ========= ORB FRAME GLOW (OUTLINE ONLY) ========= */
     .review-photo-card{
-      position: relative;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(0,0,0,.08);
-      background: #fff;
-      box-shadow: 0 12px 28px rgba(0,0,0,.06);
-      isolation: isolate;
+      /* remove the “card” look completely */
+      position: static;
+      border: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      overflow: visible !important;
+      border-radius: 0 !important;
+      isolation: auto;
     }
-
-    /* Outer warm golden aura — sits behind the card */
-    .review-photo-card::before{
-      content:"";
-      position:absolute;
-      inset: -14px;
-      border-radius: inherit;
-      pointer-events:none;
-      z-index: 0;
-      box-shadow:
-        0 0 0 1px rgba(255, 210, 140, 0.35),
-        0 0 34px 10px rgba(226,177,60,0.34),
-        0 0 78px 22px rgba(201,149,32,0.16);
-      opacity: .95;
-    }
-
-    /* Rim highlight — affects only the “frame” edge */
+    .review-photo-card::before,
     .review-photo-card::after{
-      content:"";
-      position:absolute;
-      inset: 0;
-      border-radius: inherit;
-      pointer-events:none;
-      z-index: 1;
-      box-shadow:
-        inset 0 0 0 1px rgba(255, 225, 165, 0.62),
-        inset 0 0 18px rgba(226,177,60,0.18);
+      content: none !important;
     }
+    .review-photo-caption{ display:none !important; }
 
-    .review-photo-card > *{
-      position: relative;
-      z-index: 2;
-    }
-
-    /* ✅ CHANGE #1: make images show FULL photo (no cropping) */
-    /* ✅ CHANGE #2: increase height so images look bigger */
+    /* Slightly larger, full visible, no cropping, rounded corners only */
     .review-photo-card img{
-      width: 100%;
-      height: 340px;              /* was 260px */
-      object-fit: contain;        /* was cover (cropping) */
-      background: #f6f7fb;        /* clean letterbox */
+      width: clamp(320px, 42vw, 460px); /* slightly bigger but still balanced */
+      height: auto;                      /* preserve natural aspect ratio */
+      object-fit: contain;               /* no cropping */
       display: block;
-      box-shadow:
-        0 14px 36px rgba(0,0,0,0.16),
-        0 0 0 1px rgba(255, 225, 160, 0.22);
-      filter:
-        drop-shadow(0 0 16px rgba(255, 205, 120, 0.40))
-        drop-shadow(0 0 36px rgba(226,177,60, 0.26))
-        drop-shadow(0 0 62px rgba(201,149,32, 0.18));
-      transform: translateZ(0);
-    }
-
-    .review-photo-caption{
-      padding: .75rem .95rem;
-      font-weight: 900;
-      color: rgba(11,16,32,.92);
-      border-top: 1px solid rgba(0,0,0,.06);
-      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(246,247,251,.96));
-    }
-
-    .review-photo-card:hover::before{
-      box-shadow:
-        0 0 0 1px rgba(255, 210, 140, 0.48),
-        0 0 44px 12px rgba(226,177,60,0.40),
-        0 0 96px 26px rgba(201,149,32,0.20);
-    }
-    .review-photo-card:hover img{
-      filter:
-        drop-shadow(0 0 20px rgba(255, 210, 140, 0.46))
-        drop-shadow(0 0 42px rgba(226,177,60, 0.30))
-        drop-shadow(0 0 74px rgba(201,149,32, 0.20));
+      border-radius: 14px;               /* soft modern radius */
+      background: transparent;           /* no letterbox panel */
+      box-shadow: none !important;       /* no shadow */
+      filter: none !important;           /* no glow */
+      transform: none !important;
     }
 
     @media (max-width: 740px){
-      .review-photos{ grid-template-columns: 1fr; }
-      .review-photo-card img{ height: 270px; } /* was 240px */
+      .review-photos{
+        flex-direction: column;
+        gap: .65rem;
+      }
+      .review-photo-card img{
+        width: min(92vw, 520px);
+      }
     }
 
     /* Glowing pill */
@@ -1049,15 +1001,13 @@
       <h2 class="section-title">Reviews</h2>
       <p class="muted centered">Real Google reviews from clients who’ve worked with us.</p>
 
-      <!-- ✅ Review screenshots -->
+      <!-- ✅ Review screenshots (standalone images, no boxes) -->
       <div class="review-photos" aria-label="Google review screenshots">
         <div class="review-photo-card">
           <img src="./assets/reviews/review-1.png" alt="Google review screenshot for E Tax Pro Solutions">
-          <div class="review-photo-caption"></div>
         </div>
         <div class="review-photo-card">
           <img src="./assets/reviews/review-2.png" alt="Google review screenshot for E Tax Pro Solutions">
-          <div class="review-photo-caption"></div>
         </div>
       </div>
 
