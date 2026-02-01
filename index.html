@@ -598,19 +598,23 @@
       z-index: 2;
     }
 
-    /* ✅ Image wrapper: clips + controls height (subtle +5–8% scale) */
+    /* ✅ Image wrapper: slightly larger + ensures full phone body visible (no cropping) */
     .review-photo-media{
       width: 100%;
-      height: 276px;           /* was 260px → ~+6% */
-      overflow: hidden;        /* ✅ no white space / no spill */
+      height: 312px;           /* was 276px → scaled up slightly, still balanced */
+      overflow: hidden;        /* keep clean edges */
       background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;           /* shows a bit of background around the phone */
     }
 
-    /* ✅ Image fully covers card area */
+    /* ✅ Image shows full phone top-to-bottom (no crop), scaled up responsibly */
     .review-photo-media img{
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;     /* ensures entire phone body is visible */
       object-position: center;
       display: block;
       box-shadow:
@@ -641,7 +645,7 @@
 
     @media (max-width: 740px){
       .review-photos{ grid-template-columns: 1fr; }
-      .review-photo-media{ height: 252px; } /* slightly smaller on mobile */
+      .review-photo-media{ height: 286px; padding: 10px; } /* scaled up, still compact */
     }
 
     /* Glowing pill */
@@ -690,6 +694,12 @@
         #fff;
       box-shadow: 0 12px 28px rgba(0,0,0,.06) !important;
     }
+
+    /* ✅ Slightly scale up review content (text + meta) without changing layout */
+    #orbName{ font-size: 1.14rem !important; }
+    #orbStars{ font-size: 1.06rem !important; }
+    #orbText{ font-size: 1.10rem !important; }
+    #orbMeta{ font-size: .96rem !important; }
 
     @keyframes orbFloat{
       0%   { transform: translateY(0); }
