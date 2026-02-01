@@ -512,7 +512,7 @@
       position: relative;
       overflow: hidden;
 
-      /* ✅ NEW: soft radial gold glow across the whole section */
+      /* ✅ soft radial gold glow across the whole section */
       background:
         radial-gradient(900px 520px at 50% 20%, rgba(226,177,60,.14), transparent 62%),
         radial-gradient(900px 520px at 15% 70%, rgba(226,177,60,.09), transparent 62%),
@@ -664,6 +664,19 @@
       z-index: 2;
     }
     #reviewOrb:hover{ animation-play-state: paused; }
+
+    /* ✅ NEW: golden light INSIDE the orb box (noticeable but not overdone) */
+    #reviews .card[style*="max-width:900px"]{
+      background:
+        radial-gradient(650px 260px at 50% 20%, rgba(226,177,60,.16), transparent 60%),
+        radial-gradient(650px 260px at 15% 85%, rgba(255,211,106,.10), transparent 62%),
+        #fff;
+    }
+
+    /* ✅ NEW: remove any glow effect around the orb card (keep it clean) */
+    #reviews .card[style*="max-width:900px"]{
+      box-shadow: 0 12px 28px rgba(0,0,0,.06) !important;
+    }
 
     @keyframes orbFloat{
       0%   { transform: translateY(0); }
@@ -1024,11 +1037,13 @@
       <div class="review-photos" aria-label="Google review screenshots">
         <div class="review-photo-card">
           <img src="./assets/reviews/review-1.png" alt="Google review screenshot for E Tax Pro Solutions">
-          <div class="review-photo-caption">Google Review Screenshot</div>
+          <!-- removed caption text per request -->
+          <div class="review-photo-caption"></div>
         </div>
         <div class="review-photo-card">
           <img src="./assets/reviews/review-2.png" alt="Google review screenshot for E Tax Pro Solutions">
-          <div class="review-photo-caption">Google Review Screenshot</div>
+          <!-- removed caption text per request -->
+          <div class="review-photo-caption"></div>
         </div>
       </div>
 
