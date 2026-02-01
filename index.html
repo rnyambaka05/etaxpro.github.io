@@ -8,10 +8,34 @@
   <meta name="description" content="E Tax Pro Solutions in Baton Rouge, LA — tax preparation for individuals and businesses. Bookkeeping, payroll, tax planning, training, and IRS notice support." />
   <meta name="theme-color" content="#0b1020" />
 
+  <!-- ✅ SEO (safe + legit) -->
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://etaxpro.github.io/" />
+  <meta name="format-detection" content="telephone=yes" />
+  <meta name="geo.region" content="US-LA" />
+  <meta name="geo.placename" content="Baton Rouge" />
+  <meta name="geo.position" content="30.4515;-91.1871" />
+  <meta name="ICBM" content="30.4515,-91.1871" />
+
+  <!-- Preconnect (small speed boost) -->
+  <link rel="preconnect" href="https://dhbhdrzi4tiry.cloudfront.net" crossorigin />
+  <link rel="preconnect" href="https://code.jquery.com" crossorigin />
+  <link rel="preconnect" href="https://assets.calendly.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+  <link rel="dns-prefetch" href="//images.unsplash.com" />
+
   <!-- Social Preview -->
   <meta property="og:title" content="E Tax Pro Solutions | Baton Rouge Tax Preparation" />
   <meta property="og:type" content="website" />
   <meta property="og:description" content="Trusted tax preparation in Baton Rouge, LA for individuals and businesses. Bookkeeping, payroll, tax planning, training, and IRS notice support. 10+ years serving the local community." />
+  <meta property="og:url" content="https://etaxpro.github.io/" />
+  <meta property="og:image" content="https://etaxpro.github.io/assets/logo.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="E Tax Pro Solutions | Baton Rouge Tax Preparation" />
+  <meta name="twitter:description" content="Tax prep, bookkeeping, payroll, and tax planning in Baton Rouge, LA. Book an appointment online." />
+  <meta name="twitter:image" content="https://etaxpro.github.io/assets/logo.png" />
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
@@ -20,16 +44,21 @@
   <link rel="manifest" href="site.webmanifest" />
   <link rel="icon" href="favicon.ico" />
 
-  <!-- ✅ LocalBusiness Schema -->
+  <!-- ✅ Structured Data (AccountingService) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "AccountingService",
     "name": "E Tax Pro Solutions",
-    "image": "assets/logo.png",
-    "logo": "assets/logo.png",
     "url": "https://etaxpro.github.io/",
     "telephone": "+1-225-247-9803",
+    "image": "https://etaxpro.github.io/assets/logo.png",
+    "logo": "https://etaxpro.github.io/assets/logo.png",
+    "priceRange": "$$",
+    "areaServed": [
+      { "@type": "City", "name": "Baton Rouge" },
+      { "@type": "AdministrativeArea", "name": "Louisiana" }
+    ],
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "1543 Delplaza Dr # 10",
@@ -38,11 +67,15 @@
       "postalCode": "70815",
       "addressCountry": "US"
     },
-    "areaServed": [
-      { "@type": "City", "name": "Baton Rouge" },
-      { "@type": "AdministrativeArea", "name": "Louisiana" }
-    ],
     "openingHours": "By appointment",
+    "serviceType": [
+      "Tax Preparation",
+      "Bookkeeping",
+      "Payroll",
+      "Tax Planning",
+      "IRS Notice Support",
+      "Training"
+    ],
     "sameAs": []
   }
   </script>
@@ -451,32 +484,92 @@
       margin: 1.2rem auto 0;
     }
 
-    .review-photo-card{
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(0,0,0,.08);
-      box-shadow: 0 12px 28px rgba(0,0,0,.06);
-      background: #fff;
+    /* ========= Option B: hide caption but keep in HTML ========= */
+    .review-photo-caption{
+      display: none !important;
     }
 
+    /* ========= NEW: allow more of the screenshot to be seen ========= */
+    .review-photo-card{
+      padding: .7rem;
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden; /* keeps inside clean */
+      border: 1px solid rgba(0,0,0,.08);
+      background: #fff;
+      box-shadow: 0 12px 28px rgba(0,0,0,.06);
+      isolation: isolate; /* ensures pseudo layers behave */
+    }
+
+    /* Outer warm golden aura — sits behind the card */
+    .review-photo-card::before{
+      content:"";
+      position:absolute;
+      inset: -14px; /* room for glow */
+      border-radius: inherit;
+      pointer-events:none;
+      z-index: 0;
+      box-shadow:
+        0 0 0 1px rgba(255, 210, 140, 0.35),
+        0 0 34px 10px rgba(226,177,60,0.34),
+        0 0 78px 22px rgba(201,149,32,0.16);
+      opacity: .95;
+    }
+
+    /* Rim highlight — affects only the “frame” edge */
+    .review-photo-card::after{
+      content:"";
+      position:absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events:none;
+      z-index: 1;
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 225, 165, 0.62),
+        inset 0 0 18px rgba(226,177,60,0.18);
+    }
+
+    /* Keep actual content above glows */
+    .review-photo-card > *{
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Show more of the screenshot (no cropping) */
     .review-photo-card img{
       width: 100%;
-      height: 260px;
-      object-fit: cover;
+      height: auto;          /* let it expand naturally */
+      object-fit: contain;   /* prevents cropping */
       display: block;
+
+      /* crisp depth + grand gold glow behind */
+      box-shadow:
+        0 14px 36px rgba(0,0,0,0.16),
+        0 0 0 1px rgba(255, 225, 160, 0.22);
+      filter:
+        drop-shadow(0 0 16px rgba(255, 205, 120, 0.40))
+        drop-shadow(0 0 36px rgba(226,177,60, 0.26))
+        drop-shadow(0 0 62px rgba(201,149,32, 0.18));
+      transform: translateZ(0);
     }
 
-    .review-photo-caption{
-      padding: .75rem .95rem;
-      font-weight: 900;
-      color: rgba(11,16,32,.92);
-      border-top: 1px solid rgba(0,0,0,.06);
-      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(246,247,251,.96));
+    /* Optional “luxury hover” */
+    .review-photo-card:hover::before{
+      box-shadow:
+        0 0 0 1px rgba(255, 210, 140, 0.48),
+        0 0 44px 12px rgba(226,177,60,0.40),
+        0 0 96px 26px rgba(201,149,32,0.20);
+    }
+    .review-photo-card:hover img{
+      filter:
+        drop-shadow(0 0 20px rgba(255, 210, 140, 0.46))
+        drop-shadow(0 0 42px rgba(226,177,60, 0.30))
+        drop-shadow(0 0 74px rgba(201,149,32, 0.20));
     }
 
     @media (max-width: 740px){
       .review-photos{ grid-template-columns: 1fr; }
-      .review-photo-card img{ height: 240px; }
+      .review-photo-card{ padding: .6rem; }
     }
 
     /* Glowing pill for "Google • x reviews" */
@@ -536,7 +629,7 @@
       <ul class="menu">
         <li class="menu-text">
           <a href="#top" class="brand" aria-label="E Tax Pro Solutions Home">
-            <img src="assets/logo.png" alt="E Tax Pro Solutions logo">
+            <img src="./assets/logo.png" alt="E Tax Pro Solutions logo">
           </a>
         </li>
         <li><a href="#services">Services</a></li>
@@ -872,14 +965,14 @@
       <h2 class="section-title">Reviews</h2>
       <p class="muted centered">Real Google reviews from clients who’ve worked with us.</p>
 
-      <!-- ✅ Review screenshots (your two images) -->
+      <!-- ✅ Review screenshots -->
       <div class="review-photos" aria-label="Google review screenshots">
         <div class="review-photo-card">
-          <img src="assets/reviews/review-1.png" alt="Google review screenshot for E Tax Pro Solutions">
+          <img src="./assets/reviews/review-1.png" alt="Google review screenshot for E Tax Pro Solutions">
           <div class="review-photo-caption">Google Review Screenshot</div>
         </div>
         <div class="review-photo-card">
-          <img src="assets/reviews/review-2.png" alt="Google review screenshot for E Tax Pro Solutions">
+          <img src="./assets/reviews/review-2.png" alt="Google review screenshot for E Tax Pro Solutions">
           <div class="review-photo-caption">Google Review Screenshot</div>
         </div>
       </div>
