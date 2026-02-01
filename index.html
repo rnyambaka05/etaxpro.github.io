@@ -595,11 +595,13 @@
       z-index: 2;
     }
 
-    /* Image glow behind */
+    /* ✅ CHANGE #1: make images show FULL photo (no cropping) */
+    /* ✅ CHANGE #2: increase height so images look bigger */
     .review-photo-card img{
       width: 100%;
-      height: 260px;
-      object-fit: cover;
+      height: 340px;              /* was 260px */
+      object-fit: contain;        /* was cover (cropping) */
+      background: #f6f7fb;        /* clean letterbox */
       display: block;
       box-shadow:
         0 14px 36px rgba(0,0,0,0.16),
@@ -634,7 +636,7 @@
 
     @media (max-width: 740px){
       .review-photos{ grid-template-columns: 1fr; }
-      .review-photo-card img{ height: 240px; }
+      .review-photo-card img{ height: 270px; } /* was 240px */
     }
 
     /* Glowing pill */
