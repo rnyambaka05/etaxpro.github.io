@@ -401,6 +401,24 @@
     .spacer{ height: 1rem; }
     .tight { margin-top: .4rem; }
 
+    /* ✅ NEW: Section Divider (restores the “split” between Reviews and Book) */
+    .section-divider{
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(90deg,
+        rgba(0,0,0,0),
+        rgba(0,0,0,.18),
+        rgba(226,177,60,.30),
+        rgba(0,0,0,.18),
+        rgba(0,0,0,0)
+      );
+    }
+    .section-divider-wrap{
+      background: #fff;
+      padding: 0;
+      margin: 0;
+    }
+
     /* Cards */
     .card{
       border: 1px solid rgba(0,0,0,.08);
@@ -537,22 +555,22 @@
       margin: 1.2rem auto 0;
     }
 
-    /* ========= NEW: ORB FRAME GLOW (OUTLINE ONLY) ========= */
+    /* ========= ORB FRAME GLOW (OUTLINE ONLY) ========= */
     .review-photo-card{
       position: relative;
       border-radius: 18px;
-      overflow: hidden; /* keeps inside clean */
+      overflow: hidden;
       border: 1px solid rgba(0,0,0,.08);
       background: #fff;
       box-shadow: 0 12px 28px rgba(0,0,0,.06);
-      isolation: isolate; /* ensures pseudo layers behave */
+      isolation: isolate;
     }
 
     /* Outer warm golden aura — sits behind the card */
     .review-photo-card::before{
       content:"";
       position:absolute;
-      inset: -14px; /* room for glow */
+      inset: -14px;
       border-radius: inherit;
       pointer-events:none;
       z-index: 0;
@@ -576,23 +594,20 @@
         inset 0 0 18px rgba(226,177,60,0.18);
     }
 
-    /* Keep actual content above glows */
     .review-photo-card > *{
       position: relative;
       z-index: 2;
     }
 
-    /* ========= NEW: IMAGE “GRAND SHINY” GOLD GLOW BEHIND ========= */
+    /* Image glow behind */
     .review-photo-card img{
       width: 100%;
       height: 260px;
       object-fit: cover;
       display: block;
-      /* crisp depth */
       box-shadow:
         0 14px 36px rgba(0,0,0,0.16),
         0 0 0 1px rgba(255, 225, 160, 0.22);
-      /* glow that sits behind image (not tinting it) */
       filter:
         drop-shadow(0 0 16px rgba(255, 205, 120, 0.40))
         drop-shadow(0 0 36px rgba(226,177,60, 0.26))
@@ -608,7 +623,6 @@
       background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(246,247,251,.96));
     }
 
-    /* Optional “luxury hover” */
     .review-photo-card:hover::before{
       box-shadow:
         0 0 0 1px rgba(255, 210, 140, 0.48),
@@ -627,7 +641,7 @@
       .review-photo-card img{ height: 240px; }
     }
 
-    /* Glowing pill for "Google • x reviews" */
+    /* Glowing pill */
     .meta-pill{
       display:inline-flex;
       align-items:center;
@@ -656,25 +670,21 @@
       box-shadow: 0 0 0 4px rgba(226,177,60,.16);
     }
 
-    /* ========================= REVIEW ORB: SOFT BOUNCE ========================= */
+    /* Orb float */
     #reviewOrb{
-animation: orbFloat 4s cubic-bezier(.4,0,.2,1) infinite;
+      animation: orbFloat 4s cubic-bezier(.4,0,.2,1) infinite;
       will-change: transform;
       position: relative;
       z-index: 2;
     }
     #reviewOrb:hover{ animation-play-state: paused; }
 
-    /* ✅ NEW: golden light INSIDE the orb box (noticeable but not overdone) */
+    /* Golden light inside orb card (subtle) */
     #reviews .card[style*="max-width:900px"]{
       background:
         radial-gradient(650px 260px at 50% 20%, rgba(226,177,60,.16), transparent 60%),
         radial-gradient(650px 260px at 15% 85%, rgba(255,211,106,.10), transparent 62%),
         #fff;
-    }
-
-    /* ✅ NEW: remove any glow effect around the orb card (keep it clean) */
-    #reviews .card[style*="max-width:900px"]{
       box-shadow: 0 12px 28px rgba(0,0,0,.06) !important;
     }
 
@@ -686,6 +696,26 @@ animation: orbFloat 4s cubic-bezier(.4,0,.2,1) infinite;
 
     @media (prefers-reduced-motion: reduce){
       #reviewOrb{ animation: none; }
+    }
+
+    /* ✅ NEW: Ensure Book section visually separates even if backgrounds feel similar */
+    #book.section.alt{
+      position: relative;
+    }
+    #book.section.alt::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height: 1px;
+      background: linear-gradient(90deg,
+        rgba(0,0,0,0),
+        rgba(0,0,0,.16),
+        rgba(226,177,60,.22),
+        rgba(0,0,0,.16),
+        rgba(0,0,0,0)
+      );
     }
   </style>
 </head>
@@ -1037,12 +1067,10 @@ animation: orbFloat 4s cubic-bezier(.4,0,.2,1) infinite;
       <div class="review-photos" aria-label="Google review screenshots">
         <div class="review-photo-card">
           <img src="./assets/reviews/review-1.png" alt="Google review screenshot for E Tax Pro Solutions">
-          <!-- removed caption text per request -->
           <div class="review-photo-caption"></div>
         </div>
         <div class="review-photo-card">
           <img src="./assets/reviews/review-2.png" alt="Google review screenshot for E Tax Pro Solutions">
-          <!-- removed caption text per request -->
           <div class="review-photo-caption"></div>
         </div>
       </div>
@@ -1069,6 +1097,11 @@ animation: orbFloat 4s cubic-bezier(.4,0,.2,1) infinite;
       </div>
     </div>
   </section>
+
+  <!-- ✅ RESTORED SECTION DIVIDER (this is what you were missing) -->
+  <div class="section-divider-wrap" aria-hidden="true">
+    <div class="section-divider"></div>
+  </div>
 
   <!-- Book -->
   <section id="book" class="section alt">
