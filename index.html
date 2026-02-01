@@ -152,7 +152,7 @@
       --cta-glow-strong: rgba(226,177,60,.26);
       --cta-depth: rgba(0,0,0,.18);
 
-      /* ✅ ONE neutral divider style (used everywhere section separators appear) */
+      /* (Kept, but no longer used for the Reviews→Book boundary) */
       --divider-line: linear-gradient(
         90deg,
         rgba(0,0,0,0),
@@ -410,18 +410,6 @@
     .spacer{ height: 1rem; }
     .tight { margin-top: .4rem; }
 
-    /* ✅ Section Divider (neutral + consistent) */
-    .section-divider{
-      height: 1px;
-      width: 100%;
-      background: var(--divider-line);
-    }
-    .section-divider-wrap{
-      background: #fff;
-      padding: 0;
-      margin: 0;
-    }
-
     /* Cards */
     .card{
       border: 1px solid rgba(0,0,0,.08);
@@ -539,6 +527,11 @@
         radial-gradient(900px 520px at 15% 70%, rgba(226,177,60,.09), transparent 62%),
         radial-gradient(900px 520px at 85% 75%, rgba(201,149,32,.07), transparent 62%),
         linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(246,247,251,1) 100%);
+
+      /* ✅ hard-disable any accidental edge lines at the bottom boundary */
+      border-bottom: 0 !important;
+      box-shadow: none !important;
+      outline: none !important;
     }
 
     /* ✅ Remove the huge background stars entirely */
@@ -701,18 +694,12 @@
       #reviewOrb{ animation: none; }
     }
 
-    /* ✅ Book section top divider: now uses the SAME neutral divider line (no gold hue) */
+    /* ✅ Reviews → Book boundary: make it seamless (no divider, no line, no pseudo element) */
     #book.section.alt{
+      border-top: 0 !important;
+      box-shadow: none !important;
+      outline: none !important;
       position: relative;
-    }
-    #book.section.alt::before{
-      content:"";
-      position:absolute;
-      top:0;
-      left:0;
-      right:0;
-      height: 1px;
-      background: var(--divider-line);
     }
   </style>
 </head>
@@ -1094,11 +1081,6 @@
       </div>
     </div>
   </section>
-
-  <!-- ✅ Divider between Reviews and Book (now neutral + matches top style) -->
-  <div class="section-divider-wrap" aria-hidden="true">
-    <div class="section-divider"></div>
-  </div>
 
   <!-- Book -->
   <section id="book" class="section alt">
