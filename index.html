@@ -151,6 +151,15 @@
       --cta-glow: rgba(226,177,60,.18);
       --cta-glow-strong: rgba(226,177,60,.26);
       --cta-depth: rgba(0,0,0,.18);
+
+      /* ✅ ONE neutral divider style (used everywhere section separators appear) */
+      --divider-line: linear-gradient(
+        90deg,
+        rgba(0,0,0,0),
+        rgba(0,0,0,.16),
+        rgba(0,0,0,.16),
+        rgba(0,0,0,0)
+      );
     }
 
     html { scroll-behavior: smooth; }
@@ -401,17 +410,11 @@
     .spacer{ height: 1rem; }
     .tight { margin-top: .4rem; }
 
-    /* ✅ NEW: Section Divider (restores the “split” between Reviews and Book) */
+    /* ✅ Section Divider (neutral + consistent) */
     .section-divider{
       height: 1px;
       width: 100%;
-      background: linear-gradient(90deg,
-        rgba(0,0,0,0),
-        rgba(0,0,0,.18),
-        rgba(226,177,60,.30),
-        rgba(0,0,0,.18),
-        rgba(0,0,0,0)
-      );
+      background: var(--divider-line);
     }
     .section-divider-wrap{
       background: #fff;
@@ -698,7 +701,7 @@
       #reviewOrb{ animation: none; }
     }
 
-    /* ✅ NEW: Ensure Book section visually separates even if backgrounds feel similar */
+    /* ✅ Book section top divider: now uses the SAME neutral divider line (no gold hue) */
     #book.section.alt{
       position: relative;
     }
@@ -709,13 +712,7 @@
       left:0;
       right:0;
       height: 1px;
-      background: linear-gradient(90deg,
-        rgba(0,0,0,0),
-        rgba(0,0,0,.16),
-        rgba(226,177,60,.22),
-        rgba(0,0,0,.16),
-        rgba(0,0,0,0)
-      );
+      background: var(--divider-line);
     }
   </style>
 </head>
@@ -1098,7 +1095,7 @@
     </div>
   </section>
 
-  <!-- ✅ RESTORED SECTION DIVIDER (this is what you were missing) -->
+  <!-- ✅ Divider between Reviews and Book (now neutral + matches top style) -->
   <div class="section-divider-wrap" aria-hidden="true">
     <div class="section-divider"></div>
   </div>
